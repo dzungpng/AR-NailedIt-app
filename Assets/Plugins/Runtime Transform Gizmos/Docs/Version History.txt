@@ -1,0 +1,50 @@
+Rlease 1.1.2:
+---------------------------------------------
+[New Feature] : it is now possible to change the scene gizmo screen size.
+
+Release 1.1.1:
+---------------------------------------------
+[Bug Fix]	  : fixed bug which was preventing gizmos from being dragged 
+			    for certain camera angles.
+
+Release 1.1:
+---------------------------------------------
+[New Feature] : added 'SetAxesLinesHoverable' function to the 'MoveGizmo' class;
+[New Feature] : added 'SetMidCapHoverable' function to the 'RotationGizmo' class;
+[New Feature] : added 'SetAxesLinesHoverable' function to the 'ScaleGizmo' class;
+[New Feature] : added 'SetMvAxesLinesHoverable' and 'SetRtMidCapHoverable' functions to the 'UniversalGizmo' class;
+
+[Bug Fix]     : fixed scale & universal gizmos scaling objects incorrectly;
+[Bug Fix]     : fixed scale snap step Inspector freeze for scale & universal gizmos;
+[Bug Fix]	  : fixed mid scale cap for universal gizmo not hiding when switching to 2D mode;
+[Bug Fix]	  : fixed bug in the 'OnHoverableStateChanged' function of the 'GizmoPlaneSlider3D' class;
+
+Release 1.0.5:
+---------------------------------------------
+[New Feature] : fixed incorrect mapping between Ids and gizmo handles (move, scale and universal);
+[New Feature] : added SetRootObjectIgnored to RTScene class;
+
+[Bug Fix]	  : fixed camera focus;
+[Bug Fix]	  : fixed warnings about PrefabType being obsolete;
+[Bug Fix]	  : fixed SphereTreeNode stack overflow bug;
+
+Release 1.0.4:
+---------------------------------------------
+[New Feature] : gizmo states such as enabling/disabling snapping can now correctly be activated/deactivated
+			    using the gizmo interface. Previously, this was not possible because these states would 
+			    always be overwritten by the hotkeys;
+[New Feature] : added 'Initialized' event for the RTGApp class;
+[New Feature] : added 'OffsetDragAxisModify' event to the 'Gizmo' class which allows the client code to
+				alter the drag axis produced while dragging gizmo offset/move handles;
+[New Feature] : it is now possible to control the visibility of the universal gizmo's mid cap. This
+			    is the shape (box by default) that is used to perform uniform scaling;
+
+Release 1.0.2
+---------------------------------------------
+[New Feature] : it is now possible to choose the type of rotation switch performed by the camera;
+
+Release 1.0.1
+---------------------------------------------
+[Bug Fix]: fixed bug which was causing buggy interaction with the gizmos for custom defined camera viewports;
+
+Release 1.0
