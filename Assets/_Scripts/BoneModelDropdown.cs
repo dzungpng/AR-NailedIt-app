@@ -42,7 +42,7 @@ public class BoneModelDropdown : MonoBehaviour
         {
             boneModels.Add(GameObject.Find(boneModelNames[i]));
         }
-        for (int i = 1; i < boneCount - 1; i++)
+        for (int i = 0; i < boneCount - 1; i++)
         {
             boneModels[i].SetActive(false);
         }

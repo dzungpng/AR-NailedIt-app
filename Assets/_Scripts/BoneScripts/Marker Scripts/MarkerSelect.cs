@@ -23,6 +23,9 @@ public class MarkerSelect : MonoBehaviour {
     public Slider xSlider;
     public Slider ySlider;
     public Button resetAngle;
+    public InputField xCoord;
+    public InputField yCoord;
+    public InputField zCoord;
 
     public GameObject DrillPoints;
     private DrillPointScript drillPoints;
@@ -40,10 +43,13 @@ public class MarkerSelect : MonoBehaviour {
         ySlider.onValueChanged.AddListener(delegate { OnYSliderChanged(); });
         xSlider.onValueChanged.AddListener(delegate { OnXSliderChanged(); });
         resetAngle.onClick.AddListener(delegate { onAngleReset(); });
+        xCoord.onValueChanged.AddListener(delegate { OnXCoordChanged(); });
+        yCoord.onValueChanged.AddListener(delegate { OnYCoordChanged(); });
+        zCoord.onValueChanged.AddListener(delegate { OnZCoordChanged(); });
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         //Create a ray from the Mouse click position
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -92,7 +98,7 @@ public class MarkerSelect : MonoBehaviour {
         changeColor(selectedConeMat, selectedMarkerMat);
 
         // deleting markers
-        if((Input.GetKeyDown(KeyCode.Delete) || Input.GetKeyDown(KeyCode.Backspace)))
+        if(Input.GetKeyDown(KeyCode.Delete))
         {
             if(currCone != null)
             {
@@ -107,13 +113,13 @@ public class MarkerSelect : MonoBehaviour {
             }
         }
 
-        // enter clears selection
-        if(Input.GetKeyDown(KeyCode.Return))
+        // Escape clears selection
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Deselect();
         }
 
-        if((mode.value == 1))
+        if ((mode.value == 1))
         {
             changeColor(originalConeMat, originalMarkerMat);
             currCone = null;
@@ -138,6 +144,12 @@ public class MarkerSelect : MonoBehaviour {
                 currCone = enter.collider.gameObject;
                 currMarker = currCone.GetComponent<PairScript>().pair;
             }
+            if (currCone != null)
+            {
+                xCoord.SetTextWithoutNotify(currCone.transform.position.x.ToString());
+                yCoord.SetTextWithoutNotify(currCone.transform.position.y.ToString());
+                zCoord.SetTextWithoutNotify(currCone.transform.position.z.ToString());
+            }
         }     
     }
 
@@ -155,6 +167,12 @@ public class MarkerSelect : MonoBehaviour {
 
                 currMarker = enter.collider.gameObject;
                 currCone = currMarker.GetComponent<PairScript>().pair;
+            }
+            if (currCone != null)
+            {
+                xCoord.SetTextWithoutNotify(currCone.transform.position.x.ToString());
+                yCoord.SetTextWithoutNotify(currCone.transform.position.y.ToString());
+                zCoord.SetTextWithoutNotify(currCone.transform.position.z.ToString());
             }
         }
     }
@@ -281,6 +299,47 @@ public class MarkerSelect : MonoBehaviour {
 
                 cone.transform.rotation = rotation;
                 cone.transform.RotateAround(t.position, tangent, ySlider.value);
+            }
+        }
+    }
+
+    void OnXCoordChanged()
+    {
+        if(currCone != null)
+        {
+            float positionX;
+            if(float.TryParse(xCoord.text, out positionX) && xCoord.text.Trim() != "")
+            {
+                currCone.transform.position = new Vector3(positionX, currCone.transform.position.y, currCone.transform.position.z);
+                currMarker.transform.position = new Vector3(positionX, currMarker.transform.position.y, currMarker.transform.position.z);
+            }
+        }
+    }
+
+    void OnYCoordChanged()
+    {
+        if(currCone != null)
+        {
+            float positionY;
+            if(float.TryParse(yCoord.text, out positionY) && yCoord.text.Trim() != "")
+            {
+                float oldYPositionCone = currCone.transform.position.y;
+                currCone.transform.position = new Vector3(currCone.transform.position.x, positionY, currCone.transform.position.z);
+                currMarker.transform.position = new Vector3(
+                    currMarker.transform.position.x, currMarker.transform.position.y + (positionY - oldYPositionCone), currMarker.transform.position.z);
+            }
+        }
+    }
+
+    void OnZCoordChanged()
+    {
+        if (currCone != null)
+        {
+            float positionZ;
+            if (float.TryParse(zCoord.text, out positionZ) && zCoord.text.Trim() != "")
+            {
+                currCone.transform.position = new Vector3(currCone.transform.position.x, currCone.transform.position.y, positionZ);
+                currMarker.transform.position = new Vector3(currMarker.transform.position.x, currMarker.transform.position.y, positionZ);
             }
         }
     }

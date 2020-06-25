@@ -42,7 +42,7 @@ public class ArmModelDropdown : MonoBehaviour
         {
             armModels.Add(GameObject.Find(armModelNames[i]));
         }
-        for (int i = 0; i < armCount - 1; i++)
+        for (int i = 1; i < armCount - 1; i++)
         {
             armModels[i].SetActive(false);
         }

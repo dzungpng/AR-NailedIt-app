@@ -42,7 +42,7 @@ public class NailModelDropdown : MonoBehaviour
         {
             nailModels.Add(GameObject.Find(nailModelNames[i]));
         }
-        for (int i = 0; i < nailCount - 1; i++)
+        for (int i = 1; i < nailCount - 1; i++)
         {
             nailModels[i].SetActive(false);
         }
