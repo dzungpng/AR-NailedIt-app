@@ -26,8 +26,7 @@ public class BoneModelDropdown : MonoBehaviour
         });
 
         // File browsing settings
-        FileBrowser.SetFilters(true, new FileBrowser.Filter("3D Models", ".obj"));
-        FileBrowser.SetDefaultFilter(".obj");
+        FileBrowser.SetFilters(true, new FileBrowser.Filter("3D Models", ".obj"), new FileBrowser.Filter("Textfiles", ".txt"));
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
     }
 

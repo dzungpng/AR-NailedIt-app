@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using UnityEngine.UI;
+using SimpleFileBrowser;
+
 
 public class FileParser : MonoBehaviour
 {
-
-    private string path = "data.txt";
     public string data;
     public Text dataContainer;
 
@@ -18,7 +18,7 @@ public class FileParser : MonoBehaviour
         data = "Empty data";
     }
 
-    public void Read_Data()
+    public void Read_Data(string path)
     {
         StreamReader rd = new StreamReader(path);
         data = rd.ReadToEnd();
@@ -32,6 +32,25 @@ public class FileParser : MonoBehaviour
         if(server != null)
         {
             server.GetComponent<Server>().SendHandleData(data);
+        }
+    }
+
+    public void Browse_Data()
+    {
+        StartCoroutine(ShowLoadDialogCoroutine());
+    }
+
+    IEnumerator ShowLoadDialogCoroutine()
+    {
+        // Show a load file dialog and wait for a response from user
+        // Load file/folder: file, Allow multiple selection: true
+        // Initial path: default (Documents), Title: "Load File", submit button text: "Load"
+        yield return FileBrowser.WaitForLoadDialog(false, true, null, "Load File", "Load");
+
+        if (FileBrowser.Success)
+        {
+            Debug.Log(FileBrowser.Result[0]);
+            Read_Data(FileBrowser.Result[0]);
         }
     }
 }
