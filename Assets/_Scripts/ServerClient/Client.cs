@@ -18,6 +18,7 @@ public class Client : MonoBehaviour
     //private string IP_Address = "24.238.113.97";
     int Reliable_Channel_ID;
     int Unreliable_Channel_ID;
+    //int ReliableFragmented_Channel_ID;
 
     private float Connection_Time;
     int Host_ID;
@@ -31,6 +32,7 @@ public class Client : MonoBehaviour
     public Text dataContainer;
 
     private string playername;
+
     void Start()
     {
         is_started = false;
@@ -90,15 +92,11 @@ public class Client : MonoBehaviour
                         break;
                 }
                 break;
-
-                break;
         }
-
     }
 
     public void Connect()
     {
-
         NetworkTransport.Init();
 
 
@@ -112,7 +110,6 @@ public class Client : MonoBehaviour
 
         Host_ID = NetworkTransport.AddHost(topology,0);
 
-        //connection_ID = NetworkTransport.Connect(Host_ID, "127.0.0.1", Socket_Port, 0, out error);
         connection_ID = NetworkTransport.Connect(Host_ID, IP_Address, Socket_Port, 0, out error);
 
         if (connection_ID == 0)
@@ -122,6 +119,7 @@ public class Client : MonoBehaviour
             status.text = "[" + currentTime + "] Unable to find the host!\n";
             return;
         }
+        Debug.Log(connection_ID);
         Connection_Time = Time.time;
         is_started = true;
         currentTime = Time.time.ToString("f6");
@@ -136,6 +134,7 @@ public class Client : MonoBehaviour
     public void Send_Message(string msg)
     {
         byte[] buffer = Encoding.Unicode.GetBytes(msg);
+        //NetworkTransport.Send(Host_ID, connection_ID, Reliable_Channel_ID, buffer, msg.Length * sizeof(char), out error);
         NetworkTransport.Send(Host_ID, connection_ID, Reliable_Channel_ID, buffer, msg.Length * sizeof(char), out error);
 
     }
@@ -143,8 +142,8 @@ public class Client : MonoBehaviour
     private void On_AskName(string data)
     {
         Client_ID = int.Parse(data);
-
         Send("NAMEIS|" + playername + "|", Reliable_Channel_ID);
+
     }
 
     private void Send(string message, int channelID)

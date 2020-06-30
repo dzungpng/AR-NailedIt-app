@@ -27,6 +27,7 @@ public class Server : MonoBehaviour
 
     private int ReliableChannel;
     private int UnreliableChannel;
+    //private int ReliableFragmentedChannel;
 
     private bool is_started = false;
     private byte error;
@@ -36,7 +37,7 @@ public class Server : MonoBehaviour
     private float lastRotationUpdate;
     private float UpdateRate = 0.05f;
 
-    public bool BoradCasting;
+    public bool Broadcasting;
     private bool BoradCasting_Changed;
 
     public Text status;
@@ -49,6 +50,7 @@ public class Server : MonoBehaviour
 
         ReliableChannel = CC.AddChannel(QosType.Reliable);
         UnreliableChannel = CC.AddChannel(QosType.Unreliable);
+        //ReliableFragmentedChannel = CC.AddChannel(QosType.ReliableFragmented);
 
         HostTopology topo = new HostTopology(CC,MAX_CONNECTION);
 
@@ -60,7 +62,7 @@ public class Server : MonoBehaviour
         Debug.Log("Server is Ready");
         currentTime = Time.time.ToString("f6");
         status.text += "[" + currentTime + "] Server is Ready\n";
-        BoradCasting = false;
+        Broadcasting = false;
     }
 
     private void Update()
@@ -123,7 +125,7 @@ public class Server : MonoBehaviour
                 break;
         }
         //Ask for rotation update
-        if (BoradCasting)
+        if (Broadcasting)
         {
             if (Time.time - lastRotationUpdate > UpdateRate)
             {
@@ -143,7 +145,7 @@ public class Server : MonoBehaviour
                 Send(m, UnreliableChannel, clients);
             }
         }
-        if(!BoradCasting)
+        if(!Broadcasting)
         {
             if (BoradCasting_Changed)
             {
@@ -167,6 +169,7 @@ public class Server : MonoBehaviour
         }
     }
 
+
     private void Onconnection(int connectionid)
     {
         //Add this player to a list;
@@ -185,11 +188,15 @@ public class Server : MonoBehaviour
         }
         Send(msg, ReliableChannel, connectionid);
     }
+
+
     private void OnDisconnection(int cnnId)
     {
         clients.Remove(clients.Find(x => x.connectionId == cnnId));
         Send("DC|" + cnnId + "|", ReliableChannel, clients);
     }
+
+
     private void OnNameIs(int cnnId, string PlayerName)
     {
 
@@ -220,11 +227,26 @@ public class Server : MonoBehaviour
             NetworkTransport.Send(HostId, sc.connectionId, channelId, msg, msg.Length * sizeof(char), out error);
         }
     }
+
+    // Use for sending LZ4-compressed messages in form of bytes
+    private void Send(byte[] message, int channelId, List<ServerClient> c)
+    {
+        Debug.Log("Sending:" + message);
+        currentTime = Time.time.ToString("f6");
+        status.text += "[" + currentTime + "] Sending : " + message + "\n";
+        foreach (ServerClient sc in clients)
+        {
+            NetworkTransport.Send(HostId, sc.connectionId, channelId, message, message.Length * sizeof(char), out error);
+        }
+    }
+
+
     public void Set_BoradCasting()
     {
-        BoradCasting = !BoradCasting;
+        Broadcasting = !Broadcasting;
         BoradCasting_Changed = true;
     }
+
 
     public void Calibrate()
     {
@@ -249,10 +271,12 @@ public class Server : MonoBehaviour
         Send(msg,ReliableChannel,clients);
     }
 
+
     public void MoveDrill()
     {
         Send("MD" + '|', ReliableChannel, clients);
     }
+
 
     public void SendHandleData(string data)
     {
@@ -260,12 +284,15 @@ public class Server : MonoBehaviour
         Send(msg, ReliableChannel, clients);
     }
 
+
     public void Send_Adjust(float x, float y, float z,float x_rot,float y_rot,float z_rot, float scale)
     {
         string msg = "ADJ|";
         msg += x.ToString() + '%' + y.ToString() + '%' + z.ToString() + '%' + x_rot.ToString()+ '%' + y_rot.ToString() + '%' + z_rot.ToString() +'%'+ scale.ToString() + '|';
         Send(msg, ReliableChannel, clients);
     }
+
+
     public  void SendNailData(bool Nail_Status)
     {
         bool status = Nail_Status;

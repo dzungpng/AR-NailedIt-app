@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using SimpleFileBrowser;
 using System.IO;
 
 public class ExportScript : MonoBehaviour {
@@ -29,17 +30,29 @@ public class ExportScript : MonoBehaviour {
         vumarks = VuMarks.GetComponent<VuMarkPlacement>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    IEnumerator ShowSaveDialogCoroutine(string data)
+    {
+        // Show a Save Dialog and wait for response from users
+        yield return FileBrowser.WaitForSaveDialog(false, false, null, "Save", "Save");
+
+        // Dialog is closed
+        Debug.Log(FileBrowser.Success);
+
+        if(FileBrowser.Success)
+        {
+            Debug.Log(FileBrowser.Result[0]);
+            FileBrowserHelpers.WriteTextToFile(FileBrowser.Result[0], data);
+        }
+    }
+
 
     void ExportModelData()
     {
         bone = BoneModelDropdown.selectedBoneModel;
-        string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
-        StreamWriter sw = System.IO.File.CreateText(path + filename);
-        sw.Close();
+        //string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+        //StreamWriter sw = System.IO.File.CreateText(path + filename);
+        //sw.Close();
 
         string text = "4 \n"; // number of vumarks placeholder
         // placeholders for vumarks
@@ -117,9 +130,8 @@ public class ExportScript : MonoBehaviour {
                 text += formatVec3(bone.transform.InverseTransformDirection(t.rotation.eulerAngles));
                 text += formatVec3(t.localScale) + "\n";
             }
-
-
-        System.IO.File.WriteAllText(path + filename, text);
+        //System.IO.File.WriteAllText(path + filename, text);
+        StartCoroutine(ShowSaveDialogCoroutine(text));
     }
 
     string formatVec3(Vector3 vec)
