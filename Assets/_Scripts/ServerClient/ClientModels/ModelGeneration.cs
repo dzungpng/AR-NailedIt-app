@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ModelGeneration : MonoBehaviour
 {
-    public GameObject plane;
+    public GameObject planePrefab;
     public GameObject bone;
+    public GameObject conePrefab;
 
     // Update is called once per frame
     void Update()
     {
         if(Client.Data.Trim() != "")
         {
+            Debug.Log("Parsing data...");
             ParseData(Client.Data);
             Client.Data = "";
         }
@@ -27,36 +29,40 @@ public class ModelGeneration : MonoBehaviour
      * Parse the data.txt file that was generated from the planning app
      * Data must be properlly formatted as such: 
      * Line 1: 4
-     * Line 2: VuMark position, rotation, scale
-     * Line 3: Plane position, rotation, scale
+     * Line 2: VuMark position 
+     * Line 3: VuMark rotation
+     * Line 4: VuMark scale
+     * Line 5: Plane position
+     * Line 6: Plane rotation
+     * Line 7: Plane scale
      * Line 4: Number of cones (ex. 3)
-     * Line 5: Cone 1 position, rotation, scale
-     * Line 6: Cone 2 position, rotation, scale
+     * Line 5, 6, 7: Cone 1 position, rotation, scale
+     * Line 8, 9, 10: Cone 2 position, rotation, scale
      * ...
-     * Line n: Cone n position, rotation, scale
+     * Line n, n+1, n+2: Cone nth position, rotation, scale
     **/
     private void ParseData(string data)
     {
-        string[] splitData = data.Split(';');
+        string[] splitData = data.Split('\n');
 
-        Vector3 vuMarkPosition = StringToVector3(splitData[0].Substring(1));
-        Vector3 vuMarkRotation = StringToVector3(splitData[1]);
-        Vector3 vuMarkScale    = StringToVector3(splitData[2]);
-
-        Vector3 planePosition = StringToVector3(splitData[3]);
-        Vector3 planeRotation = StringToVector3(splitData[4]);
-        Vector3 planeScale    = StringToVector3(splitData[5]);
+        Debug.Log("Parsing plane data...");
+        Vector3 planePosition = StringToVector3(splitData[4]);
+        Vector3 planeRotation = StringToVector3(splitData[5]);
+        Vector3 planeScale    = StringToVector3(splitData[6]);
+        GameObject plane = Instantiate(planePrefab, bone.transform) as GameObject;
         plane.transform.localPosition = planePosition;
         plane.transform.localRotation = Quaternion.Euler(planeRotation);
         plane.transform.localScale = planeScale;
+        Debug.Log("Plane data successfully parsed!");
 
-        //List<Transform> cones = new List<Transform>();
-        //for(int i = 6; i < splitData.Length; i+=3)
-        //{
-        //    if(i == 6)
-        //    {
-                
-        //    }
-        //}
+        Debug.Log("Parsing cone data...");
+        for (int i = 8; i < splitData.Length; i+=3)
+        {
+            GameObject newCone = Instantiate(conePrefab, bone.transform) as GameObject;
+            newCone.transform.localPosition = StringToVector3(splitData[i]);
+            newCone.transform.localRotation = Quaternion.Euler(StringToVector3(splitData[i + 1]));
+            newCone.transform.localScale = StringToVector3(splitData[i + 2]);            
+        }
+        Debug.Log("Successfully parsed cone data!");
     }
 }

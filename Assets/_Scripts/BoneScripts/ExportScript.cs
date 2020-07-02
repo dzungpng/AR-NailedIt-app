@@ -69,7 +69,7 @@ public class ExportScript : MonoBehaviour {
             bone.transform.parent = vumarks.front.transform;
             text += formatVec3(vumarks.front.transform.InverseTransformPoint(bone.transform.position));
             text += formatVec3(bone.transform.localRotation.eulerAngles);
-            text += formatVec3(bone.transform.localScale) + "\n";
+            text += formatVec3(bone.transform.localScale);
             bone.transform.parent = null;
         }
         if (vumarks.back != null)
@@ -81,7 +81,7 @@ public class ExportScript : MonoBehaviour {
             bone.transform.parent = vumarks.back.transform;
             text += formatVec3((vumarks.back.transform.InverseTransformPoint(bone.transform.position)));
             text += formatVec3(bone.transform.localRotation.eulerAngles);
-            text += formatVec3(bone.transform.localScale) + "\n";
+            text += formatVec3(bone.transform.localScale);
             bone.transform.parent = null;
         }
         if (vumarks.left != null)
@@ -93,7 +93,7 @@ public class ExportScript : MonoBehaviour {
             bone.transform.parent = vumarks.left.transform;
             text += formatVec3((vumarks.left.transform.InverseTransformPoint(bone.transform.position)));
             text += formatVec3(bone.transform.localRotation.eulerAngles);
-            text += formatVec3(bone.transform.localScale) + "\n";
+            text += formatVec3(bone.transform.localScale);
             bone.transform.parent = null;
         }
         if (vumarks.right != null)
@@ -105,7 +105,7 @@ public class ExportScript : MonoBehaviour {
             bone.transform.parent = vumarks.right.transform;
             text += formatVec3((vumarks.right.transform.InverseTransformPoint(bone.transform.position)));
             text += formatVec3(bone.transform.localRotation.eulerAngles);
-            text += formatVec3(bone.transform.localScale) + "\n";
+            text += formatVec3(bone.transform.localScale);
             bone.transform.parent = null;
         }
 
@@ -115,7 +115,7 @@ public class ExportScript : MonoBehaviour {
             Transform plane = planeGenerator.planes[0];
             text += formatVec3(bone.transform.InverseTransformPoint(plane.position));
             text += formatVec3(bone.transform.InverseTransformDirection(plane.rotation.eulerAngles));
-            text += formatVec3(plane.localScale) + "\n";
+            text += formatVec3(plane.localScale);
         }
 
         text += string.Empty + drillScript.coneList.Count + "\n";
@@ -123,9 +123,9 @@ public class ExportScript : MonoBehaviour {
             {
                 text += formatVec3(bone.transform.InverseTransformPoint(t.position));
                 text += formatVec3(bone.transform.InverseTransformDirection(t.rotation.eulerAngles));
-                text += formatVec3(t.localScale) + "\n";
+                text += formatVec3(t.localScale);
             }
-        //System.IO.File.WriteAllText(path + filename, text);
+        text = text.Substring(0, text.Length - 1);
         StartCoroutine(ShowSaveDialogCoroutine(text));
     }
 
@@ -145,7 +145,7 @@ public class ExportScript : MonoBehaviour {
         else
             z = vec[2].ToString("F2");
 
-        return (x + "," + y + "," + z + ";");
+        return (x + "," + y + "," + z + "\n");
     }
 
 }
