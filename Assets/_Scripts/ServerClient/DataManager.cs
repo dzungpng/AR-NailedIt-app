@@ -24,11 +24,6 @@ public class DataManager : MonoBehaviour
         XZ_Reversed = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void set_TrackIR(Quaternion Rotation, Vector3 Position)
     {
 

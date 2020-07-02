@@ -13,7 +13,6 @@ public class ExportScript : MonoBehaviour {
     public GameObject VuMarks;
 
     private GameObject bone;
-    private string filename;
     private DrillPointScript drillScript;
     private VuMarkPlacement vumarks;
 
@@ -24,7 +23,6 @@ public class ExportScript : MonoBehaviour {
         bone = GameObject.Find("Bone");
         drillScript = drillPoints.GetComponent<DrillPointScript>();
 
-        filename = @"\BoneData.txt";
         button.GetComponent<Button>().onClick.AddListener(ExportModelData);
 
         vumarks = VuMarks.GetComponent<VuMarkPlacement>();
@@ -50,11 +48,8 @@ public class ExportScript : MonoBehaviour {
     void ExportModelData()
     {
         bone = BoneModelDropdown.selectedBoneModel;
-        //string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
-        //StreamWriter sw = System.IO.File.CreateText(path + filename);
-        //sw.Close();
 
-        string text = "4 \n"; // number of vumarks placeholder
+        string text = "4\n"; // number of vumarks placeholder
         // placeholders for vumarks
         if(vumarks.front != null)
         {
@@ -72,7 +67,7 @@ public class ExportScript : MonoBehaviour {
 
             // try getting the position/rotation of the child relative to the parent transform
             bone.transform.parent = vumarks.front.transform;
-            text += formatVec3((vumarks.front.transform.InverseTransformPoint(bone.transform.position)));
+            text += formatVec3(vumarks.front.transform.InverseTransformPoint(bone.transform.position));
             text += formatVec3(bone.transform.localRotation.eulerAngles);
             text += formatVec3(bone.transform.localScale) + "\n";
             bone.transform.parent = null;
@@ -136,7 +131,21 @@ public class ExportScript : MonoBehaviour {
 
     string formatVec3(Vector3 vec)
     {
-        return (vec[0] + "," + vec[1] + "," + vec[2] + ";");
+        string x, y, z;
+        if (vec[0] % 1 == 0)
+            x = vec[0].ToString();
+        else
+            x = vec[0].ToString("F2");
+        if (vec[1] % 1 == 0)
+            y = vec[1].ToString();
+        else
+            y = vec[1].ToString("F2");
+        if (vec[2] % 1 == 0)
+            z = vec[2].ToString();
+        else
+            z = vec[2].ToString("F2");
+
+        return (x + "," + y + "," + z + ";");
     }
 
 }

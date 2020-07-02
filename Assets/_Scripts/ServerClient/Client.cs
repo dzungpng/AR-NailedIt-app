@@ -15,10 +15,8 @@ public class Client : MonoBehaviour
     //"127.0.0.1" is the local Ip, change this to the ip address of the computer running the server scene when hololens is used.
     //private string IP_Address = "127.0.0.1";
     private string IP_Address = "192.168.0.103";
-    //private string IP_Address = "24.238.113.97";
     int Reliable_Channel_ID;
     int Unreliable_Channel_ID;
-    //int ReliableFragmented_Channel_ID;
 
     private float Connection_Time;
     int Host_ID;
@@ -32,9 +30,11 @@ public class Client : MonoBehaviour
     public Text dataContainer;
 
     private string playername;
+    public static string Data;
 
     void Start()
     {
+        Data = "";
         is_started = false;
         Connection_Time = 0;
         connection_ID = -1;
@@ -58,7 +58,7 @@ public class Client : MonoBehaviour
         switch (recData)
         {
             case NetworkEventType.DataEvent:
-                string msg = Encoding.Unicode.GetString(recBuffer, 0, dataSize);
+                string msg = Encoding.Unicode.GetString(recBuffer, 0, bufferSize);
                 Debug.Log("Receiving from " + connectionId + " : " + msg);
                 currentTime = Time.time.ToString("f6");
                 status.text += "[" + currentTime + "] Receiving from " + connectionId + " : " + msg + "\n";
@@ -161,6 +161,8 @@ public class Client : MonoBehaviour
         Debug.Log("Received Handle Data: " + data);
         currentTime = Time.time.ToString("f6");
         dataContainer.text += "[" + currentTime + "] Recieved Handle Data:\n" + data + "\n";
+        // Save data so that ModelGeneration can access and parse
+        Data = data;
         // To do: set the local transforms of the handle and drills with the respect to the vuMark.
     }
 
