@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+// Parse the data file sent by server containing drill cone and plane data to display on the client
 public class ModelGeneration : MonoBehaviour
 {
     public GameObject planePrefab;

@@ -86,8 +86,6 @@ public class Server : MonoBehaviour
                 break;
             case NetworkEventType.DataEvent:
                 string msg = Encoding.Unicode.GetString(recBuffer,0,dataSize);
-                //Debug.Log("Receiving from" + connectionId + " : " + msg);
-                //Debug.Log("length is: " + msg.Length);
                 string[] splitData = msg.Split('|');
 
                 switch (splitData[0])
@@ -110,8 +108,6 @@ public class Server : MonoBehaviour
                         status.text += "[" + currentTime + "] : Invalid Message : " + msg + "\n";
                         break;
                 }
-                break;
-
                 break;
             case NetworkEventType.DisconnectEvent:
                 OnDisconnection(connectionId);
@@ -155,7 +151,6 @@ public class Server : MonoBehaviour
         }
         
     }
-
     
     private void OnCALIS(int connectionId, string data)
     {
@@ -278,7 +273,8 @@ public class Server : MonoBehaviour
     }
 
 
-    public void SendHandleData(string data)
+    // Send to HoloLens client drill cone and plane data
+    public void SendPlanningData(string data)
     {
         string msg = "DAT|" + data + '|';
         Send(msg, ReliableChannel, clients);

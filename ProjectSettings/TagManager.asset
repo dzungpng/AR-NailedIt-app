@@ -17,6 +17,7 @@ TagManager:
   - GroundPlane
   - Arm
   - Nail
+  - Handle
   layers:
   - Default
   - TransparentFX

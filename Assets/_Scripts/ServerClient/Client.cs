@@ -32,6 +32,9 @@ public class Client : MonoBehaviour
     private string playername;
     public static string Data;
 
+    public GameObject handle;
+    bool isReadyToSendHandleData;
+
     void Start()
     {
         Data = "";
@@ -40,6 +43,7 @@ public class Client : MonoBehaviour
         connection_ID = -1;
         playername = "Hololens User";
         Client_ID = -1;
+        isReadyToSendHandleData = false;
     }
 
     // Update is called once per frame
@@ -72,27 +76,33 @@ public class Client : MonoBehaviour
 
                     case "CNN":
                         //When a player is registered successully at the server end
-                        Debug.Log("Player: " + splitData[1] + "has joined!\n");
+                        Debug.Log("Player: " + splitData[1] + "has joined!\n"); 
                         break;
 
                     case "DC":
                         //When a player is disconnected from the server end.
+                        currentTime = Time.time.ToString("f6");
+                        status.text += "[" + currentTime + "] Player " + splitData[1] + " disconnecting from server\n";
                         break;
 
                     case "DAT":
                         //When the server sends the information of the handle and cones to the hololens end
-                        On_HandleData(splitData[1]);
+                        On_PlanningData(splitData[1]);
                         break;
+
                     case "CAL":
-                        //When the server sends the requirement of calibration.
+                        //When the server asks for handle calibration
                         On_Calibration(splitData[1]);
                         break;
+
                     default:
                         Debug.Log("Invalid Message : " + msg);
                         break;
                 }
                 break;
         }
+        if(is_started)
+            SendHandleData();
     }
 
     public void Connect()
@@ -156,14 +166,12 @@ public class Client : MonoBehaviour
         NetworkTransport.Send(Host_ID, connection_ID, channelID, msg, message.Length * sizeof(char), out error);
     }
 
-    private void On_HandleData(string data)
+    private void On_PlanningData(string data)
     {
-        Debug.Log("Received Handle Data: " + data);
-        currentTime = Time.time.ToString("f6");
-        dataContainer.text += "[" + currentTime + "] Recieved Handle Data:\n" + data + "\n";
+        Debug.Log("Received Planning Data: " + data);
+        dataContainer.text += "[" + currentTime + "] Recieved Planning Data:\n" + data + "\n";
         // Save data so that ModelGeneration can access and parse
         Data = data;
-        // To do: set the local transforms of the handle and drills with the respect to the vuMark.
     }
 
     private void On_Calibration(string data)
@@ -171,5 +179,31 @@ public class Client : MonoBehaviour
         Debug.Log("Received Calibration Data: " + data);
 
         //To do: Read the current orientation of the virtual handle to the server
+    }
+
+    public void SetReadyToSendHandleDataTrue()
+    {
+        isReadyToSendHandleData = true;
+        Debug.Log("Ready to send handle data");
+    }
+
+    public void SetReadyToSendHandleDataFalse()
+    {
+        isReadyToSendHandleData = false;
+        Debug.Log("Not ready to send handle data. Please find target!");
+    }
+
+    // Send the position and rotation data of the handle's VuMark to the server when the VuMark is found
+    private void SendHandleData()
+    {
+        if (isReadyToSendHandleData)
+        {
+            Debug.Log("Sending handle data to server...");
+            Vector3 position = handle.transform.position;
+            Vector3 rotation = handle.transform.eulerAngles;
+            string handleData = "HANDLEDAT|" + position + ";" + rotation;
+            Debug.Log(handleData);
+            Send_Message(handleData);
+        }
     }
 }

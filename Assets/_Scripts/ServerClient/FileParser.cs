@@ -31,7 +31,7 @@ public class FileParser : MonoBehaviour
         GameObject server = GameObject.Find("Server");
         if(server != null)
         {
-            server.GetComponent<Server>().SendHandleData(data);
+            server.GetComponent<Server>().SendPlanningData(data);
         }
     }
 
