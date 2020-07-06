@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Client.unity
     guid: fff2ee9bc0586934392dd862e482ae1b
+  - enabled: 1
+    path: Assets/Scenes/NailedIt_update1.unity
+    guid: 56f6d503393e41b4493a320ddb4682a1
   m_configObjects: {}
