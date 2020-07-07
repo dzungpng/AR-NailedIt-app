@@ -41,7 +41,6 @@ public class Server : MonoBehaviour
     private bool BoradCasting_Changed;
 
     public Text status;
-    private string currentTime;
 
     private void Start()
     {
@@ -59,9 +58,7 @@ public class Server : MonoBehaviour
         WebHostID = NetworkTransport.AddWebsocketHost(topo, port, null);
 
         is_started = true;
-        Debug.Log("Server is Ready");
-        currentTime = Time.time.ToString("f6");
-        status.text += "[" + currentTime + "] Server is Ready\n";
+        Utils.updateScrollBox(status,"Server is ready!");
         Broadcasting = false;
     }
 
@@ -81,8 +78,7 @@ public class Server : MonoBehaviour
             case NetworkEventType.ConnectEvent:
                 Debug.Log("Player:" + connectionId + " has connected!");
                 Onconnection(connectionId);
-                currentTime = Time.time.ToString("f6");
-                status.text += "[" + currentTime + "] Player: " + connectionId + " has connected!\n";
+                Utils.updateScrollBox(status, "Player: " + connectionId + " has connected");
                 break;
             case NetworkEventType.DataEvent:
                 string msg = Encoding.Unicode.GetString(recBuffer,0,dataSize);
@@ -107,17 +103,13 @@ public class Server : MonoBehaviour
                         break;
 
                     default:
-                        Debug.Log("Invalid Message : " + msg);
-                        currentTime = Time.time.ToString("f6");
-                        status.text += "[" + currentTime + "] : Invalid Message : " + msg + "\n";
+                        Utils.updateScrollBox(status, "Invalid Message : " + msg);
                         break;
                 }
                 break;
             case NetworkEventType.DisconnectEvent:
                 OnDisconnection(connectionId);
-                Debug.Log("Player:" + connectionId + " has disconnected");
-                currentTime = Time.time.ToString("f6");
-                status.text += "[" + currentTime + "] Player:" + connectionId + " has disconnected\n";
+                Utils.updateScrollBox(status, "Player " + connectionId + " has disconnected");
                 break;
 
             case NetworkEventType.BroadcastEvent:
@@ -217,9 +209,7 @@ public class Server : MonoBehaviour
 
     private void Send(string message,int channelId, List<ServerClient> c)
     {
-        Debug.Log("Sending:" + message);
-        currentTime = Time.time.ToString("f6");
-        status.text += "[" + currentTime + "] Sending : " + message + "\n";
+        Utils.updateScrollBox(status, "Sending : " + message);
         byte[] msg = Encoding.Unicode.GetBytes(message);
         foreach (ServerClient sc in clients)
         {
@@ -230,9 +220,7 @@ public class Server : MonoBehaviour
     // Use for sending LZ4-compressed messages in form of bytes
     private void Send(byte[] message, int channelId, List<ServerClient> c)
     {
-        Debug.Log("Sending:" + message);
-        currentTime = Time.time.ToString("f6");
-        status.text += "[" + currentTime + "] Sending : " + message + "\n";
+        Utils.updateScrollBox(status, "Sending : " + message);
         foreach (ServerClient sc in clients)
         {
             NetworkTransport.Send(HostId, sc.connectionId, channelId, message, message.Length * sizeof(char), out error);
@@ -306,8 +294,8 @@ public class Server : MonoBehaviour
     private void OnReceiveHandleData(string handleData)
     {
         string[] splitHandleData = handleData.Split(';');
-        Vector3 position = ModelGeneration.StringToVector3(splitHandleData[0]);
-        Vector3 rotation = ModelGeneration.StringToVector3(splitHandleData[1]);
+        Vector3 position = Utils.StringToVector3(splitHandleData[0]);
+        Vector3 rotation = Utils.StringToVector3(splitHandleData[1]);
 
         // Modifies the current orientation and position of the arm on desktop to match the one on HoloLens client
         // Make sure the arm is marked visible with the display arm checkbox

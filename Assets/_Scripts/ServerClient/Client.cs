@@ -26,7 +26,6 @@ public class Client : MonoBehaviour
     byte error;
 
     public Text status;
-    private string currentTime;
     public Text dataContainer;
 
     private string playername;
@@ -63,9 +62,8 @@ public class Client : MonoBehaviour
         {
             case NetworkEventType.DataEvent:
                 string msg = Encoding.Unicode.GetString(recBuffer, 0, bufferSize);
-                Debug.Log("Receiving from " + connectionId + " : " + msg);
-                currentTime = Time.time.ToString("f6");
-                status.text += "[" + currentTime + "] Receiving from " + connectionId + " : " + msg + "\n";
+                Utils.updateScrollBox(status, "Receiving from " + connectionId + " : " + msg);
+
                 string[] splitData = msg.Split('|');
 
                 switch (splitData[0])
@@ -81,8 +79,7 @@ public class Client : MonoBehaviour
 
                     case "DC":
                         //When a player is disconnected from the server end.
-                        currentTime = Time.time.ToString("f6");
-                        status.text += "[" + currentTime + "] Player " + splitData[1] + " disconnecting from server\n";
+                        Utils.updateScrollBox(status, "Player " + splitData[1] + " disconnecting from server");
                         break;
 
                     case "DAT":
@@ -122,16 +119,13 @@ public class Client : MonoBehaviour
 
         if (connection_ID == 0)
         {
-            Debug.Log("Unable to find the host!\n");
-            currentTime = Time.time.ToString("f6");
-            status.text = "[" + currentTime + "] Unable to find the host!\n";
+            Utils.updateScrollBox(status, "Unable to find the host!");
             return;
         }
         Debug.Log(connection_ID);
         Connection_Time = Time.time;
         is_started = true;
-        currentTime = Time.time.ToString("f6");
-        status.text = "[" + currentTime + "] Connected to server\n";
+        Utils.updateScrollBox(status, "Connected to server");
     }
 
     public void Disconnect()
@@ -149,9 +143,7 @@ public class Client : MonoBehaviour
 
     private void Send(string message, int channelID)
     {
-        Debug.Log("Sending to the server : " + message);
-        currentTime = Time.time.ToString("f6");
-        status.text += "[" + currentTime + "] Sending to the server\n" + message + "\n";
+        Utils.updateScrollBox(status, "Sending to the server:\n" + message);
         byte[] msg = Encoding.Unicode.GetBytes(message);
 
         NetworkTransport.Send(Host_ID, connection_ID, channelID, msg, message.Length * sizeof(char), out error);
@@ -166,8 +158,7 @@ public class Client : MonoBehaviour
 
     private void On_PlanningData(string data)
     {
-        Debug.Log("Received Planning Data: " + data);
-        dataContainer.text += "[" + currentTime + "] Recieved Planning Data:\n" + data + "\n";
+        Utils.updateScrollBox(dataContainer, "Received planning data:\n" + data);
         // Save data so that ModelGeneration can access and parse
         Data = data;
     }
@@ -182,17 +173,13 @@ public class Client : MonoBehaviour
     public void SetReadyToSendHandleDataTrue()
     {
         isReadyToSendHandleData = true;
-        currentTime = Time.time.ToString("f6");
-        status.text += "[" + currentTime + "] Handle VuMark found. Ready to send handle data\n";
-        Debug.Log("Ready to send handle data");
+        Utils.updateScrollBox(status, "Handle VuMark found. Ready to send handle data");
     }
 
     public void SetReadyToSendHandleDataFalse()
     {
         isReadyToSendHandleData = false;
-        currentTime = Time.time.ToString("f6");
-        status.text += "[" + currentTime + "] Handle VuMark lost. Not ready to send handle data. Please find target!\n";
-        Debug.Log("Not ready to send handle data. Please find target!");
+        Utils.updateScrollBox(status, "Handle VuMark lost. Not ready to send handle data. Please find target!");
     }
 
     // Send the position and rotation data of the handle's VuMark to the server when the VuMark is found
@@ -206,14 +193,5 @@ public class Client : MonoBehaviour
             string handleData = "HANDLEDAT|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
             Send_Message(handleData);
         }
-    }
-
-    public void MockSendHandleData()
-    {
-        //Debug.Log("Sending handle data to server...");
-        Vector3 position = new Vector3(1, 1, 1);
-        Vector3 rotation = new Vector3(2, 2, 2);
-        string handleData = "HANDLEDAT|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
-        Send_Message(handleData);
     }
 }

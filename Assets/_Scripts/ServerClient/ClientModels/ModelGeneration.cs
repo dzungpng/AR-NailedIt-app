@@ -18,12 +18,6 @@ public class ModelGeneration : MonoBehaviour
         }
     }
 
-    public static Vector3 StringToVector3(string s)
-    {
-        string[] splitS = s.Split(',');
-        return new Vector3(float.Parse(splitS[0].Trim()), float.Parse(splitS[1].Trim()), float.Parse(splitS[2].Trim()));
-    }
-
     /**
      * Parse the data.txt file that was generated from the planning app
      * Data must be properlly formatted as such: 
@@ -45,9 +39,9 @@ public class ModelGeneration : MonoBehaviour
         string[] splitData = data.Split('\n');
 
         Debug.Log("Parsing plane data...");
-        Vector3 planePosition = StringToVector3(splitData[4]);
-        Vector3 planeRotation = StringToVector3(splitData[5]);
-        Vector3 planeScale    = StringToVector3(splitData[6]);
+        Vector3 planePosition = Utils.StringToVector3(splitData[4]);
+        Vector3 planeRotation = Utils.StringToVector3(splitData[5]);
+        Vector3 planeScale    = Utils.StringToVector3(splitData[6]);
         GameObject plane = Instantiate(planePrefab, bone.transform) as GameObject;
         plane.transform.localPosition = planePosition;
         plane.transform.localRotation = Quaternion.Euler(planeRotation);
@@ -58,9 +52,9 @@ public class ModelGeneration : MonoBehaviour
         for (int i = 8; i < splitData.Length; i+=3)
         {
             GameObject newCone = Instantiate(conePrefab, bone.transform) as GameObject;
-            newCone.transform.localPosition = StringToVector3(splitData[i]);
-            newCone.transform.localRotation = Quaternion.Euler(StringToVector3(splitData[i + 1]));
-            newCone.transform.localScale = StringToVector3(splitData[i + 2]);            
+            newCone.transform.localPosition = Utils.StringToVector3(splitData[i]);
+            newCone.transform.localRotation = Quaternion.Euler(Utils.StringToVector3(splitData[i + 1]));
+            newCone.transform.localScale = Utils.StringToVector3(splitData[i + 2]);            
         }
         Debug.Log("Successfully parsed cone data!");
     }
