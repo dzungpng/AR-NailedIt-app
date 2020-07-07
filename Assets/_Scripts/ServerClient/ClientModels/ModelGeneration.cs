@@ -18,10 +18,10 @@ public class ModelGeneration : MonoBehaviour
         }
     }
 
-    private Vector3 StringToVector3(string s)
+    public static Vector3 StringToVector3(string s)
     {
         string[] splitS = s.Split(',');
-        return new Vector3(float.Parse(splitS[0]), float.Parse(splitS[1]), float.Parse(splitS[2]));
+        return new Vector3(float.Parse(splitS[0].Trim()), float.Parse(splitS[1].Trim()), float.Parse(splitS[2].Trim()));
     }
 
     /**

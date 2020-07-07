@@ -102,6 +102,10 @@ public class Server : MonoBehaviour
                         OnCALIS(connectionId, splitData[1]);
                         break;
 
+                    case "HANDLEDAT":
+                        OnReceiveHandleData(splitData[1]);
+                        break;
+
                     default:
                         Debug.Log("Invalid Message : " + msg);
                         currentTime = Time.time.ToString("f6");
@@ -289,7 +293,7 @@ public class Server : MonoBehaviour
     }
 
 
-    public  void SendNailData(bool Nail_Status)
+    public void SendNailData(bool Nail_Status)
     {
         bool status = Nail_Status;
         int code;
@@ -297,5 +301,17 @@ public class Server : MonoBehaviour
         else code = 0;
         string msg = "NAIL|" + code.ToString() + '|';
         Send(msg, ReliableChannel, clients);
+    }
+
+    private void OnReceiveHandleData(string handleData)
+    {
+        string[] splitHandleData = handleData.Split(';');
+        Vector3 position = ModelGeneration.StringToVector3(splitHandleData[0]);
+        Vector3 rotation = ModelGeneration.StringToVector3(splitHandleData[1]);
+
+        // Modifies the current orientation and position of the arm on desktop to match the one on HoloLens client
+        // Make sure the arm is marked visible with the display arm checkbox
+        // ArmModelDropdown.selectedArmModel.transform.position = position;
+        ArmModelDropdown.selectedArmModel.transform.rotation = Quaternion.Euler(rotation);
     }
 }

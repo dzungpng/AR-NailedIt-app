@@ -108,8 +108,6 @@ public class Client : MonoBehaviour
     public void Connect()
     {
         NetworkTransport.Init();
-
-
         ConnectionConfig config = new ConnectionConfig();
 
         Reliable_Channel_ID = config.AddChannel(QosType.Reliable);
@@ -149,13 +147,6 @@ public class Client : MonoBehaviour
 
     }
 
-    private void On_AskName(string data)
-    {
-        Client_ID = int.Parse(data);
-        Send("NAMEIS|" + playername + "|", Reliable_Channel_ID);
-
-    }
-
     private void Send(string message, int channelID)
     {
         Debug.Log("Sending to the server : " + message);
@@ -164,6 +155,13 @@ public class Client : MonoBehaviour
         byte[] msg = Encoding.Unicode.GetBytes(message);
 
         NetworkTransport.Send(Host_ID, connection_ID, channelID, msg, message.Length * sizeof(char), out error);
+    }
+
+    private void On_AskName(string data)
+    {
+        Client_ID = int.Parse(data);
+        Send("NAMEIS|" + playername + "|", Reliable_Channel_ID);
+
     }
 
     private void On_PlanningData(string data)
@@ -184,12 +182,16 @@ public class Client : MonoBehaviour
     public void SetReadyToSendHandleDataTrue()
     {
         isReadyToSendHandleData = true;
+        currentTime = Time.time.ToString("f6");
+        status.text += "[" + currentTime + "] Handle VuMark found. Ready to send handle data\n";
         Debug.Log("Ready to send handle data");
     }
 
     public void SetReadyToSendHandleDataFalse()
     {
         isReadyToSendHandleData = false;
+        currentTime = Time.time.ToString("f6");
+        status.text += "[" + currentTime + "] Handle VuMark lost. Not ready to send handle data. Please find target!\n";
         Debug.Log("Not ready to send handle data. Please find target!");
     }
 
@@ -198,12 +200,20 @@ public class Client : MonoBehaviour
     {
         if (isReadyToSendHandleData)
         {
-            Debug.Log("Sending handle data to server...");
+            //Debug.Log("Sending handle data to server...");
             Vector3 position = handle.transform.position;
             Vector3 rotation = handle.transform.eulerAngles;
-            string handleData = "HANDLEDAT|" + position + ";" + rotation;
-            Debug.Log(handleData);
+            string handleData = "HANDLEDAT|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
             Send_Message(handleData);
         }
+    }
+
+    public void MockSendHandleData()
+    {
+        //Debug.Log("Sending handle data to server...");
+        Vector3 position = new Vector3(1, 1, 1);
+        Vector3 rotation = new Vector3(2, 2, 2);
+        string handleData = "HANDLEDAT|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
+        Send_Message(handleData);
     }
 }
