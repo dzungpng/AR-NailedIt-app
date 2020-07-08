@@ -41,6 +41,12 @@ public class Server : MonoBehaviour
     private bool BoradCasting_Changed;
 
     public Text status;
+    public InputField xPos;
+    public InputField yPos;
+    public InputField zPos;
+    public InputField xRot;
+    public InputField yRot;
+    public InputField zRot;
 
     private void Start()
     {
@@ -301,5 +307,13 @@ public class Server : MonoBehaviour
         // Make sure the arm is marked visible with the display arm checkbox
         // ArmModelDropdown.selectedArmModel.transform.position = position;
         ArmModelDropdown.selectedArmModel.transform.rotation = Quaternion.Euler(rotation);
+
+        xPos.SetTextWithoutNotify(position.x.ToString());
+        yPos.SetTextWithoutNotify(position.y.ToString());
+        zPos.SetTextWithoutNotify(position.z.ToString());
+
+        xRot.SetTextWithoutNotify(rotation.x.ToString());
+        yRot.SetTextWithoutNotify(rotation.y.ToString());
+        zRot.SetTextWithoutNotify(rotation.z.ToString());
     }
 }
