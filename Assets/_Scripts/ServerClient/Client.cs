@@ -34,6 +34,11 @@ public class Client : MonoBehaviour
     public GameObject handle;
     bool isReadyToSendHandleData;
 
+    // Chatbox UI
+    public InputField inputChatText;
+    public Button sendInputChatText;
+    public Text chatBox;
+
     void Start()
     {
         Data = "";
@@ -90,6 +95,11 @@ public class Client : MonoBehaviour
                     case "CAL":
                         //When the server asks for handle calibration
                         On_Calibration(splitData[1]);
+                        break;
+
+                    case "MSG":
+                        On_ReceiveServerChatMessage(splitData[1]);
+                        Debug.Log("GOT MESSAGE!");
                         break;
 
                     default:
@@ -193,5 +203,10 @@ public class Client : MonoBehaviour
             string handleData = "HANDLEDAT|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
             Send_Message(handleData);
         }
+    }
+
+    public void On_ReceiveServerChatMessage(string msg)
+    {
+        chatBox.text += "Server: " + msg + "\n";
     }
 }

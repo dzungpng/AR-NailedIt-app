@@ -48,6 +48,11 @@ public class Server : MonoBehaviour
     public InputField yRot;
     public InputField zRot;
 
+    // Chatbox UI
+    public InputField inputChatText;
+    public Button sendInputChatText;
+    public Text chatBox;
+
     private void Start()
     {
         NetworkTransport.Init();
@@ -315,5 +320,12 @@ public class Server : MonoBehaviour
         xRot.SetTextWithoutNotify(rotation.x.ToString());
         yRot.SetTextWithoutNotify(rotation.y.ToString());
         zRot.SetTextWithoutNotify(rotation.z.ToString());
+    }
+
+    public void SendInputChatText()
+    {
+        string msg = "MSG|" + inputChatText.text;
+        Send(msg, ReliableChannel, clients);
+        chatBox.text += "Server: " + inputChatText.text + "\n";
     }
 }
