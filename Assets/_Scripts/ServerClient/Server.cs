@@ -113,6 +113,10 @@ public class Server : MonoBehaviour
                         OnReceiveHandleData(splitData[1]);
                         break;
 
+                    case "MSG":
+                        On_RecieveChatMessage(splitData[1], splitData[2]);
+                        break;
+
                     default:
                         Utils.updateScrollBox(status, "Invalid Message : " + msg);
                         break;
@@ -322,10 +326,15 @@ public class Server : MonoBehaviour
         zRot.SetTextWithoutNotify(rotation.z.ToString());
     }
 
-    public void SendInputChatText()
+    public void SendChatMessage()
     {
         string msg = "MSG|" + inputChatText.text;
         Send(msg, ReliableChannel, clients);
         chatBox.text += "Server: " + inputChatText.text + "\n";
+    }
+
+    private void On_RecieveChatMessage(string playername, string msg)
+    {
+        chatBox.text += playername + ": " + msg;
     }
 }

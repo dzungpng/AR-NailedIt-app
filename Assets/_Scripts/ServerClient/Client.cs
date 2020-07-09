@@ -38,10 +38,12 @@ public class Client : MonoBehaviour
     public InputField inputChatText;
     public Button sendInputChatText;
     public Text chatBox;
+    private string chatBuffer;
 
     void Start()
     {
         Data = "";
+        chatBuffer = "";
         is_started = false;
         Connection_Time = 0;
         connection_ID = -1;
@@ -98,8 +100,9 @@ public class Client : MonoBehaviour
                         break;
 
                     case "MSG":
+                        //chatBuffer = splitData[1];
                         On_ReceiveServerChatMessage(splitData[1]);
-                        Debug.Log("GOT MESSAGE!");
+                        Debug.Log("Update");
                         break;
 
                     default:
@@ -111,6 +114,16 @@ public class Client : MonoBehaviour
         if(is_started)
             SendHandleData();
     }
+
+    //private void LateUpdate()
+    //{
+    //    if(chatBuffer != "")
+    //    {
+    //        On_ReceiveServerChatMessage(chatBuffer);
+    //        chatBuffer = "";
+    //        Debug.Log("Late Update");
+    //    }        
+    //}
 
     public void Connect()
     {
@@ -207,6 +220,14 @@ public class Client : MonoBehaviour
 
     public void On_ReceiveServerChatMessage(string msg)
     {
+        Debug.Log("Got message from server: " + msg);
         chatBox.text += "Server: " + msg + "\n";
+    }
+
+    public void SendChatMessage()
+    {
+        string msg = "MSG|" + playername + "|" + inputChatText.text + "\n";
+        Send(msg, Reliable_Channel_ID);
+        chatBox.text += playername + ": " + inputChatText.text + "\n";
     }
 }
