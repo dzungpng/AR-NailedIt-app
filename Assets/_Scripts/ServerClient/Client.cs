@@ -39,6 +39,7 @@ public class Client : MonoBehaviour
     public Button sendInputChatText;
     public Text chatBox;
     private string chatBuffer;
+    public InputField mockfield;
 
     void Start()
     {
@@ -213,7 +214,8 @@ public class Client : MonoBehaviour
             //Debug.Log("Sending handle data to server...");
             Vector3 position = handle.transform.position;
             Vector3 rotation = handle.transform.eulerAngles;
-            string handleData = "HANDLEDAT|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
+            string handleData = 
+                "HANDLEDAT|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
             Send_Message(handleData);
         }
     }
@@ -222,6 +224,8 @@ public class Client : MonoBehaviour
     {
         Debug.Log("Got message from server: " + msg);
         chatBox.text += "Server: " + msg + "\n";
+        mockfield.SetTextWithoutNotify("Server: " + msg + "\n");
+
     }
 
     public void SendChatMessage()
@@ -229,5 +233,6 @@ public class Client : MonoBehaviour
         string msg = "MSG|" + playername + "|" + inputChatText.text + "\n";
         Send(msg, Reliable_Channel_ID);
         chatBox.text += playername + ": " + inputChatText.text + "\n";
+        mockfield.SetTextWithoutNotify(playername + ": " + inputChatText.text + "\n");
     }
 }
