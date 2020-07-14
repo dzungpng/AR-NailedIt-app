@@ -21,35 +21,65 @@ namespace Mirror.Examples.Chat
         {
             if(player.isServer)
             {
-                // Pass message through server message handler
-                switch (message)
+                // Player is server and is sending the message
+                if(player.isLocalPlayer)
                 {
-                    case "HANDLEDAT":
-                        Debug.Log("Handdle data case");
-                        break;
-                    default:
-                        string prettyMessage = player.isLocalPlayer ?
-                           $"<color=red>{player.playerName}: </color> {message}" :
-                            $"<color=blue>{player.playerName}: </color> {message}";
-                        AppendMessage(prettyMessage);
-                        logger.Log(message);
-                        break;
+                    switch (message)
+                    {
+                        case "PLANNINGDATA":
+                            Debug.Log("Server sending planning data");
+                            break;
+                        default:
+                            break;
+                    }
                 }
+                // player is server and is receiving the message
+                else
+                {
+                    switch (message)
+                    {
+                        case "HANDLEDATA":
+                            Debug.Log("Server receiving handle data");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                
             }
             if(player.isClientOnly)
             {
-                // Pass message through client message handler
-                switch (message)
+                // player is client and is sending the message
+                if (player.isLocalPlayer)
                 {
-                    default:
-                        string prettyMessage = player.isLocalPlayer ?
-                               $"<color=red>{player.playerName}: </color> {message}" :
-                                $"<color=blue>{player.playerName}: </color> {message}";
-                        AppendMessage(prettyMessage);
-                        logger.Log(message);
-                        break;
+                    switch (message)
+                    {
+                        case "HANDLEDATA":
+                            Debug.Log("Client sending handle data");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                //player is client and is receiving the message
+                else
+                {
+                    switch (message)
+                    {
+                        case "PLANNINGDATA":
+                            Debug.Log("Client receiving planning data");
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
+
+            string prettyMessage = player.isLocalPlayer ?
+                               $"<color=red>{player.playerName}: </color> {message}" :
+                                $"<color=blue>{player.playerName}: </color> {message}";
+            AppendMessage(prettyMessage);
+            logger.Log(message);
         }
 
         public void OnSend()
