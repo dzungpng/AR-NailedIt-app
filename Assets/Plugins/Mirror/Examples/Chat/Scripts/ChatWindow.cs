@@ -19,12 +19,37 @@ namespace Mirror.Examples.Chat
 
         void OnPlayerMessage(Player player, string message)
         {
-            string prettyMessage = player.isLocalPlayer ?
-                $"<color=red>{player.playerName}: </color> {message}" :
-                $"<color=blue>{player.playerName}: </color> {message}";
-            AppendMessage(prettyMessage);
-
-            logger.Log(message);
+            if(player.isServer)
+            {
+                // Pass message through server message handler
+                switch (message)
+                {
+                    case "HANDLEDAT":
+                        Debug.Log("Handdle data case");
+                        break;
+                    default:
+                        string prettyMessage = player.isLocalPlayer ?
+                           $"<color=red>{player.playerName}: </color> {message}" :
+                            $"<color=blue>{player.playerName}: </color> {message}";
+                        AppendMessage(prettyMessage);
+                        logger.Log(message);
+                        break;
+                }
+            }
+            if(player.isClientOnly)
+            {
+                // Pass message through client message handler
+                switch (message)
+                {
+                    default:
+                        string prettyMessage = player.isLocalPlayer ?
+                               $"<color=red>{player.playerName}: </color> {message}" :
+                                $"<color=blue>{player.playerName}: </color> {message}";
+                        AppendMessage(prettyMessage);
+                        logger.Log(message);
+                        break;
+                }
+            }
         }
 
         public void OnSend()

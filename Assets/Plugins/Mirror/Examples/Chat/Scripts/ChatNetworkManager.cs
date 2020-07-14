@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Mirror.Examples.Chat
 {
@@ -6,10 +7,11 @@ namespace Mirror.Examples.Chat
     public class ChatNetworkManager : NetworkManager
     {
         public string PlayerName { get; set; }
+        [SerializeField] private Text hostname = null;
 
-        public void SetHostname(string hostname)
+        public void SetHostname()
         {
-            networkAddress = hostname;
+            networkAddress = hostname.text;
         }
 
         public ChatWindow chatWindow;
