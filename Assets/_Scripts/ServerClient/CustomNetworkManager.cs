@@ -13,8 +13,6 @@ public class CustomNetworkManager : NetworkManager
         networkAddress = hostname.text;
     }
 
-    //public Canvas chatWindow;
-
     public class CreatePlayerMessage : MessageBase
     {
         public string name;
@@ -41,10 +39,7 @@ public class CustomNetworkManager : NetworkManager
         playergo.GetComponent<Player>().playerName = createPlayerMessage.name;
 
         // set it as the player
-        NetworkServer.AddPlayerForConnection(connection, playergo);
-             
-        //chatWindow.gameObject.SetActive(true);
-        //Debug.Log("Created Player");
+        NetworkServer.AddPlayerForConnection(connection, playergo);          
     }
 }
 

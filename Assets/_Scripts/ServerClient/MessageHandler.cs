@@ -7,17 +7,26 @@ public class MessageHandler : MonoBehaviour
 {
     static readonly ILogger logger = LogFactory.GetLogger(typeof(MessageHandler));
 
-    public InputField chatMessage;
-    public Text chatHistory;
-    //public Scrollbar scrollbar;
+    [SerializeField] private InputField chatMessage = null;
+    [SerializeField] private Text chatHistory = null;
 
     public void Awake()
     {
         Player.OnMessage += OnPlayerMessage;
     }
 
+    public void InitializeChatUIComponents()
+    {
+        chatMessage = GameObject.Find("ChatInputField").GetComponent<InputField>();
+        chatHistory = GameObject.Find("ChatText").GetComponent<Text>();
+    }
+
     void OnPlayerMessage(Player player, string message)
     {
+        if (chatMessage == null)
+        {
+            InitializeChatUIComponents();
+        }
         if (player.isServer)
         {
             // Player is server and is sending the message
@@ -82,7 +91,11 @@ public class MessageHandler : MonoBehaviour
 
     public void OnSend()
     {
-        if(Input.GetKeyDown(KeyCode.Return)) {
+        if (chatMessage == null)
+        {
+            InitializeChatUIComponents();
+        }
+        if (Input.GetKeyDown(KeyCode.Return)) {
             if (chatMessage.text.Trim() == "")
                 return;
 
@@ -98,6 +111,10 @@ public class MessageHandler : MonoBehaviour
 
     public void OnSendButton()
     {
+        if (chatMessage == null)
+        {
+            InitializeChatUIComponents();
+        }
         if (chatMessage.text.Trim() == "")
             return;
 

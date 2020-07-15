@@ -18,6 +18,8 @@ TagManager:
   - Arm
   - Nail
   - Handle
+  - chatMessage
+  - chatHistory
   layers:
   - Default
   - TransparentFX
