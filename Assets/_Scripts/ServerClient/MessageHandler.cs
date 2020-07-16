@@ -11,10 +11,28 @@ public class MessageHandler : MonoBehaviour
     private Text chatHistory = null;
 
     public ModelGeneration clientModelGenerator;
+    public bool handleTargetFound { get; set; } = false;
+    public GameObject hololensHandle;
+
+    // Server handle orientation data containers
+    public InputField xPos;
+    public InputField yPos;
+    public InputField zPos;
+    public InputField xRot;
+    public InputField yRot;
+    public InputField zRot;
 
     public void Awake()
     {
         Player.OnMessage += OnPlayerMessage;
+    }
+
+    public void Update()
+    {
+        if (handleTargetFound)
+        {
+            OnFoundHandleVuMark();
+        }
     }
 
     public void InitializeChatUIComponents()
@@ -31,54 +49,46 @@ public class MessageHandler : MonoBehaviour
         }
         if (player.isServer)
         {
-            // Player is server and is sending the message
-            if (player.isLocalPlayer)
+            // Player is server and is receiving the message
+            if (!player.isLocalPlayer)
             {
-                switch (message)
-                {
-                    case "PLANNINGDATA":
-                        Debug.Log("Server sending planning data");
-                        break;
-                    default:
-                        break;
-                }
-            }
-            // player is server and is receiving the message
-            else
-            {
-                switch (message)
+                string[] messageParts = message.Split('|');
+                switch (messageParts[0])
                 {
                     case "HANDLEDATA":
-                        Debug.Log("Server receiving handle data");
-                        break;
+                        // Don't add messages to chatHistory if client is trying to send handle data
+                        // Otherwise the chatbox will be overflowed with messages
+                        OnReceiveHandleData(messageParts[1]);
+                        return;
                     default:
                         break;
                 }
             }
 
         }
-        if (player.isClientOnly)
+        else if (player.isClientOnly)
         {
-            // player is client and is sending the message
+            // player is client and is sending message
             if (player.isLocalPlayer)
             {
-                switch (message)
+                string[] messageParts = message.Split('|');
+                switch (messageParts[0])
                 {
                     case "HANDLEDATA":
-                        Debug.Log("Client sending handle data");
-                        break;
+                        // Don't add messages to chatHistory if client is trying to send handle data
+                        // Otherwise the chatbox will be overflowed with messages
+                        return;
                     default:
                         break;
                 }
             }
-            //player is client and is receiving the message
+            // player is client and is receiving message
             else
             {
                 string[] messageParts = message.Split('|');
                 switch (messageParts[0])
                 {
                     case "PLANNINGDATA":
-                        Debug.Log("Client receiving planning data");
                         clientModelGenerator.ParseData(messageParts[1]);
                         break;
                     default:
@@ -133,7 +143,7 @@ public class MessageHandler : MonoBehaviour
         chatMessage.text = "";
     }
 
-    // Player hitting the send data button
+    // Player hitting the send data button (Server side)
     public void OnSendDataButton(string message)
     {
         if (message.Trim() == "")
@@ -144,6 +154,43 @@ public class MessageHandler : MonoBehaviour
 
         // send data
         player.CmdSend(message);
+    }
+
+    // When the HoloLens' handle image target is found, the Hololens automatically send orientation data
+    // to the server
+    private void OnFoundHandleVuMark()
+    {
+        Vector3 position = hololensHandle.transform.position;
+        Vector3 rotation = hololensHandle.transform.eulerAngles;
+        string handleData =
+                "HANDLEDATA|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
+
+        Player player = NetworkClient.connection.identity.GetComponent<Player>();
+        player.CmdSend(handleData);
+    }
+
+    // When the server receives handle data from the HoloLens, it processes the data and orient the handle on 
+    // the desktop app to match the orientation of the handle on the holoLens app
+    private void OnReceiveHandleData(string handleData)
+    {
+        string[] splitHandleData = handleData.Split(';');
+        Vector3 position = Utils.StringToVector3(splitHandleData[0]);
+        Vector3 rotation = Utils.StringToVector3(splitHandleData[1]);
+
+        // Modifies the current orientation and position of the arm on desktop to match the one on HoloLens client
+        // Make sure the arm is marked visible with the display arm checkbox
+
+        // ArmModelDropdown.selectedArmModel.transform.position = position; --> uncomment to match position
+        ArmModelDropdown.selectedArmModel.transform.rotation = Quaternion.Euler(rotation);
+        //NailModelDropdown.selectedNailModel.transform.rotation = Quaternion.Euler(rotation);
+
+        xPos.SetTextWithoutNotify(position.x.ToString());
+        yPos.SetTextWithoutNotify(position.y.ToString());
+        zPos.SetTextWithoutNotify(position.z.ToString());
+
+        xRot.SetTextWithoutNotify(rotation.x.ToString());
+        yRot.SetTextWithoutNotify(rotation.y.ToString());
+        zRot.SetTextWithoutNotify(rotation.z.ToString());
     }
 
     internal void AppendMessage(string message)
@@ -158,8 +205,6 @@ public class MessageHandler : MonoBehaviour
         // it takes 2 frames for the UI to update ?!?!
         yield return null;
         yield return null;
-
-        // slam the scrollbar down
     }
 }
 

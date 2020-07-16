@@ -131,34 +131,34 @@ public class Server : MonoBehaviour
                 break;
         }
         //Ask for rotation update
-        if (Broadcasting)
-        {
-            if (Time.time - lastRotationUpdate > UpdateRate)
-            {
-                if (BoradCasting_Changed)
-                {
-                    Send("ONBC|", ReliableChannel, clients);
-                    BoradCasting_Changed = false;
-                }
-                lastRotationUpdate = Time.time;
-                string m = "ROT|";
-                GameObject datamanager = GameObject.Find("DataManager");
-                Quaternion data = datamanager.GetComponent<DataManager>().RealSense_Rotation;
-                m += data.x.ToString() + '%' + data.y.ToString() + '%' + data.z.ToString() + '%' + data.w.ToString() + '%';
-                data = datamanager.GetComponent<DataManager>().Inertia_Rotation;
-                m += data.x.ToString() + '%' + data.y.ToString() + '%' + data.z.ToString() + '%' + data.w.ToString() + '%';
-                m += '|';
-                Send(m, UnreliableChannel, clients);
-            }
-        }
-        if(!Broadcasting)
-        {
-            if (BoradCasting_Changed)
-            {
-                Send("OFFBC|", ReliableChannel, clients);
-                BoradCasting_Changed = false;
-            }
-        }
+        //if (Broadcasting)
+        //{
+        //    if (Time.time - lastRotationUpdate > UpdateRate)
+        //    {
+        //        if (BoradCasting_Changed)
+        //        {
+        //            Send("ONBC|", ReliableChannel, clients);
+        //            BoradCasting_Changed = false;
+        //        }
+        //        lastRotationUpdate = Time.time;
+        //        string m = "ROT|";
+        //        GameObject datamanager = GameObject.Find("DataManager");
+        //        Quaternion data = datamanager.GetComponent<DataManager>().RealSense_Rotation;
+        //        m += data.x.ToString() + '%' + data.y.ToString() + '%' + data.z.ToString() + '%' + data.w.ToString() + '%';
+        //        data = datamanager.GetComponent<DataManager>().Inertia_Rotation;
+        //        m += data.x.ToString() + '%' + data.y.ToString() + '%' + data.z.ToString() + '%' + data.w.ToString() + '%';
+        //        m += '|';
+        //        Send(m, UnreliableChannel, clients);
+        //    }
+        //}
+        //if(!Broadcasting)
+        //{
+        //    if (BoradCasting_Changed)
+        //    {
+        //        Send("OFFBC|", ReliableChannel, clients);
+        //        BoradCasting_Changed = false;
+        //    }
+        //}
         
     }
     
@@ -246,30 +246,6 @@ public class Server : MonoBehaviour
     {
         Broadcasting = !Broadcasting;
         BoradCasting_Changed = true;
-    }
-
-
-    public void Calibrate()
-    {
-        GameObject DataManager = GameObject.Find("DataManager");
-        int Cal_x, Cal_y, Cal_z;
-        bool Reversed;
-        if (DataManager != null)
-        {
-            Cal_x = DataManager.GetComponent<DataManager>().cal_x;
-            Cal_y = DataManager.GetComponent<DataManager>().cal_y;
-            Cal_z = DataManager.GetComponent<DataManager>().cal_z;
-            Reversed = DataManager.GetComponent<DataManager>().XZ_Reversed;
-        }
-        else
-        {
-            Cal_x = 1;
-            Cal_y = 1;
-            Cal_z = 1;
-            Reversed = false;
-        }
-        string msg = "CAL|" + Cal_x.ToString() + '%' + Cal_y.ToString() + '%' + Cal_z.ToString() + '%' + Reversed.ToString() + '%' + '|';
-        Send(msg,ReliableChannel,clients);
     }
 
 
