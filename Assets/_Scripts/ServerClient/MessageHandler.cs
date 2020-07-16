@@ -7,8 +7,10 @@ public class MessageHandler : MonoBehaviour
 {
     static readonly ILogger logger = LogFactory.GetLogger(typeof(MessageHandler));
 
-    [SerializeField] private InputField chatMessage = null;
-    [SerializeField] private Text chatHistory = null;
+    private InputField chatMessage = null;
+    private Text chatHistory = null;
+
+    public ModelGeneration clientModelGenerator;
 
     public void Awake()
     {
@@ -72,10 +74,12 @@ public class MessageHandler : MonoBehaviour
             //player is client and is receiving the message
             else
             {
-                switch (message)
+                string[] messageParts = message.Split('|');
+                switch (messageParts[0])
                 {
                     case "PLANNINGDATA":
                         Debug.Log("Client receiving planning data");
+                        clientModelGenerator.ParseData(messageParts[1]);
                         break;
                     default:
                         break;
@@ -89,6 +93,7 @@ public class MessageHandler : MonoBehaviour
         logger.Log(message);
     }
 
+    // Player sending the message by pressing the Enter key
     public void OnSend()
     {
         if (chatMessage == null)
@@ -109,6 +114,7 @@ public class MessageHandler : MonoBehaviour
         }
     }
 
+    // Player sending the message by pressing the Send button in chatbox panel
     public void OnSendButton()
     {
         if (chatMessage == null)
@@ -127,6 +133,19 @@ public class MessageHandler : MonoBehaviour
         chatMessage.text = "";
     }
 
+    // Player hitting the send data button
+    public void OnSendDataButton(string message)
+    {
+        if (message.Trim() == "")
+            return;
+
+        // get our player
+        Player player = NetworkClient.connection.identity.GetComponent<Player>();
+
+        // send data
+        player.CmdSend(message);
+    }
+
     internal void AppendMessage(string message)
     {
         StartCoroutine(AppendMessageToScrollView(message));
@@ -141,7 +160,6 @@ public class MessageHandler : MonoBehaviour
         yield return null;
 
         // slam the scrollbar down
-        //scrollbar.value = 0;
     }
 }
 

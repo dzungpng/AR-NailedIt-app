@@ -7,16 +7,16 @@ public class ModelGeneration : MonoBehaviour
     public GameObject bone;
     public GameObject conePrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Client.Data.Trim() != "")
-        {
-            Debug.Log("Parsing data...");
-            ParseData(Client.Data);
-            Client.Data = "";
-        }
-    }
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    if(Client.Data.Trim() != "")
+    //    {
+    //        Debug.Log("Parsing data...");
+    //        ParseData(Client.Data);
+    //        Client.Data = "";
+    //    }
+    //}
 
     /**
      * Parse the data.txt file that was generated from the planning app
@@ -34,7 +34,7 @@ public class ModelGeneration : MonoBehaviour
      * ...
      * Line n, n+1, n+2: Cone nth position, rotation, scale
     **/
-    private void ParseData(string data)
+    public void ParseData(string data)
     {
         string[] splitData = data.Split('\n');
 
