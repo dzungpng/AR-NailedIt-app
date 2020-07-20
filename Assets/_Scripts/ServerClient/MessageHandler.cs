@@ -12,6 +12,7 @@ public class MessageHandler : MonoBehaviour
 
     public ModelGeneration clientModelGenerator;
     public bool handleTargetFound { get; set; } = false;
+    public bool isTransferringHandleData { get; set; } = false;
     public GameObject hololensHandle;
 
     // Server handle orientation data containers
@@ -29,7 +30,7 @@ public class MessageHandler : MonoBehaviour
 
     public void Update()
     {
-        if (handleTargetFound)
+        if (handleTargetFound && isTransferringHandleData)
         {
             OnFoundHandleVuMark();
         }

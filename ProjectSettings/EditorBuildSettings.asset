@@ -23,4 +23,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Plugins/Mirror/Examples/Chat/Scenes/Main.unity
     guid: f4e8d4de4484e44bba666f2d1f66c73e
-  m_configObjects: {}
+  m_configObjects:
+    Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: c408afcdfc96c95449039ed43d5a7b2a,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8f8480bf2e58ffa43bbb2e190a748e0e,
+      type: 2}
