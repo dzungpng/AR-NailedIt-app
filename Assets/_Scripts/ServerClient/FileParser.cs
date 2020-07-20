@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System.IO;
 using UnityEngine.UI;
 using SimpleFileBrowser;
@@ -11,6 +9,7 @@ public class FileParser : MonoBehaviour
 {
     public string data;
     public Text dataContainer;
+    public MessageHandler messageHandler;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +17,7 @@ public class FileParser : MonoBehaviour
         data = "Empty data";
     }
 
-    public void Read_Data(string path)
+    public void ReadData(string path)
     {
         StreamReader rd = new StreamReader(path);
         data = rd.ReadToEnd();
@@ -26,16 +25,12 @@ public class FileParser : MonoBehaviour
         rd.Close();
     }
 
-    public void Send_Data()
+    public void SendData()
     {
-        GameObject server = GameObject.Find("Server");
-        if(server != null)
-        {
-            server.GetComponent<Server>().SendPlanningData(data);
-        }
+        messageHandler.OnSendDataButton("PLANNINGDATA|" + data);
     }
 
-    public void Browse_Data()
+    public void BrowseData()
     {
         StartCoroutine(ShowLoadDialogCoroutine());
     }
@@ -50,7 +45,7 @@ public class FileParser : MonoBehaviour
         if (FileBrowser.Success)
         {
             Debug.Log(FileBrowser.Result[0]);
-            Read_Data(FileBrowser.Result[0]);
+            ReadData(FileBrowser.Result[0]);
         }
     }
 }
