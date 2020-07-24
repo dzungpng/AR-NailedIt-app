@@ -10,13 +10,13 @@ Material:
   m_Name: MRTK_Standard_TransparentCyan
   m_Shader: {fileID: 4800000, guid: 5bdea20278144b11916d77503ba1467a, type: 3}
   m_ShaderKeywords: _ALPHABLEND_ON _BORDER_LIGHT_USES_HOVER_COLOR _DIRECTIONAL_LIGHT
-    _DISABLE_ALBEDO_MAP _LIGHTMAPPING_REALTIME _SPECULAR_HIGHLIGHTS
+    _DISABLE_ALBEDO_MAP _HOVER_LIGHT _LIGHTMAPPING_REALTIME _PROXIMITY_LIGHT _SPECULAR_HIGHLIGHTS
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
   stringTagMap:
-    RenderType: Transparent
+    RenderType: Fade
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -114,9 +114,10 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _HoverLight: 0
+    - _HoverLight: 1
     - _HoverLightOpaque: 0
     - _IgnoreZScale: 0
+    - _IndependentCorners: 0
     - _InnerGlow: 0
     - _InnerGlowPower: 4
     - _InstancedColor: 0
@@ -132,7 +133,7 @@ Material:
     - _NormalMapScale: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ProximityLight: 0
+    - _ProximityLight: 1
     - _ProximityLightSubtractive: 0
     - _ProximityLightTwoSided: 0
     - _Reflections: 0
@@ -181,3 +182,4 @@ Material:
     - _ProximityLightMiddleColorOverride: {r: 0, g: 1, b: 0, a: 0.5}
     - _ProximityLightOuterColorOverride: {r: 0, g: 0, b: 1, a: 1}
     - _RimColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _RoundCornersRadius: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
