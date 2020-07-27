@@ -26,10 +26,11 @@ public class DrillPointScript : MonoBehaviour {
     bool alreadyClicked;
     int numPlanes;
     static public GameObject bone;
+    private string rayCastObjectTag= "Nail";
 
     // Use this for initialization
     void Start () {
-        bone = GameObject.Find("Bone");
+        bone = GameObject.Find(rayCastObjectTag);
 
         numPlanes = 0;
         coneList = new System.Collections.Generic.List<Transform>();
@@ -40,6 +41,7 @@ public class DrillPointScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        bone = GameObject.Find(rayCastObjectTag);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         // if mouse is clicked 
@@ -51,8 +53,9 @@ public class DrillPointScript : MonoBehaviour {
             if (Physics.Raycast(ray.origin, ray.direction, out hitInfo))
             {
                 // only drop markers on the bone
-                if (hitInfo.collider.CompareTag("Bone") && !alreadyClicked)
+                if (hitInfo.collider.CompareTag(rayCastObjectTag) && !alreadyClicked)
                 {
+                    Debug.Log("got here");
                     // create the new marker objects
                     GameObject newMarker = Instantiate(drillMarkers, hitInfo.point,
                         Quaternion.FromToRotation(Vector3.up, hitInfo.normal)) as GameObject;

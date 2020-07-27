@@ -30,6 +30,7 @@ public class PlaneGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        bone =  GameObject.Find("Bone");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         // if mouse is clicked 

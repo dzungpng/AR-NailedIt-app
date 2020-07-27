@@ -796,7 +796,7 @@ PrefabInstance:
     - target: {fileID: 5984868719467372848, guid: 3f1fd9c721f212448a1847cf40629c39,
         type: 3}
       propertyPath: m_TagString
-      value: Nail
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5984868720569110258, guid: 3f1fd9c721f212448a1847cf40629c39,
         type: 3}
@@ -877,6 +877,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984868720688302301, guid: 3f1fd9c721f212448a1847cf40629c39,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984868720688302303, guid: 3f1fd9c721f212448a1847cf40629c39,
+        type: 3}
+      propertyPath: m_TagString
+      value: Nail
       objectReference: {fileID: 0}
     - target: {fileID: 5984868720773771720, guid: 3f1fd9c721f212448a1847cf40629c39,
         type: 3}
@@ -40439,7 +40449,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter Device Name (ex. HoloLens)...
+  m_Text: Enter Server Name (ex. Server)...
 --- !u!222 &1979820514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41234,7 +41244,7 @@ Canvas:
   m_GameObject: {fileID: 2011628413}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

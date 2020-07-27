@@ -32,8 +32,11 @@ public class MarkerSelect : MonoBehaviour {
 
     private bool alreadyClicked;
 
-	// Use this for initialization
-	void Start () {
+    private string rayCastObjectTag = "Nail";
+
+
+    // Use this for initialization
+    void Start () {
         alreadyClicked = false;
 
         drillPoints = DrillPoints.GetComponent<DrillPointScript>();
@@ -62,7 +65,7 @@ public class MarkerSelect : MonoBehaviour {
             for(int i = 0; i < hits.Length; i++)
             {
                 RaycastHit hit = hits[i];
-                if(hit.collider.CompareTag("Bone"))
+                if(hit.collider.CompareTag(rayCastObjectTag))
                 {
                     if(currCone != null && currMarker != null)
                     {
