@@ -46,7 +46,8 @@ public class VuMarkPlacement : MonoBehaviour {
     // bool determining if mouse has already been down to avoid
     // placing more than one marker at a given spot
     bool alreadyClicked;
-    static public GameObject bone;
+
+    static public GameObject bone; // Bone contains the parent transforms for plane and vumark 
 
     // Use this for initialization
     void Start()
@@ -58,6 +59,11 @@ public class VuMarkPlacement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if(bone == null)
+        {
+            bone = GameObject.Find("Bone");
+        }
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         // if mouse is clicked 
@@ -66,7 +72,7 @@ public class VuMarkPlacement : MonoBehaviour {
             RaycastHit hitInfo;
             if (Physics.Raycast(ray.origin, ray.direction, out hitInfo))
             {
-                // only drop markers on the bone
+                // only drop markers on the raycastObject
                 if (hitInfo.collider.CompareTag("Bone") && !alreadyClicked)
                 {
 
@@ -78,7 +84,7 @@ public class VuMarkPlacement : MonoBehaviour {
                         Quaternion.FromToRotation(Vector3.up, hitInfo.normal)) as GameObject;
 
                         updateVuMarkText();
-                        // make child of bone so it moves with bone rotation
+                        // make child of raycastObject so it moves with raycastObject rotation
                         front.transform.parent = bone.transform;
 
                         frontPos = hitInfo.point;
@@ -93,7 +99,7 @@ public class VuMarkPlacement : MonoBehaviour {
 
                         updateVuMarkText();
 
-                        // make child of bone so it moves with bone rotation
+                        // make child of raycastObject so it moves with raycastObject rotation
                         back.transform.parent = bone.transform;
 
                         backPos = hitInfo.point;
@@ -108,7 +114,7 @@ public class VuMarkPlacement : MonoBehaviour {
 
                         updateVuMarkText();
 
-                        // make child of bone so it moves with bone rotation
+                        // make child of raycastObject so it moves with raycastObject rotation
                         left.transform.parent = bone.transform;
 
                         leftPos = hitInfo.point;
@@ -123,7 +129,7 @@ public class VuMarkPlacement : MonoBehaviour {
 
                         updateVuMarkText();
 
-                        // make child of bone so it moves with bone rotation
+                        // make child of raycastObject so it moves with raycastObject rotation
                         right.transform.parent = bone.transform;
 
                         rightPos = hitInfo.point;
@@ -138,7 +144,7 @@ public class VuMarkPlacement : MonoBehaviour {
 
                         updateVuMarkText();
 
-                        // make child of bone so it moves with bone rotation
+                        // make child of raycastObject so it moves with raycastObject rotation
                         anchor.transform.parent = bone.transform;
                         
                         vumarkType.value = 0;

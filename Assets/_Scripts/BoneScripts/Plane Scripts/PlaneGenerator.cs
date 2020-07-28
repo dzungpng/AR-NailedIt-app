@@ -35,11 +35,11 @@ public class PlaneGenerator : MonoBehaviour {
         // if mouse is clicked 
         if (Input.GetMouseButton(0) && mode.value == 1)
         {
-
+            bone = BoneModelDropdown.selectedBoneModel;
             RaycastHit hitInfo;
             if (Physics.Raycast(ray.origin, ray.direction, out hitInfo))
             {
-                // only drop markers on the bone
+                // only drop markers on the raycastObject
                 if (hitInfo.collider.CompareTag("Bone") && !alreadyClicked && markerList.Count < 3)
                 {
                     GameObject newMarker = Instantiate(marker, hitInfo.point,

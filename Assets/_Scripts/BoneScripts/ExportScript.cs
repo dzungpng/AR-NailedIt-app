@@ -12,15 +12,17 @@ public class ExportScript : MonoBehaviour {
     public PlaneGenerator planeGenerator;
     public GameObject VuMarks;
 
-    private GameObject bone;
+    private GameObject bone; // Nail contains the parent transforms for plane and vumark
+    private GameObject nail; // Nail contains the parent transforms for drill marks
+
     private DrillPointScript drillScript;
     private VuMarkPlacement vumarks;
 
 
 	// Use this for initialization
 	void Start () {
-
         bone = GameObject.Find("Bone");
+        nail = GameObject.Find("Nail");
         drillScript = drillPoints.GetComponent<DrillPointScript>();
 
         button.GetComponent<Button>().onClick.AddListener(ExportModelData);
@@ -48,12 +50,13 @@ public class ExportScript : MonoBehaviour {
     void ExportModelData()
     {
         bone = BoneModelDropdown.selectedBoneModel;
+        nail = NailModelDropdown.selectedNailModel;
 
         string text = "4\n"; // number of vumarks placeholder
         // placeholders for vumarks
         if(vumarks.front != null)
         {
-            // undo the bone parenting
+            // undo the raycastObject parenting
             vumarks.front.transform.parent = null;
             //Mark Modify
             /*
@@ -74,7 +77,7 @@ public class ExportScript : MonoBehaviour {
         }
         if (vumarks.back != null)
         {
-            // undo the bone parenting
+            // undo the raycastObject parenting
             vumarks.back.transform.parent = null;
 
             vumarks.back.transform.Rotate(0, 180, 0, Space.Self);
@@ -86,7 +89,7 @@ public class ExportScript : MonoBehaviour {
         }
         if (vumarks.left != null)
         {
-            // undo the bone parenting
+            // undo the raycastObject parenting
             vumarks.left.transform.parent = null;
 
             vumarks.left.transform.Rotate(0, 180, 0, Space.Self);
@@ -98,7 +101,7 @@ public class ExportScript : MonoBehaviour {
         }
         if (vumarks.right != null)
         {
-            // undo the bone parenting
+            // undo the raycastObject parenting
             vumarks.right.transform.parent = null;
 
             vumarks.right.transform.Rotate(0, 180, 0, Space.Self);
@@ -121,8 +124,8 @@ public class ExportScript : MonoBehaviour {
         text += string.Empty + drillScript.coneList.Count + "\n";
             foreach (Transform t in drillScript.coneList)
             {
-                text += formatVec3(bone.transform.InverseTransformPoint(t.position));
-                text += formatVec3(bone.transform.InverseTransformDirection(t.rotation.eulerAngles));
+                text += formatVec3(nail.transform.InverseTransformPoint(t.position));
+                text += formatVec3(nail.transform.InverseTransformDirection(t.rotation.eulerAngles));
                 text += formatVec3(t.localScale);
             }
         text = text.Substring(0, text.Length - 1);

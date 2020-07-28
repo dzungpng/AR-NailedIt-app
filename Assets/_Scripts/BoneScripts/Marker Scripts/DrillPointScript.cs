@@ -18,18 +18,22 @@ public class DrillPointScript : MonoBehaviour {
 
     public Dropdown placementEnabled;
 
-    // prefab of marker to place on bone
+    // prefab of marker to place on raycastObject
     public GameObject drillMarkers;
     public GameObject cones;
     public GameObject lines;
 
     bool alreadyClicked;
     int numPlanes;
-    static public GameObject bone;
+    static public GameObject raycastObject; // Raycast object is the object to add drill points to
+    private string rayCastObjectTag= "Nail";
 
     // Use this for initialization
     void Start () {
-        bone = GameObject.Find("Bone");
+        if(raycastObject == null)
+        {
+            raycastObject = GameObject.Find(rayCastObjectTag);
+        }
 
         numPlanes = 0;
         coneList = new System.Collections.Generic.List<Transform>();
@@ -40,6 +44,7 @@ public class DrillPointScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        raycastObject = GameObject.Find(rayCastObjectTag);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         // if mouse is clicked 
@@ -50,8 +55,8 @@ public class DrillPointScript : MonoBehaviour {
             RaycastHit hitInfo;
             if (Physics.Raycast(ray.origin, ray.direction, out hitInfo))
             {
-                // only drop markers on the bone
-                if (hitInfo.collider.CompareTag("Bone") && !alreadyClicked)
+                // only drop markers on the raycastObject
+                if (hitInfo.collider.CompareTag(rayCastObjectTag) && !alreadyClicked)
                 {
                     // create the new marker objects
                     GameObject newMarker = Instantiate(drillMarkers, hitInfo.point,
@@ -64,9 +69,9 @@ public class DrillPointScript : MonoBehaviour {
                     fixConeRotation(newCone);
                     
 
-                    // make bone parent so they rotate when bone rotates
-                    newCone.transform.parent = bone.transform;
-                    newMarker.transform.parent = bone.transform;
+                    // make raycastObject parent so they rotate when raycastObject rotates
+                    newCone.transform.parent = raycastObject.transform;
+                    newMarker.transform.parent = raycastObject.transform;
 
                     coneList.Add(newCone.transform);
                     markerList.Add(newMarker.transform);
