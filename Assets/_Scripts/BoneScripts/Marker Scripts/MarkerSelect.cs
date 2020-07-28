@@ -7,8 +7,8 @@ using UnityEngine.EventSystems;
 public class MarkerSelect : MonoBehaviour {
 
     // the currently selected game object pair
-    public GameObject currCone;
-    public GameObject currMarker;
+    [SerializeField] private GameObject currCone;
+    [SerializeField] private GameObject currMarker;
 
     public MasterDeselect masterDeselect;
 
@@ -18,7 +18,7 @@ public class MarkerSelect : MonoBehaviour {
     public Material selectedConeMat;
 
     public Dropdown mode;
-    public Slider coneSlider;
+    public Slider widthSlider;
     public Slider heightSlider;
     public Slider xSlider;
     public Slider ySlider;
@@ -31,9 +31,10 @@ public class MarkerSelect : MonoBehaviour {
     private DrillPointScript drillPoints;
 
     private bool alreadyClicked;
+    private bool heightSliderChanged = false;
+    private bool widthsliderChanged = false;
 
     private string rayCastObjectTag = "Nail";
-
 
     // Use this for initialization
     void Start () {
@@ -41,7 +42,7 @@ public class MarkerSelect : MonoBehaviour {
 
         drillPoints = DrillPoints.GetComponent<DrillPointScript>();
 
-        coneSlider.onValueChanged.AddListener(delegate { OnSliderChanged(); });
+        widthSlider.onValueChanged.AddListener(delegate { OnWidthSliderChange(); });
         heightSlider.onValueChanged.AddListener(delegate { OnHeightSliderChanged(); });
         ySlider.onValueChanged.AddListener(delegate { OnYSliderChanged(); });
         xSlider.onValueChanged.AddListener(delegate { OnXSliderChanged(); });
@@ -55,6 +56,42 @@ public class MarkerSelect : MonoBehaviour {
     void Update () {
         //Create a ray from the Mouse click position
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        // Update slider values if the list of cones isn't empty
+        if (drillPoints.coneList.Count != 0 && !heightSliderChanged)
+        {
+            float meanHeight = 0.0f;
+            if (currCone == null)
+            {
+                meanHeight = drillPoints.coneList[0].transform.localScale.y;
+            }
+            else
+            {
+                meanHeight = currCone.transform.localScale.y;
+            }
+            heightSlider.minValue = meanHeight - 50;
+            heightSlider.maxValue = meanHeight + 50;
+            heightSlider.value = meanHeight;
+            heightSliderChanged = true;
+            
+        }
+        if (drillPoints.coneList.Count != 0 && !widthsliderChanged)
+        {
+            float meanWidth = 0.0f;
+            if (currCone == null)
+            {
+                meanWidth = drillPoints.coneList[0].transform.localScale.x;
+            }
+            else
+            {
+                meanWidth = currCone.transform.localScale.x;
+            }
+            widthSlider.minValue = meanWidth - 50;
+            widthSlider.maxValue = meanWidth + 50;
+            widthSlider.value = meanWidth;
+            widthsliderChanged = true;
+
+        }
 
         // drag marker/cone 
         if (alreadyClicked && currCone != null)
@@ -180,18 +217,18 @@ public class MarkerSelect : MonoBehaviour {
         }
     }
 
-    void OnSliderChanged()
+    void OnWidthSliderChange()
     {
         if(currCone != null)
         {
             Vector3 currScale = currCone.transform.localScale;
-            currCone.transform.localScale = new Vector3(coneSlider.value, currScale[1], coneSlider.value);
+            currCone.transform.localScale = new Vector3(widthSlider.value, currScale[1], widthSlider.value);
         } else
         {
             foreach (Transform t in drillPoints.coneList)
             {
                 Vector3 currScale = t.localScale;
-                t.localScale = new Vector3(coneSlider.value, currScale[1], coneSlider.value);
+                t.localScale = new Vector3(widthSlider.value, currScale[1], widthSlider.value);
             }
         }
 
@@ -366,7 +403,7 @@ public class MarkerSelect : MonoBehaviour {
         if (currCone != null)
         {
             heightSlider.value = currCone.transform.localScale[1];
-            coneSlider.value = currCone.transform.localScale[0];
+            widthSlider.value = currCone.transform.localScale[0];
 
             currCone.GetComponentInChildren<MeshRenderer>().material = coneColor;
         }
