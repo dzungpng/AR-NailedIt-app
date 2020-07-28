@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SimpleFileBrowser;
 using Dummiesman; // ObjImporter
+using System.Linq;
 
 public class ArmModelDropdown : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class ArmModelDropdown : MonoBehaviour
         });
 
         // File browsing settings
-        FileBrowser.SetFilters(true, new FileBrowser.Filter("3D Models", ".obj"));
+        FileBrowser.SetFilters(true, new FileBrowser.Filter("3D Models", ".obj"), new FileBrowser.Filter("Textfiles", ".txt"));
         FileBrowser.SetDefaultFilter(".obj");
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
     }
@@ -73,7 +74,12 @@ public class ArmModelDropdown : MonoBehaviour
 
     private void AddObj(string fileName)
     {
-        // Loading the obj
+        // Loading the obj and mtl files
+        string[] splitString = fileName.Split('/');
+        string[] nameAndExtension = splitString[splitString.Length - 1].Split('.');
+        splitString = splitString.Take(splitString.Length - 1).ToArray();
+        string mltFilePath = splitString + nameAndExtension[0] + ".mtl";
+
         var loadedObj = new OBJLoader().Load(fileName);
 
         // Set previously selected model inactive

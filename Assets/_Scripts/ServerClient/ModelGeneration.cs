@@ -5,6 +5,7 @@ public class ModelGeneration : MonoBehaviour
 {
     public GameObject planePrefab;
     public GameObject bone;
+    public GameObject nail;
     public GameObject conePrefab;
 
     //// Update is called once per frame
@@ -51,7 +52,7 @@ public class ModelGeneration : MonoBehaviour
         Debug.Log("Parsing cone data...");
         for (int i = 8; i < splitData.Length; i+=3)
         {
-            GameObject newCone = Instantiate(conePrefab, bone.transform) as GameObject;
+            GameObject newCone = Instantiate(conePrefab, nail.transform) as GameObject;
             newCone.transform.localPosition = Utils.StringToVector3(splitData[i]);
             newCone.transform.localRotation = Quaternion.Euler(Utils.StringToVector3(splitData[i + 1]));
             newCone.transform.localScale = Utils.StringToVector3(splitData[i + 2]);            

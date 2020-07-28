@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SimpleFileBrowser;
 using Dummiesman; // ObjImporter
+using System.Linq;
 
 public class BoneModelDropdown : MonoBehaviour
 {
@@ -68,8 +69,13 @@ public class BoneModelDropdown : MonoBehaviour
 
     private void AddObj(string fileName)
     {
-        // Loading the obj
-        var loadedObj = new OBJLoader().Load(fileName);
+        // Loading the obj and mtl files
+        string[] splitString = fileName.Split('/');
+        string[] nameAndExtension = splitString[splitString.Length - 1].Split('.');
+        splitString = splitString.Take(splitString.Length - 1).ToArray();
+        string mltFilePath = splitString + nameAndExtension[0] + ".mtl";
+
+        var loadedObj = new OBJLoader().Load(fileName, mltFilePath);
         loadedObj.tag = "Bone";
         MeshRenderer mr = loadedObj.AddComponent<MeshRenderer>() as MeshRenderer;
         MeshCollider mc = loadedObj.AddComponent<MeshCollider>() as MeshCollider;
@@ -93,9 +99,9 @@ public class BoneModelDropdown : MonoBehaviour
         selectedBoneModel = loadedObj;
         boneModels.Add(loadedObj);
 
-        // Set other scripts referencing to active bone
+        // Set other scripts referencing to active raycastObject
         PlaneGenerator.bone = selectedBoneModel;
-        DrillPointScript.bone = selectedBoneModel;
+        DrillPointScript.raycastObject = selectedBoneModel;
         VuMarkPlacement.bone = selectedBoneModel;
     }
 
@@ -109,9 +115,9 @@ public class BoneModelDropdown : MonoBehaviour
             boneModels[selectedBoneIndex].SetActive(true);
             selectedBoneModel = boneModels[selectedBoneIndex];
 
-            // Changes the bone object of other scripts to the currently loaded bone
+            // Changes the raycastObject object of other scripts to the currently loaded raycastObject
             PlaneGenerator.bone = selectedBoneModel;
-            DrillPointScript.bone = selectedBoneModel;
+            DrillPointScript.raycastObject = selectedBoneModel;
             VuMarkPlacement.bone = selectedBoneModel;
         }
        // If browsing new models, go to coroutine and open file browser
