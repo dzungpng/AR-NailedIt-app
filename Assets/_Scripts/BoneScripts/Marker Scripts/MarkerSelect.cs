@@ -90,7 +90,6 @@ public class MarkerSelect : MonoBehaviour {
             widthSlider.maxValue = meanWidth + 50;
             widthSlider.value = meanWidth;
             widthsliderChanged = true;
-
         }
 
         // drag marker/cone 
