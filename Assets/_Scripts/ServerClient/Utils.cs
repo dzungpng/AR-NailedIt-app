@@ -16,6 +16,7 @@ public class Utils : MonoBehaviour
         return new Vector3(float.Parse(splitS[0].Trim()), float.Parse(splitS[1].Trim()), float.Parse(splitS[2].Trim()));
     }
 
+    // Logs data to path specified by input path. This function assumes that file already exists
     public static void LogData(string s, string path, bool includesTimeStamp = false)
     {
         if(includesTimeStamp)
