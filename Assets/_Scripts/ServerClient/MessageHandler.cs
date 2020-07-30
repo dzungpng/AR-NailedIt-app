@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
+using System;
+using System.IO;
+
 
 public class MessageHandler : MonoBehaviour
 {
@@ -10,10 +13,14 @@ public class MessageHandler : MonoBehaviour
     private InputField chatMessage = null;
     private Text chatHistory = null;
 
+    // Variables facilitating data transfer between HoloLens and Desktop
     public ModelGeneration clientModelGenerator;
     public bool handleTargetFound { get; set; } = false;
     public bool isTransferringHandleData { get; set; } = false;
+    public bool isLoggingHandleData { get; set; } = false;
     public GameObject hololensHandle;
+    public Toggle logDataToggle;
+    private string logDataPath;
 
     // Server handle orientation data containers
     public InputField xPos;
@@ -26,9 +33,21 @@ public class MessageHandler : MonoBehaviour
     public void Awake()
     {
         Player.OnMessage += OnPlayerMessage;
+
+        // logDataToggle only exists on the server side
+        if(logDataToggle != null)
+        {
+            logDataToggle.onValueChanged.AddListener(delegate
+            {
+                ToggleValueChanged(logDataToggle);
+            });
+        }
+        logDataPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\loggedData.txt";
+        StreamWriter sw = File.CreateText(logDataPath);
+        sw.Close();
     }
 
-    public void Update()
+        public void Update()
     {
         if (handleTargetFound && isTransferringHandleData)
         {
@@ -161,6 +180,7 @@ public class MessageHandler : MonoBehaviour
     // to the server
     private void OnFoundHandleVuMark()
     {
+        Debug.Log("OnFoundHandleVuMark");
         Vector3 position = hololensHandle.transform.position;
         Vector3 rotation = hololensHandle.transform.eulerAngles;
         string handleData =
@@ -171,7 +191,8 @@ public class MessageHandler : MonoBehaviour
     }
 
     // When the server receives handle data from the HoloLens, it processes the data and orient the handle on 
-    // the desktop app to match the orientation of the handle on the holoLens app
+    // the desktop app to match the orientation of the handle on the holoLens app. If the log data checkbox 
+    // is checked, the data will also gets logged to a file on the desktop
     private void OnReceiveHandleData(string handleData)
     {
         string[] splitHandleData = handleData.Split(';');
@@ -192,6 +213,21 @@ public class MessageHandler : MonoBehaviour
         xRot.SetTextWithoutNotify(rotation.x.ToString());
         yRot.SetTextWithoutNotify(rotation.y.ToString());
         zRot.SetTextWithoutNotify(rotation.z.ToString());
+
+        // Log the handle data to log file in the current directory
+        if (isLoggingHandleData)
+        {
+            string logData =
+            "Handle Image Target\n" +
+            "[Position]" + position.x + " " + position.y + " " + position.z + " " + "\n" +
+            "[Rotation]" + rotation.x + " " + rotation.y + " " + rotation.z + " " + "\n";
+            Utils.LogData(logData, logDataPath, includesTimeStamp: true);
+        }
+    }
+
+    void ToggleValueChanged(Toggle toggle)
+    {
+        isLoggingHandleData = toggle.isOn;
     }
 
     internal void AppendMessage(string message)
