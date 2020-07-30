@@ -1,5 +1,7 @@
 # NailedIt
 
+![Alt text](figure1.png?raw=true "Planning View")
+
 NailedIt is an augmented reality surgical navigation application for orthopedic surgery. There are 3 main applications within this one project. The first part is a planning app that runs on the desktop. This app allows the user to load relevant 3D models (patient bone, surgical equipments, etc.) and annotate them prior to the procedure. It also allows the host device to be a server for the HoloLens, communicating data between the two devices. The second part is the HoloLens app. This app displays the annotation data from the planning app on the HoloLens, allowing user to reference those annotations as needed. Sensors attached to relevant surgical tools that the surgeon uses will deliver data back to the server. The third part is a mobile app that let users not wearing a HoloLens to monitor the procedure via their phones.
 
 ## Getting Started
