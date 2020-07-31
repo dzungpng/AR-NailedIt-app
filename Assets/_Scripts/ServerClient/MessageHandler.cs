@@ -9,7 +9,7 @@ using System.IO;
 public class MessageHandler : MonoBehaviour
 {
     static readonly ILogger logger = LogFactory.GetLogger(typeof(MessageHandler));
-
+    
     private InputField chatMessage = null;
     private Text chatHistory = null;
 

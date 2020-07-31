@@ -418,6 +418,8 @@ GameObject:
   - component: {fileID: 138148058}
   - component: {fileID: 138148060}
   - component: {fileID: 138148059}
+  - component: {fileID: 138148062}
+  - component: {fileID: 138148061}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -512,6 +514,49 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs: []
   hostname: {fileID: 165263016}
+--- !u!114 &138148061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138148057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c37d3deca7a834d80cfd8d3cfcc510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkDiscovery: {fileID: 138148062}
+--- !u!114 &138148062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138148057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c761308e733c51245b2e8bb4201f46dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secretHandshake: 3865267773538947213
+  serverBroadcastListenPort: 47777
+  ActiveDiscoveryInterval: 3
+  transport: {fileID: 0}
+  OnServerFound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 138148061}
+        m_MethodName: OnDiscoveredServer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &165263016 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3822870692962069824, guid: e20d30cb3c3317d46b7e29993da1bcc3,
@@ -569,6 +614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientModelGenerator: {fileID: 715117907}
   hololensHandle: {fileID: 66926542}
+  logDataToggle: {fileID: 0}
   xPos: {fileID: 363622565}
   yPos: {fileID: 1077545510}
   zPos: {fileID: 2045575598}
