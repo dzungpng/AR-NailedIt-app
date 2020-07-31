@@ -14,7 +14,7 @@ What you will need to get the project running:
 
 ```
 1. Unity 2018.x or later versions
-2. Visual Studio 2017 (installed with Desktop development with C++, Universial Windows Platform development, Game development with Unity, and Windows 10 SDK (10.0.18+)
+2. Visual Studio 2017 or later (installed with Desktop development with C++, Universial Windows Platform development, Game development with Unity, and Windows 10 SDK (10.0.18+)
 3. Windows 10 Operating System (or a VM on other OS but not recommended)
 ```
 
@@ -42,7 +42,31 @@ Prefabs, Scripts, and Plugins are stored under the Assets folder. The project so
 
 ### Building NailedIt_update1 (Desktop App)
 
+**Build Settings** 
+Platform: PC, Mac & Linux Standalone
+
 ### Building HoloLens_Client
+
+**Build Settings for Unity** 
+Platform: Universal Windows Platform
+Target Device: HoloLens
+Architecture: x86
+Target SDK Version: Latest installed
+Minimum Platform Version: 10.0.10240.0 (or later)
+Visual Studio Version: Visual studio 2017 or later
+
+**Player Settings for Unity** 
+Publishing Settings --> Capabilities: Check SpatialPerception, Internet Client, WebCam, Microphone.
+
+**Build Settings for Visual Studio** 
+Build Type: Debug
+Architecture: x86
+Machine Type: Remote Machine
+Machine Name: Right click on the file under Solution Explorer that has Universal Windows at the end. Click on Properties --> Configuration Properties --> Debugging --> Machine Name --> Enter in the HoloLen's IP address which can be found in Network Settings --> Hardware Properties on the HoloLens.
+
+For more resources on building the HoloLens app, follow these links:
+[Step by Step HoloLens 1 with Unity and Visual Studio Tutorial](https://medium.com/@mkryaz/step-by-step-hololens-1-with-unity-and-visual-studio-tutorial-4601d5dfcc8f)
+[Working with the HoloLens Sample in Unity](https://library.vuforia.com/content/vuforia-library/en/articles/Solution/Working-with-the-HoloLens-sample-in-Unity.html)
 
 ### Building Mobile_Client
 
