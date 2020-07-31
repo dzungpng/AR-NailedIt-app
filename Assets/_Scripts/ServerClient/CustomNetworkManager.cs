@@ -13,6 +13,11 @@ public class CustomNetworkManager : NetworkManager
         networkAddress = hostname.text;
     }
 
+    public void SetHostName(string hostname)
+    {
+        networkAddress = hostname;
+    }
+
     public class CreatePlayerMessage : MessageBase
     {
         public string name;
