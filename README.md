@@ -48,24 +48,27 @@ Platform: PC, Mac & Linux Standalone
 ### Building HoloLens_Client
 
 **Build Settings for Unity** 
-Platform: Universal Windows Platform
-Target Device: HoloLens
-Architecture: x86
-Target SDK Version: Latest installed
-Minimum Platform Version: 10.0.10240.0 (or later)
-Visual Studio Version: Visual studio 2017 or later
+Platform: Universal Windows Platform <br />
+Target Device: HoloLens <br />
+Architecture: x86 <br />
+Target SDK Version: Latest installed <br />
+Minimum Platform Version: 10.0.10240.0 (or later) <br />
+Visual Studio Version: Visual studio 2017 or later <br />
 
 **Player Settings for Unity** 
 Publishing Settings --> Capabilities: Check SpatialPerception, Internet Client, WebCam, Microphone.
 
+**XR Settings for Unity** 
+Install and add Microsoft Mixed Reality Plugin to the project.
+
 **Build Settings for Visual Studio** 
-Build Type: Debug
-Architecture: x86
-Machine Type: Remote Machine
+Build Type: Debug <br />
+Architecture: x86 <br />
+Machine Type: Remote Machine <br />
 Machine Name: Right click on the file under Solution Explorer that has Universal Windows at the end. Click on Properties --> Configuration Properties --> Debugging --> Machine Name --> Enter in the HoloLen's IP address which can be found in Network Settings --> Hardware Properties on the HoloLens.
 
-For more resources on building the HoloLens app, follow these links:
-[Step by Step HoloLens 1 with Unity and Visual Studio Tutorial](https://medium.com/@mkryaz/step-by-step-hololens-1-with-unity-and-visual-studio-tutorial-4601d5dfcc8f)
+For more resources on building the HoloLens app, follow these links: <br />
+[Step by Step HoloLens 1 with Unity and Visual Studio Tutorial](https://medium.com/@mkryaz/step-by-step-hololens-1-with-unity-and-visual-studio-tutorial-4601d5dfcc8f) <br />
 [Working with the HoloLens Sample in Unity](https://library.vuforia.com/content/vuforia-library/en/articles/Solution/Working-with-the-HoloLens-sample-in-Unity.html)
 
 ### Building Mobile_Client
@@ -73,22 +76,7 @@ For more resources on building the HoloLens app, follow these links:
 
 ## External packages
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* [Mirror Networking](https://mirror-networking.com/) - Used for server/client communication between desktop app, the HoloLens, and mobile devices. <br />
+* [Runtime OBJ Importer](https://assetstore.unity.com/packages/tools/modeling/runtime-obj-importer-49547) - Used in conjunction with SimpleFileBrowser to allow user to add custom models to the app. <br />
+* [Runtime Transform Gizmos](https://assetstore.unity.com/packages/tools/modeling/runtime-transform-gizmos-125537) - Used to allow user to move 3D models around. <br />
+* [SimpleFileBrowser](https://rometools.github.io/rome/) - Used in conjunction with SimpleFileBrowser to allow user to add custom models to the app.
