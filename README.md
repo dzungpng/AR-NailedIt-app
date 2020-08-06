@@ -45,6 +45,9 @@ Prefabs, Scripts, and Plugins are stored under the Assets folder. The project so
 **Build Settings** 
 Platform: PC, Mac & Linux Standalone
 
+**Graphics Settings**
+In order for this to work in runtime, you must go to the "Edit > Project Settings > Graphics" tab, and add "Standard (Specular Setup)" to the always included shaders. This will make your next build take a while. (From the README of UnityRuntimeOBJImporter)
+
 ### Building HoloLens_Client
 
 **Build Settings for Unity** 
