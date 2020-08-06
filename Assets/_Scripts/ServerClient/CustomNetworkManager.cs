@@ -6,6 +6,7 @@ using Mirror;
 public class CustomNetworkManager : NetworkManager
 {
     public string PlayerName { get; set; }
+    public Text clientStatus;
     [SerializeField] private Text hostname = null;
 
     public void SetHostname()
@@ -32,9 +33,14 @@ public class CustomNetworkManager : NetworkManager
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
-
+        
         // tell the server to create a player with this name
         conn.Send(new CreatePlayerMessage { name = PlayerName });
+    }
+
+    public override void OnClientDisconnect(NetworkConnection conn)
+    {
+        base.OnClientDisconnect(conn);
     }
 
     void OnCreatePlayer(NetworkConnection connection, CreatePlayerMessage createPlayerMessage)

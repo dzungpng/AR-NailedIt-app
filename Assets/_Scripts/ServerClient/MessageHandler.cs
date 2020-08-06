@@ -75,18 +75,33 @@ public class MessageHandler : MonoBehaviour
         chatHistory = GameObject.Find("ChatText").GetComponent<Text>();
     }
 
+
+    public void NotifyServerOnJoin()
+    {
+        StartCoroutine(NotifyServerOnJoinRoutine());
+    }
+
+
+    IEnumerator NotifyServerOnJoinRoutine()
+    {
+        yield return new WaitForSeconds(0.55f);
+        Player player = NetworkClient.connection.identity.GetComponent<Player>();
+
+        player.CmdSend("JOIN|" + player.playerName);
+    }
+
     void OnPlayerMessage(Player player, string message)
     {
         if (chatMessage == null)
         {
             InitializeChatUIComponents();
         }
+        string[] messageParts = message.Split('|');
         if (player.isServer)
         {
             // Player is server and is receiving the message
             if (!player.isLocalPlayer)
             {
-                string[] messageParts = message.Split('|');
                 switch (messageParts[0])
                 {
                     case "HANDLEDATA": // when desktop server receive handle data from HoloLens client
@@ -105,7 +120,6 @@ public class MessageHandler : MonoBehaviour
             // player is client and is sending message
             if (player.isLocalPlayer)
             {
-                string[] messageParts = message.Split('|');
                 switch (messageParts[0])
                 {
                     case "HANDLEDATA": // When HoloLens client sends handle data to the server and mobile clients
@@ -115,6 +129,10 @@ public class MessageHandler : MonoBehaviour
                     case "BONEDATA": // When HoloLens client sends bone data to the mobile clients
                         // Don't add messages like case "HANDLEDATA" above
                         return;
+                    case "JOIN":
+                        return;
+                    case "EXIT":
+                        return;
                     default:
                         break;
                 }
@@ -122,7 +140,6 @@ public class MessageHandler : MonoBehaviour
             // player is client and is receiving message
             else
             {
-                string[] messageParts = message.Split('|');
                 switch (messageParts[0])
                 {
                     case "PLANNINGDATA": // when Hololens and mobile clients receive planning data from desktop server
@@ -138,6 +155,7 @@ public class MessageHandler : MonoBehaviour
                                      // Don't add messages to chatHistory if client is trying to send bone data
                                      // Otherwise the chatbox will be overflowed with messages
                         if (isFrameOfReferenceFound)
+                            Debug.Log("Receiving bone data");
                             OnRecieveBoneDataMobile(messageParts[1]);
                         return;
                     default:
@@ -145,9 +163,28 @@ public class MessageHandler : MonoBehaviour
                 }
             }
         }
-        string prettyMessage = player.isLocalPlayer ?
-                            $"<color=red>{player.playerName}: </color> {message}" :
-                            $"<color=blue>{player.playerName}: </color> {message}";
+        string prettyMessage = "";
+
+        // when client connect and disconnect
+        if (messageParts[0] == "JOIN")
+        {
+            prettyMessage = $"<color=green>{messageParts[1] + " joined the server."}</color>";
+
+            Debug.Log("Client joining");
+        }
+        else if(messageParts[0] == "EXIT")
+        {
+            prettyMessage = $"<color=red>{messageParts[1] + " exited the server."}</color>";
+
+            Debug.Log("Client exiting");
+        }
+        // All other messaage types
+        else
+        {
+            prettyMessage = player.isLocalPlayer ?
+                $"<color=red>{player.playerName}: </color> {message}" :
+                $"<color=blue>{player.playerName}: </color> {message}";
+        }
         AppendMessage(prettyMessage);
         logger.Log(message);
     }
@@ -278,6 +315,14 @@ public class MessageHandler : MonoBehaviour
 
         mobileHandle.transform.rotation = Quaternion.Euler(rotation);
         // TODO: Set position with respect to the frame of reference
+
+        xPos.SetTextWithoutNotify(position.x.ToString());
+        yPos.SetTextWithoutNotify(position.y.ToString());
+        zPos.SetTextWithoutNotify(position.z.ToString());
+
+        xRot.SetTextWithoutNotify(rotation.x.ToString());
+        yRot.SetTextWithoutNotify(rotation.y.ToString());
+        zRot.SetTextWithoutNotify(rotation.z.ToString());
     }
 
     // When the movile client receives bone data from the HoloLens, it processes the data and orient the bone on

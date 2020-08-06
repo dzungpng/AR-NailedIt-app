@@ -8,17 +8,6 @@ public class ModelGeneration : MonoBehaviour
     public GameObject nail;
     public GameObject conePrefab;
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if(Client.Data.Trim() != "")
-    //    {
-    //        Debug.Log("Parsing data...");
-    //        ParseData(Client.Data);
-    //        Client.Data = "";
-    //    }
-    //}
-
     /**
      * Parse the data.txt file that was generated from the planning app
      * Data must be properlly formatted as such: 
