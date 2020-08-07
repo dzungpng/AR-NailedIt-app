@@ -86,9 +86,16 @@ public class MessageHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(0.55f);
         Player player = NetworkClient.connection.identity.GetComponent<Player>();
-
         player.CmdSend("JOIN|" + player.playerName);
     }
+
+
+    public void NotifyServerOnExit()
+    {
+        Player player = NetworkClient.connection.identity.GetComponent<Player>();
+        player.CmdSend("EXIT|" + player.playerName);
+    }
+
 
     void OnPlayerMessage(Player player, string message)
     {
