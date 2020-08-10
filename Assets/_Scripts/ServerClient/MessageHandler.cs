@@ -31,6 +31,7 @@ public class MessageHandler : MonoBehaviour
     public GameObject mobileHandle;
     public GameObject mobileBone;
     public bool isFrameOfReferenceFound { get; set; } = false;
+    public GameObject testBone;
 
     // Server handle orientation data's containers
     public InputField xPos;
@@ -116,6 +117,10 @@ public class MessageHandler : MonoBehaviour
                         // Otherwise the chatbox will be overflowed with messages
                         OnReceiveHandleDataServer(messageParts[1]);
                         return;
+                    case "BONEDATA": // When desktop server receives bone data from HoloLens client
+                        // We don't care about bone data on the desktop server so we just ignore
+                        // and not add the messages to chatHistory
+                        return;
                     default:
                         break;
                 }
@@ -162,7 +167,6 @@ public class MessageHandler : MonoBehaviour
                                      // Don't add messages to chatHistory if client is trying to send bone data
                                      // Otherwise the chatbox will be overflowed with messages
                         if (isFrameOfReferenceFound)
-                            Debug.Log("Receiving bone data");
                             OnRecieveBoneDataMobile(messageParts[1]);
                         return;
                     default:
@@ -266,8 +270,8 @@ public class MessageHandler : MonoBehaviour
     // orientation data to the mobile clients
     private void OnFoundBoneImageTarget()
     {
-        Vector3 position = hololensHandle.transform.position;
-        Vector3 rotation = hololensHandle.transform.eulerAngles;
+        Vector3 position = hololensBone.transform.position;
+        Vector3 rotation = hololensBone.transform.eulerAngles;
 
         string boneData =
             "BONEDATA|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
@@ -343,6 +347,7 @@ public class MessageHandler : MonoBehaviour
 
         mobileBone.transform.rotation = Quaternion.Euler(rotation);
         // TODO: Set position with respect to the frame of reference
+        testBone.transform.position += new Vector3(0, 1, 0);
     }
 
 

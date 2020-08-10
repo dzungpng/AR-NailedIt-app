@@ -6,7 +6,6 @@ using Mirror;
 public class CustomNetworkManager : NetworkManager
 {
     public string PlayerName { get; set; }
-    public Text clientStatus;
     [SerializeField] private Text hostname = null;
 
     public void SetHostname()
