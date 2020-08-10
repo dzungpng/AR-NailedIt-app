@@ -325,6 +325,7 @@ public class MessageHandler : MonoBehaviour
         Vector3 rotation = Utils.StringToVector3(splitHandleData[1]);
 
         mobileHandle.transform.rotation = Quaternion.Euler(rotation);
+        //mobileHandle.transform.rotation = new Quaternion(1, 0, 0, 0);
         // TODO: Set position with respect to the frame of reference
 
         xPos.SetTextWithoutNotify(position.x.ToString());
