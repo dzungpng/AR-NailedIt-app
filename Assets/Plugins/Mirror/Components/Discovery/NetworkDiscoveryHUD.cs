@@ -40,7 +40,8 @@ namespace Mirror.Discovery
 
         void DrawGUI()
         {
-            GUILayout.BeginHorizontal();
+            //GUILayout.BeginHorizontal();
+            GUILayout.BeginArea(new Rect(10 + Screen.width/2, 40 + Screen.height/2, 215, 9999));
 
             if (GUILayout.Button("Find Servers"))
             {
@@ -65,7 +66,9 @@ namespace Mirror.Discovery
                 networkDiscovery.AdvertiseServer();
             }
 
-            GUILayout.EndHorizontal();
+            // GUILayout.EndHorizontal();
+            GUILayout.EndArea();
+
 
             // show list of found server
 

@@ -9,20 +9,31 @@ using System.IO;
 public class MessageHandler : MonoBehaviour
 {
     static readonly ILogger logger = LogFactory.GetLogger(typeof(MessageHandler));
-
+    
     private InputField chatMessage = null;
     private Text chatHistory = null;
 
     // Variables facilitating data transfer between HoloLens and Desktop
+    // HoloLens objects
     public ModelGeneration clientModelGenerator;
     public bool handleTargetFound { get; set; } = false;
+    public bool boneTargetFound { get; set; } = false;
     public bool isTransferringHandleData { get; set; } = false;
-    public bool isLoggingHandleData { get; set; } = false;
     public GameObject hololensHandle;
+    public GameObject hololensBone;
+
+    // Desktop objects
     public Toggle logDataToggle;
     private string logDataPath;
+    public bool isLoggingHandleData { get; set; } = false;
 
-    // Server handle orientation data containers
+    // Mobile objects
+    public GameObject mobileHandle;
+    public GameObject mobileBone;
+    public bool isFrameOfReferenceFound { get; set; } = false;
+    public GameObject testBone;
+
+    // Server handle orientation data's containers
     public InputField xPos;
     public InputField yPos;
     public InputField zPos;
@@ -47,11 +58,15 @@ public class MessageHandler : MonoBehaviour
         sw.Close();
     }
 
-        public void Update()
+    public void Update()
     {
         if (handleTargetFound && isTransferringHandleData)
         {
-            OnFoundHandleVuMark();
+            OnFoundHandleImageTarget();
+        }
+        if (boneTargetFound && isTransferringHandleData)
+        {
+            OnFoundBoneImageTarget();
         }
     }
 
@@ -61,24 +76,50 @@ public class MessageHandler : MonoBehaviour
         chatHistory = GameObject.Find("ChatText").GetComponent<Text>();
     }
 
+
+    public void NotifyServerOnJoin()
+    {
+        StartCoroutine(NotifyServerOnJoinRoutine());
+    }
+
+
+    IEnumerator NotifyServerOnJoinRoutine()
+    {
+        yield return new WaitForSeconds(0.55f);
+        Player player = NetworkClient.connection.identity.GetComponent<Player>();
+        player.CmdSend("JOIN|" + player.playerName);
+    }
+
+
+    public void NotifyServerOnExit()
+    {
+        Player player = NetworkClient.connection.identity.GetComponent<Player>();
+        player.CmdSend("EXIT|" + player.playerName);
+    }
+
+
     void OnPlayerMessage(Player player, string message)
     {
         if (chatMessage == null)
         {
             InitializeChatUIComponents();
         }
+        string[] messageParts = message.Split('|');
         if (player.isServer)
         {
             // Player is server and is receiving the message
             if (!player.isLocalPlayer)
             {
-                string[] messageParts = message.Split('|');
                 switch (messageParts[0])
                 {
-                    case "HANDLEDATA":
+                    case "HANDLEDATA": // when desktop server receive handle data from HoloLens client
                         // Don't add messages to chatHistory if client is trying to send handle data
                         // Otherwise the chatbox will be overflowed with messages
-                        OnReceiveHandleData(messageParts[1]);
+                        OnReceiveHandleDataServer(messageParts[1]);
+                        return;
+                    case "BONEDATA": // When desktop server receives bone data from HoloLens client
+                        // We don't care about bone data on the desktop server so we just ignore
+                        // and not add the messages to chatHistory
                         return;
                     default:
                         break;
@@ -91,12 +132,18 @@ public class MessageHandler : MonoBehaviour
             // player is client and is sending message
             if (player.isLocalPlayer)
             {
-                string[] messageParts = message.Split('|');
                 switch (messageParts[0])
                 {
-                    case "HANDLEDATA":
+                    case "HANDLEDATA": // When HoloLens client sends handle data to the server and mobile clients
                         // Don't add messages to chatHistory if client is trying to send handle data
                         // Otherwise the chatbox will be overflowed with messages
+                        return;
+                    case "BONEDATA": // When HoloLens client sends bone data to the mobile clients
+                        // Don't add messages like case "HANDLEDATA" above
+                        return;
+                    case "JOIN":
+                        return;
+                    case "EXIT":
                         return;
                     default:
                         break;
@@ -105,20 +152,50 @@ public class MessageHandler : MonoBehaviour
             // player is client and is receiving message
             else
             {
-                string[] messageParts = message.Split('|');
                 switch (messageParts[0])
                 {
-                    case "PLANNINGDATA":
+                    case "PLANNINGDATA": // when Hololens and mobile clients receive planning data from desktop server
                         clientModelGenerator.ParseData(messageParts[1]);
                         break;
+                    case "HANDLEDATA": // When mobile clients receive handle data from Hololens client
+                                       // Don't add messages to chatHistory if client is trying to send handle data
+                                       // Otherwise the chatbox will be overflowed with messages
+                        if (isFrameOfReferenceFound)
+                            OnReceiveHandleDataMobile(messageParts[1]);
+                        return;
+                    case "BONEDATA": // When mobile clients receive bone data from Hololens client
+                                     // Don't add messages to chatHistory if client is trying to send bone data
+                                     // Otherwise the chatbox will be overflowed with messages
+                        if (isFrameOfReferenceFound)
+                            OnRecieveBoneDataMobile(messageParts[1]);
+                        return;
                     default:
                         break;
                 }
             }
         }
-        string prettyMessage = player.isLocalPlayer ?
-                            $"<color=red>{player.playerName}: </color> {message}" :
-                            $"<color=blue>{player.playerName}: </color> {message}";
+        string prettyMessage = "";
+
+        // when client connect and disconnect
+        if (messageParts[0] == "JOIN")
+        {
+            prettyMessage = $"<color=green>{messageParts[1] + " joined the server."}</color>";
+
+            Debug.Log("Client joining");
+        }
+        else if(messageParts[0] == "EXIT")
+        {
+            prettyMessage = $"<color=red>{messageParts[1] + " exited the server."}</color>";
+
+            Debug.Log("Client exiting");
+        }
+        // All other messaage types
+        else
+        {
+            prettyMessage = player.isLocalPlayer ?
+                $"<color=red>{player.playerName}: </color> {message}" :
+                $"<color=blue>{player.playerName}: </color> {message}";
+        }
         AppendMessage(prettyMessage);
         logger.Log(message);
     }
@@ -163,7 +240,7 @@ public class MessageHandler : MonoBehaviour
         chatMessage.text = "";
     }
 
-    // Player hitting the send data button (Server side)
+    // Server user hitting the send data button
     public void OnSendDataButton(string message)
     {
         if (message.Trim() == "")
@@ -176,11 +253,10 @@ public class MessageHandler : MonoBehaviour
         player.CmdSend(message);
     }
 
-    // When the HoloLens' handle image target is found, the Hololens automatically send orientation data
-    // to the server
-    private void OnFoundHandleVuMark()
+    // When the HoloLens' handle image target is found and the Send Handle Data button is clicked, the HoloLens sends position and 
+    // orientation data to the server and mobile clients
+    private void OnFoundHandleImageTarget()
     {
-        Debug.Log("OnFoundHandleVuMark");
         Vector3 position = hololensHandle.transform.position;
         Vector3 rotation = hololensHandle.transform.eulerAngles;
         string handleData =
@@ -190,10 +266,24 @@ public class MessageHandler : MonoBehaviour
         player.CmdSend(handleData);
     }
 
+    // When the HoloLens's bone image target is found and Send Handle Data button is clicked, the HoloLens sends position and 
+    // orientation data to the mobile clients
+    private void OnFoundBoneImageTarget()
+    {
+        Vector3 position = hololensBone.transform.position;
+        Vector3 rotation = hololensBone.transform.eulerAngles;
+
+        string boneData =
+            "BONEDATA|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
+
+        Player player = NetworkClient.connection.identity.GetComponent<Player>();
+        player.CmdSend(boneData); 
+    }
+
     // When the server receives handle data from the HoloLens, it processes the data and orient the handle on 
     // the desktop app to match the orientation of the handle on the holoLens app. If the log data checkbox 
     // is checked, the data will also gets logged to a file on the desktop
-    private void OnReceiveHandleData(string handleData)
+    private void OnReceiveHandleDataServer(string handleData)
     {
         string[] splitHandleData = handleData.Split(';');
         Vector3 position = Utils.StringToVector3(splitHandleData[0]);
@@ -224,6 +314,43 @@ public class MessageHandler : MonoBehaviour
             Utils.LogData(logData, logDataPath, includesTimeStamp: true);
         }
     }
+
+    // When the mobile client receives handle data from the HoloLens, it processes the data and orient the handle on
+    // mobile app to match those of the handle on the HoloLens app.
+    // This way we don't need to "see" the image target of the handle
+    private void OnReceiveHandleDataMobile(string handleData)
+    {
+        string[] splitHandleData = handleData.Split(';');
+        Vector3 position = Utils.StringToVector3(splitHandleData[0]);
+        Vector3 rotation = Utils.StringToVector3(splitHandleData[1]);
+
+        mobileHandle.transform.rotation = Quaternion.Euler(rotation);
+        //mobileHandle.transform.rotation = new Quaternion(1, 0, 0, 0);
+        // TODO: Set position with respect to the frame of reference
+
+        xPos.SetTextWithoutNotify(position.x.ToString());
+        yPos.SetTextWithoutNotify(position.y.ToString());
+        zPos.SetTextWithoutNotify(position.z.ToString());
+
+        xRot.SetTextWithoutNotify(rotation.x.ToString());
+        yRot.SetTextWithoutNotify(rotation.y.ToString());
+        zRot.SetTextWithoutNotify(rotation.z.ToString());
+    }
+
+    // When the movile client receives bone data from the HoloLens, it processes the data and orient the bone on
+    // mobile app to match those of the bone on the HoloLens.
+    // This way we don't need to "see" the image target of the bone
+    private void OnRecieveBoneDataMobile(string boneData)
+    {
+        string[] splitBoneData = boneData.Split(';');
+        Vector3 position = Utils.StringToVector3(splitBoneData[0]);
+        Vector3 rotation = Utils.StringToVector3(splitBoneData[0]);
+
+        mobileBone.transform.rotation = Quaternion.Euler(rotation);
+        // TODO: Set position with respect to the frame of reference
+        testBone.transform.position += new Vector3(0, 1, 0);
+    }
+
 
     void ToggleValueChanged(Toggle toggle)
     {

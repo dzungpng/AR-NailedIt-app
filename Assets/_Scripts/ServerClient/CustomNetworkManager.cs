@@ -13,6 +13,11 @@ public class CustomNetworkManager : NetworkManager
         networkAddress = hostname.text;
     }
 
+    public void SetHostName(string hostname)
+    {
+        networkAddress = hostname;
+    }
+
     public class CreatePlayerMessage : MessageBase
     {
         public string name;
@@ -27,9 +32,14 @@ public class CustomNetworkManager : NetworkManager
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
-
+        
         // tell the server to create a player with this name
         conn.Send(new CreatePlayerMessage { name = PlayerName });
+    }
+
+    public override void OnClientDisconnect(NetworkConnection conn)
+    {
+        base.OnClientDisconnect(conn);
     }
 
     void OnCreatePlayer(NetworkConnection connection, CreatePlayerMessage createPlayerMessage)
