@@ -1,0 +1,28 @@
+{
+  "name": "com.unity.xr.windowsmr.metro",
+  "displayName": "Windows Mixed Reality",
+  "version": "1.0.21",
+  "unity": "2018.3",
+  "description": "Windows Mixed Reality XR SDK for use with native XR integration in Unity.",
+  "keywords": [
+    "windowsmr",
+    "xr",
+    "ar",
+    "vr",
+    "mr",
+    "windows",
+    "mixed",
+    "reality",
+    "hololens",
+    "holo"
+  ],
+  "dependencies": {},
+  "repository": {
+    "url": "https://github.com/Unity-Technologies/com.unity.xr.windowsmr.metro.git",
+    "type": "git",
+    "revision": "8848ed566b06f8575e1e9bf963df4ca41fb9dba6"
+  },
+  "upmCi": {
+    "footprint": "100f0b9a78bdcb5a043bebd68bd5757a1e5c51c8"
+  }
+}
