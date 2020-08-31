@@ -10,8 +10,8 @@ UnityEngine.TilemapModule.dll
 UnityEngine.UIElementsModule.dll
 UnityEngine.UIModule.dll
 UnityEngine.UNETModule.dll
+UnityEngine.StreamingModule.dll
 UnityEngine.UnityAnalyticsModule.dll
-UnityEngine.UnityConnectModule.dll
 UnityEngine.UnityWebRequestAssetBundleModule.dll
 UnityEngine.UnityWebRequestAudioModule.dll
 UnityEngine.UnityWebRequestModule.dll
@@ -23,7 +23,7 @@ UnityEngine.VideoModule.dll
 UnityEngine.VRModule.dll
 UnityEngine.WindModule.dll
 UnityEngine.XRModule.dll
-UnityEngine.StreamingModule.dll
+UnityEngine.UnityConnectModule.dll
 VuforiaScripts.dll
 UnityEngine.SpriteShapeModule.dll
 Unity.XR.WindowsMR.dll
@@ -38,8 +38,8 @@ UnityEngine.CoreModule.dll
 UnityEngine.CrashReportingModule.dll
 UnityEngine.DirectorModule.dll
 UnityEngine.dll
+UnityEngine.SpriteMaskModule.dll
 UnityEngine.GameCenterModule.dll
-UnityEngine.GridModule.dll
 UnityEngine.ImageConversionModule.dll
 UnityEngine.IMGUIModule.dll
 UnityEngine.InputModule.dll
@@ -51,10 +51,9 @@ UnityEngine.Physics2DModule.dll
 UnityEngine.PhysicsModule.dll
 UnityEngine.ScreenCaptureModule.dll
 UnityEngine.SharedInternalsModule.dll
-UnityEngine.SpriteMaskModule.dll
+UnityEngine.GridModule.dll
 UnityEngine.Timeline.dll
 UnityEngine.UI.dll
-VetAR_BluetoothManager.dll
 UnityEngine.SpatialTracking.dll
 Vuforia.UnityExtensions.dll
 UnityEngine.Networking.dll

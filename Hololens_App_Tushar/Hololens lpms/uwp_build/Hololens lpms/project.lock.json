@@ -24655,12 +24655,12 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "C:\\Users\\tpura\\Desktop\\Unity Projects\\Hololens lpms\\temp_build\\Hololens lpms\\Hololens lpms.csproj",
+      "projectUniqueName": "C:\\Users\\tpura\\Desktop\\Unity Projects\\Hololens lpms\\uwp_build\\Hololens lpms\\Hololens lpms.csproj",
       "projectName": "Hololens lpms",
-      "projectPath": "C:\\Users\\tpura\\Desktop\\Unity Projects\\Hololens lpms\\temp_build\\Hololens lpms\\Hololens lpms.csproj",
-      "projectJsonPath": "C:\\Users\\tpura\\Desktop\\Unity Projects\\Hololens lpms\\temp_build\\Hololens lpms\\project.json",
+      "projectPath": "C:\\Users\\tpura\\Desktop\\Unity Projects\\Hololens lpms\\uwp_build\\Hololens lpms\\Hololens lpms.csproj",
+      "projectJsonPath": "C:\\Users\\tpura\\Desktop\\Unity Projects\\Hololens lpms\\uwp_build\\Hololens lpms\\project.json",
       "packagesPath": "C:\\Users\\tpura\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tpura\\Desktop\\Unity Projects\\Hololens lpms\\temp_build\\Hololens lpms\\obj\\",
+      "outputPath": "C:\\Users\\tpura\\Desktop\\Unity Projects\\Hololens lpms\\uwp_build\\Hololens lpms\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
         "C:\\Users\\tpura\\AppData\\Roaming\\NuGet\\NuGet.Config",

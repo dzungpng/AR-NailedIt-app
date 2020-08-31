@@ -46,12 +46,6 @@
   <Extensions>
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
-        <Path>CLRHost.dll</Path>
-        <ActivatableClass ActivatableClassId="Microsoft.UI.Xaml.Markup.ReflectionXamlMetadataProvider" ThreadingModel="both" />
-      </InProcessServer>
-    </Extension>
-    <Extension Category="windows.activatableClass.inProcessServer">
-      <InProcessServer>
         <Path>UnityPlayer.dll</Path>
         <ActivatableClass ActivatableClassId="UnityPlayer.AppCallbacks" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="UnityPlayer.XamlViewManager" ThreadingModel="both" />

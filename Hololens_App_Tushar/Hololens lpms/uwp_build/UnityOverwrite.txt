@@ -7,8 +7,8 @@
 # Default behavior is to never overwrite files
 Hololens lpms.sln: B311ACC7F88F77A9BD0D2459FA4376AF
 Hololens lpms\App.cs: A313BC935A015B1954F2FDE6AFACAEB6
-Hololens lpms\AssemblyConverterArgs.txt: B9C17BDD7C171C8845A595B5D59CEB06
-Hololens lpms\Hololens lpms.csproj: 9876FCB75411AD2F09C7B6BCF89176AC
+Hololens lpms\AssemblyConverterArgs.txt: 9174781969B6F81719C969126E19AA92
+Hololens lpms\Hololens lpms.csproj: 2EE78DD6BE2CFDA4716EA3AFAC01194A
 Hololens lpms\Hololens lpms.csproj.user: BEFB8AC4886C4CFDD3C68445D6F19B04
 Hololens lpms\Package.appxmanifest: 920F73CB5E11E2937D4222CDD6E5BF85
 Hololens lpms\project.json: CC10A2BA10723B75F669B6E9E5EE19C9

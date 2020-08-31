@@ -10,22 +10,22 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>216925f1-5982-47f9-8e7a-59a54af17478</PackageIdentityName>
     <PackageIdentityPublisher>CN=DefaultCompany</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\obj\x86\Release\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\obj\x86\Release\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\bin\x86\Release\AppX</LayoutDir>
+    <LayoutDir>C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\bin\x86\Release\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\bin\x86\Release\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\bin\x86\Release\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\bin\x86\Release\Hololens lpms.exe">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\bin\x86\Release\Hololens lpms.exe">
       <PackagePath>entrypoint\Hololens lpms.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\tpura\.nuget\packages\microsoft.applicationinsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
@@ -379,16 +379,13 @@
     <AppxPackagedFile Include="C:\Users\tpura\.nuget\packages\system.xml.xmlserializer\4.0.11\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Unprocessed\ThreadingPlugin.dll">
-      <PackagePath>ThreadingPlugin.dll</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\2018.4.18f1\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\UnityEngineProxy.dll">
       <PackagePath>UnityEngineProxy.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\2018.4.18f1\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\WinRTBridge.dll">
       <PackagePath>WinRTBridge.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Unprocessed\WinRTLegacy.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Unprocessed\WinRTLegacy.dll">
       <PackagePath>WinRTLegacy.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\2018.4.18f1\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\UnityPlayer.dll">
@@ -400,305 +397,296 @@
     <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\2018.4.18f1\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\BridgeInterface.winmd">
       <PackagePath>BridgeInterface.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Unprocessed\Microsoft.UI.Xaml.Markup.winmd">
-      <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\2018.4.18f1\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\UnityPlayer.winmd">
       <PackagePath>UnityPlayer.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\NuGet.config">
-      <PackagePath>NuGet.config</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\boot.config">
-      <PackagePath>Data\boot.config</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Resource.res">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Resource.res">
       <PackagePath>Resource.res</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\StoreManifest.xml">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\StoreManifest.xml">
       <PackagePath>StoreManifest.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VetAR.xml">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VetAR.xml">
       <PackagePath>Data\StreamingAssets\Vuforia\VetAR.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VetAR_altMarkers.xml">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VetAR_altMarkers.xml">
       <PackagePath>Data\StreamingAssets\Vuforia\VetAR_altMarkers.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VuforiaMars_Images.xml">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VuforiaMars_Images.xml">
       <PackagePath>Data\StreamingAssets\Vuforia\VuforiaMars_Images.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Assets\Square44x44Logo.targetsize-24.png">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Assets\Square44x44Logo.targetsize-24.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\VuforiaWrapper.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\VuforiaWrapper.dll">
       <PackagePath>VuforiaWrapper.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\VuforiaDL.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\VuforiaDL.dll">
       <PackagePath>VuforiaDL.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\AudioPluginMsHRTF.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\AudioPluginMsHRTF.dll">
       <PackagePath>AudioPluginMsHRTF.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Vuforia.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Vuforia.dll">
       <PackagePath>Vuforia.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\2018.4.18f1\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\UnityEngineDelegates.dll">
       <PackagePath>UnityEngineDelegates.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\globalgamemanagers">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\boot.config">
+      <PackagePath>Data\boot.config</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\globalgamemanagers">
       <PackagePath>Data\globalgamemanagers</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\level0">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\level0">
       <PackagePath>Data\level0</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\Resources\unity default resources">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\Resources\unity default resources">
       <PackagePath>Data\Resources\unity default resources</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\Resources\unity_builtin_extra">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\Resources\unity_builtin_extra">
       <PackagePath>Data\Resources\unity_builtin_extra</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\globalgamemanagers.assets">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\globalgamemanagers.assets">
       <PackagePath>Data\globalgamemanagers.assets</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\resources.assets">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\resources.assets">
       <PackagePath>Data\resources.assets</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\sharedassets0.assets">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\sharedassets0.assets">
       <PackagePath>Data\sharedassets0.assets</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\level0.resS">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\level0.resS">
       <PackagePath>Data\level0.resS</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\sharedassets0.assets.resS">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\sharedassets0.assets.resS">
       <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\managedAssemblies.txt">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\managedAssemblies.txt">
       <PackagePath>Data\managedAssemblies.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\nativePlugins.txt">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\nativePlugins.txt">
       <PackagePath>Data\nativePlugins.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VetAR.dat">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VetAR.dat">
       <PackagePath>Data\StreamingAssets\Vuforia\VetAR.dat</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VetAR_altMarkers.dat">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VetAR_altMarkers.dat">
       <PackagePath>Data\StreamingAssets\Vuforia\VetAR_altMarkers.dat</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VuforiaMars_Images.dat">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Data\StreamingAssets\Vuforia\VuforiaMars_Images.dat">
       <PackagePath>Data\StreamingAssets\Vuforia\VuforiaMars_Images.dat</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\bin\x86\Release\resources.pri">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\bin\x86\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Assembly-CSharp.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Assembly-CSharp.dll">
       <PackagePath>Assembly-CSharp.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.StyleSheetsModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.StyleSheetsModule.dll">
       <PackagePath>UnityEngine.StyleSheetsModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.SubstanceModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.SubstanceModule.dll">
       <PackagePath>UnityEngine.SubstanceModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.TerrainModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.TerrainModule.dll">
       <PackagePath>UnityEngine.TerrainModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.TerrainPhysicsModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.TerrainPhysicsModule.dll">
       <PackagePath>UnityEngine.TerrainPhysicsModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.TextCoreModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.TextCoreModule.dll">
       <PackagePath>UnityEngine.TextCoreModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.TextRenderingModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.TextRenderingModule.dll">
       <PackagePath>UnityEngine.TextRenderingModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.TilemapModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.TilemapModule.dll">
       <PackagePath>UnityEngine.TilemapModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UIElementsModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UIElementsModule.dll">
       <PackagePath>UnityEngine.UIElementsModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UIModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UIModule.dll">
       <PackagePath>UnityEngine.UIModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UNETModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UNETModule.dll">
       <PackagePath>UnityEngine.UNETModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UnityAnalyticsModule.dll">
-      <PackagePath>UnityEngine.UnityAnalyticsModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UnityConnectModule.dll">
-      <PackagePath>UnityEngine.UnityConnectModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UnityWebRequestAssetBundleModule.dll">
-      <PackagePath>UnityEngine.UnityWebRequestAssetBundleModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UnityWebRequestAudioModule.dll">
-      <PackagePath>UnityEngine.UnityWebRequestAudioModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UnityWebRequestModule.dll">
-      <PackagePath>UnityEngine.UnityWebRequestModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UnityWebRequestTextureModule.dll">
-      <PackagePath>UnityEngine.UnityWebRequestTextureModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UnityWebRequestWWWModule.dll">
-      <PackagePath>UnityEngine.UnityWebRequestWWWModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.VehiclesModule.dll">
-      <PackagePath>UnityEngine.VehiclesModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.VFXModule.dll">
-      <PackagePath>UnityEngine.VFXModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.VideoModule.dll">
-      <PackagePath>UnityEngine.VideoModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.VRModule.dll">
-      <PackagePath>UnityEngine.VRModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.WindModule.dll">
-      <PackagePath>UnityEngine.WindModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.XRModule.dll">
-      <PackagePath>UnityEngine.XRModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.StreamingModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.StreamingModule.dll">
       <PackagePath>UnityEngine.StreamingModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\VuforiaScripts.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UnityAnalyticsModule.dll">
+      <PackagePath>UnityEngine.UnityAnalyticsModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UnityWebRequestAssetBundleModule.dll">
+      <PackagePath>UnityEngine.UnityWebRequestAssetBundleModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UnityWebRequestAudioModule.dll">
+      <PackagePath>UnityEngine.UnityWebRequestAudioModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UnityWebRequestModule.dll">
+      <PackagePath>UnityEngine.UnityWebRequestModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UnityWebRequestTextureModule.dll">
+      <PackagePath>UnityEngine.UnityWebRequestTextureModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UnityWebRequestWWWModule.dll">
+      <PackagePath>UnityEngine.UnityWebRequestWWWModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.VehiclesModule.dll">
+      <PackagePath>UnityEngine.VehiclesModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.VFXModule.dll">
+      <PackagePath>UnityEngine.VFXModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.VideoModule.dll">
+      <PackagePath>UnityEngine.VideoModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.VRModule.dll">
+      <PackagePath>UnityEngine.VRModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.WindModule.dll">
+      <PackagePath>UnityEngine.WindModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.XRModule.dll">
+      <PackagePath>UnityEngine.XRModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UnityConnectModule.dll">
+      <PackagePath>UnityEngine.UnityConnectModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\VuforiaScripts.dll">
       <PackagePath>VuforiaScripts.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.SpriteShapeModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.SpriteShapeModule.dll">
       <PackagePath>UnityEngine.SpriteShapeModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Unity.XR.WindowsMR.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Unity.XR.WindowsMR.dll">
       <PackagePath>Unity.XR.WindowsMR.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.AccessibilityModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.AccessibilityModule.dll">
       <PackagePath>UnityEngine.AccessibilityModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.AIModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.AIModule.dll">
       <PackagePath>UnityEngine.AIModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.AnimationModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.AnimationModule.dll">
       <PackagePath>UnityEngine.AnimationModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.ARModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.ARModule.dll">
       <PackagePath>UnityEngine.ARModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.AssetBundleModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.AssetBundleModule.dll">
       <PackagePath>UnityEngine.AssetBundleModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.AudioModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.AudioModule.dll">
       <PackagePath>UnityEngine.AudioModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.ClothModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.ClothModule.dll">
       <PackagePath>UnityEngine.ClothModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.CoreModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.CoreModule.dll">
       <PackagePath>UnityEngine.CoreModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.CrashReportingModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.CrashReportingModule.dll">
       <PackagePath>UnityEngine.CrashReportingModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.DirectorModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.DirectorModule.dll">
       <PackagePath>UnityEngine.DirectorModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.dll">
       <PackagePath>UnityEngine.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.GameCenterModule.dll">
-      <PackagePath>UnityEngine.GameCenterModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.GridModule.dll">
-      <PackagePath>UnityEngine.GridModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.ImageConversionModule.dll">
-      <PackagePath>UnityEngine.ImageConversionModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.IMGUIModule.dll">
-      <PackagePath>UnityEngine.IMGUIModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.InputModule.dll">
-      <PackagePath>UnityEngine.InputModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.JSONSerializeModule.dll">
-      <PackagePath>UnityEngine.JSONSerializeModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.LocalizationModule.dll">
-      <PackagePath>UnityEngine.LocalizationModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.ParticleSystemModule.dll">
-      <PackagePath>UnityEngine.ParticleSystemModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.PerformanceReportingModule.dll">
-      <PackagePath>UnityEngine.PerformanceReportingModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.Physics2DModule.dll">
-      <PackagePath>UnityEngine.Physics2DModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.PhysicsModule.dll">
-      <PackagePath>UnityEngine.PhysicsModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.ScreenCaptureModule.dll">
-      <PackagePath>UnityEngine.ScreenCaptureModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.SharedInternalsModule.dll">
-      <PackagePath>UnityEngine.SharedInternalsModule.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.SpriteMaskModule.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.SpriteMaskModule.dll">
       <PackagePath>UnityEngine.SpriteMaskModule.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.Timeline.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.GameCenterModule.dll">
+      <PackagePath>UnityEngine.GameCenterModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.ImageConversionModule.dll">
+      <PackagePath>UnityEngine.ImageConversionModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.IMGUIModule.dll">
+      <PackagePath>UnityEngine.IMGUIModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.InputModule.dll">
+      <PackagePath>UnityEngine.InputModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.JSONSerializeModule.dll">
+      <PackagePath>UnityEngine.JSONSerializeModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.LocalizationModule.dll">
+      <PackagePath>UnityEngine.LocalizationModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.ParticleSystemModule.dll">
+      <PackagePath>UnityEngine.ParticleSystemModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.PerformanceReportingModule.dll">
+      <PackagePath>UnityEngine.PerformanceReportingModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.Physics2DModule.dll">
+      <PackagePath>UnityEngine.Physics2DModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.PhysicsModule.dll">
+      <PackagePath>UnityEngine.PhysicsModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.ScreenCaptureModule.dll">
+      <PackagePath>UnityEngine.ScreenCaptureModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.SharedInternalsModule.dll">
+      <PackagePath>UnityEngine.SharedInternalsModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.GridModule.dll">
+      <PackagePath>UnityEngine.GridModule.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.Timeline.dll">
       <PackagePath>UnityEngine.Timeline.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.UI.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.UI.dll">
       <PackagePath>UnityEngine.UI.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\VetAR_BluetoothManager.dll">
-      <PackagePath>VetAR_BluetoothManager.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.SpatialTracking.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.SpatialTracking.dll">
       <PackagePath>UnityEngine.SpatialTracking.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Vuforia.UnityExtensions.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Vuforia.UnityExtensions.dll">
       <PackagePath>Vuforia.UnityExtensions.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\UnityEngine.Networking.dll">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\UnityEngine.Networking.dll">
       <PackagePath>UnityEngine.Networking.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\bin\x86\Release\Core\Hololens lpms.exe">
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\bin\x86\Release\Core\Hololens lpms.exe">
       <PackagePath>Hololens lpms.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

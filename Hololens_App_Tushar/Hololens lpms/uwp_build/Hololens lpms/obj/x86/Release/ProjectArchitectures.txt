@@ -1,1 +1,1 @@
-C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\temp_build\Hololens lpms\Hololens lpms.csproj;x86
+C:\Users\tpura\Desktop\Unity Projects\Hololens lpms\uwp_build\Hololens lpms\Hololens lpms.csproj;x86

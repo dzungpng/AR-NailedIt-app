@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/SampleScene.unity
+- path: Assets/Scenes/Scene for varying length nail.unity
   isLoaded: 1
   isActive: 1
