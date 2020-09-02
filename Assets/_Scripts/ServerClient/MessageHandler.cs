@@ -31,7 +31,6 @@ public class MessageHandler : MonoBehaviour
     public GameObject mobileHandle;
     public GameObject mobileBone;
     public bool isFrameOfReferenceFound { get; set; } = false;
-    public GameObject testBone;
 
     // Server handle orientation data's containers
     public InputField xPos;
@@ -40,6 +39,7 @@ public class MessageHandler : MonoBehaviour
     public InputField xRot;
     public InputField yRot;
     public InputField zRot;
+
 
     public void Awake()
     {
@@ -68,6 +68,24 @@ public class MessageHandler : MonoBehaviour
         {
             OnFoundBoneImageTarget();
         }
+
+        // DELETE LATER
+        //if(isFrameOfReferenceFound)
+        //{
+        //    mobileHandle.transform.position += new Vector3(0.001f, 0, 0);
+        //    xPos.SetTextWithoutNotify(mobileHandle.transform.position.x.ToString());
+        //    yPos.SetTextWithoutNotify(mobileHandle.transform.position.y.ToString());
+        //    zPos.SetTextWithoutNotify(mobileHandle.transform.position.z.ToString());
+        //}
+        
+    }
+
+    public void moveHandleMobileTest()
+    {
+        mobileHandle.transform.position += new Vector3(0.1f, 0, 0);
+        xPos.SetTextWithoutNotify(mobileHandle.transform.position.x.ToString());
+        yPos.SetTextWithoutNotify(mobileHandle.transform.position.y.ToString());
+        zPos.SetTextWithoutNotify(mobileHandle.transform.position.z.ToString());
     }
 
     public void InitializeChatUIComponents()
@@ -93,6 +111,12 @@ public class MessageHandler : MonoBehaviour
 
     public void NotifyServerOnExit()
     {
+        StartCoroutine(NotifyServerOnExitRoutine());   
+    }
+
+    IEnumerator NotifyServerOnExitRoutine()
+    {
+        yield return new WaitForSeconds(0.55f);
         Player player = NetworkClient.connection.identity.GetComponent<Player>();
         player.CmdSend("EXIT|" + player.playerName);
     }
@@ -348,7 +372,6 @@ public class MessageHandler : MonoBehaviour
 
         mobileBone.transform.rotation = Quaternion.Euler(rotation);
         // TODO: Set position with respect to the frame of reference
-        testBone.transform.position += new Vector3(0, 1, 0);
     }
 
 
@@ -371,4 +394,3 @@ public class MessageHandler : MonoBehaviour
         yield return null;
     }
 }
-
