@@ -46,7 +46,7 @@ PlayerSettings:
   defaultScreenHeight: 1200
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
-  m_StereoRenderingPath: 1
+  m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
   m_MTRendering: 1
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
@@ -691,7 +691,7 @@ PlayerSettings:
   gcWBarrierValidation: 0
   apiCompatibilityLevelPerPlatform:
     Standalone: 6
-    Windows Store Apps: 6
+    Windows Store Apps: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Template3D
@@ -722,18 +722,18 @@ PlayerSettings:
       Appointments: False
       BackgroundMediaPlayback: False
       BlockedChatMessages: False
-      Bluetooth: True
+      Bluetooth: False
       Chat: False
       CodeGeneration: False
       Contacts: False
       EnterpriseAuthentication: False
-      GazeInput: True
+      GazeInput: False
       HumanInterfaceDevice: False
       InputInjectionBrokered: False
       InternetClient: True
       InternetClientServer: True
       Location: False
-      LowLevelDevices: False
+      LowLevelDevices: True
       Microphone: True
       MusicLibrary: False
       Objects3D: False
