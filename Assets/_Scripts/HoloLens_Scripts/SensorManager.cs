@@ -16,15 +16,6 @@ public class SensorManager : MonoBehaviour
 
     public float errorMargin = 0.2f;
 
-    public Text drillGuideSensorXRot;
-    public Text drillGuideSensorYRot;
-    public Text drillGuideSensorZRot;
-
-    public Text handleSensorXRot;
-    public Text handleSensorYRot;
-    public Text handleSensorZRot;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -82,10 +73,6 @@ public class SensorManager : MonoBehaviour
             {
                 this.drillBuffer[i] = btManager.drillBuffer[i];
                 DrillSensor.transform.rotation = new Quaternion(drillBuffer[0], drillBuffer[1], drillBuffer[2], drillBuffer[3]);
-                Vector3 rot = DrillSensor.transform.rotation.eulerAngles;
-                drillGuideSensorXRot.text = "X : " + rot.x.ToString();
-                drillGuideSensorYRot.text = "Y : " + rot.y.ToString();
-                drillGuideSensorZRot.text = "Z : " + rot.z.ToString();
             }
         }
 
@@ -96,10 +83,6 @@ public class SensorManager : MonoBehaviour
                 this.handleBuffer[i] = btManager.handleBuffer[i];
                 HandleSensor.transform.rotation = new Quaternion(handleBuffer[0], handleBuffer[1], handleBuffer[2], handleBuffer[3]);
                 Vector3 rot = HandleSensor.transform.rotation.eulerAngles;
-                handleSensorXRot.text = "X : " + rot.x.ToString();
-                handleSensorYRot.text = "Y : " + rot.y.ToString();
-                handleSensorZRot.text = "Z : " + rot.z.ToString();
-
             }
         }
         

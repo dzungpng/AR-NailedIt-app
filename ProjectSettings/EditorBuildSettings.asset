@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/NailedIt_update1.unity
     guid: 56f6d503393e41b4493a320ddb4682a1
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/Mobile_Client.unity
     guid: 4efdcb8b89c994e44afe82ecf5a2c181
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/HoloLens_Scenes/Scene for varying length nail.unity
     guid: 42fccff67d708ac4c9dc06b34a9adcfc
   m_configObjects:

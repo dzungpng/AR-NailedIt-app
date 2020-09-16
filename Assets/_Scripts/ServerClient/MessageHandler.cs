@@ -17,10 +17,9 @@ public class MessageHandler : MonoBehaviour
     // HoloLens objects
     public ModelGeneration clientModelGenerator;
     public bool handleTargetFound { get; set; } = false;
-    public bool boneTargetFound { get; set; } = false;
     public bool isTransferringHandleData { get; set; } = false;
     public GameObject hololensHandle;
-    public GameObject hololensBone;
+    public bool isHoloLensApp { get; set; } = false; // True if this is the hololens app
 
     // Desktop objects
     public Toggle logDataToggle;
@@ -33,17 +32,17 @@ public class MessageHandler : MonoBehaviour
     public bool isFrameOfReferenceFound { get; set; } = false;
 
     // Server handle orientation data's containers
-    public InputField xPos;
-    public InputField yPos;
-    public InputField zPos;
-    public InputField xRot;
-    public InputField yRot;
-    public InputField zRot;
-
+    public InputField handleXRotInputField;
+    public InputField handleYRotInputField;
+    public InputField handleZRotInputField;
+    public InputField drillGuideXRotInputField;
+    public InputField drillGuideYRotInputField;
+    public InputField drillGuideZRotInputField;
 
     public void Awake()
     {
         Player.OnMessage += OnPlayerMessage;
+        Time.fixedDeltaTime = 0.5f;
 
         // logDataToggle only exists on the server side
         if(logDataToggle != null)
@@ -60,14 +59,10 @@ public class MessageHandler : MonoBehaviour
 
     public void Update()
     {
-        if (handleTargetFound && isTransferringHandleData)
-        {
-            OnFoundHandleImageTarget();
-        }
-        if (boneTargetFound && isTransferringHandleData)
-        {
-            OnFoundBoneImageTarget();
-        }
+        //if (handleTargetFound && isTransferringHandleData)
+        //{
+        //    OnFoundHandleImageTarget();
+        //}
 
         // DELETE LATER
         //if(isFrameOfReferenceFound)
@@ -80,18 +75,21 @@ public class MessageHandler : MonoBehaviour
         
     }
 
-    public void moveHandleMobileTest()
+    public void FixedUpdate()
     {
-        mobileHandle.transform.position += new Vector3(0.1f, 0, 0);
-        xPos.SetTextWithoutNotify(mobileHandle.transform.position.x.ToString());
-        yPos.SetTextWithoutNotify(mobileHandle.transform.position.y.ToString());
-        zPos.SetTextWithoutNotify(mobileHandle.transform.position.z.ToString());
+        if (handleTargetFound && isTransferringHandleData)
+        {
+            OnFoundHandleImageTarget();
+        }
     }
 
     public void InitializeChatUIComponents()
     {
-        chatMessage = GameObject.Find("ChatInputField").GetComponent<InputField>();
-        chatHistory = GameObject.Find("ChatText").GetComponent<Text>();
+        if (!isHoloLensApp)
+        {
+            chatMessage = GameObject.Find("ChatInputField").GetComponent<InputField>();
+            chatHistory = GameObject.Find("ChatText").GetComponent<Text>();
+        }
     }
 
 
@@ -141,10 +139,6 @@ public class MessageHandler : MonoBehaviour
                         // Otherwise the chatbox will be overflowed with messages
                         OnReceiveHandleDataServer(messageParts[1]);
                         return;
-                    case "BONEDATA": // When desktop server receives bone data from HoloLens client
-                        // We don't care about bone data on the desktop server so we just ignore
-                        // and not add the messages to chatHistory
-                        return;
                     default:
                         break;
                 }
@@ -161,9 +155,6 @@ public class MessageHandler : MonoBehaviour
                     case "HANDLEDATA": // When HoloLens client sends handle data to the server and mobile clients
                         // Don't add messages to chatHistory if client is trying to send handle data
                         // Otherwise the chatbox will be overflowed with messages
-                        return;
-                    case "BONEDATA": // When HoloLens client sends bone data to the mobile clients
-                        // Don't add messages like case "HANDLEDATA" above
                         return;
                     case "JOIN":
                         return;
@@ -186,12 +177,6 @@ public class MessageHandler : MonoBehaviour
                                        // Otherwise the chatbox will be overflowed with messages
                         if (isFrameOfReferenceFound)
                             OnReceiveHandleDataMobile(messageParts[1]);
-                        return;
-                    case "BONEDATA": // When mobile clients receive bone data from Hololens client
-                                     // Don't add messages to chatHistory if client is trying to send bone data
-                                     // Otherwise the chatbox will be overflowed with messages
-                        if (isFrameOfReferenceFound)
-                            OnRecieveBoneDataMobile(messageParts[1]);
                         return;
                     default:
                         break;
@@ -288,20 +273,11 @@ public class MessageHandler : MonoBehaviour
 
         Player player = NetworkClient.connection.identity.GetComponent<Player>();
         player.CmdSend(handleData);
-    }
 
-    // When the HoloLens's bone image target is found and Send Handle Data button is clicked, the HoloLens sends position and 
-    // orientation data to the mobile clients
-    private void OnFoundBoneImageTarget()
-    {
-        Vector3 position = hololensBone.transform.position;
-        Vector3 rotation = hololensBone.transform.eulerAngles;
-
-        string boneData =
-            "BONEDATA|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
-
-        Player player = NetworkClient.connection.identity.GetComponent<Player>();
-        player.CmdSend(boneData); 
+        // Display handle orientation data onto screen at bottom left corner
+        handleXRotInputField.SetTextWithoutNotify(rotation.x.ToString());
+        handleYRotInputField.SetTextWithoutNotify(rotation.y.ToString());
+        handleZRotInputField.SetTextWithoutNotify(rotation.z.ToString());
     }
 
     // When the server receives handle data from the HoloLens, it processes the data and orient the handle on 
@@ -320,13 +296,13 @@ public class MessageHandler : MonoBehaviour
         ArmModelDropdown.selectedArmModel.transform.rotation = Quaternion.Euler(rotation);
         //NailModelDropdown.selectedNailModel.transform.rotation = Quaternion.Euler(rotation);
 
-        xPos.SetTextWithoutNotify(position.x.ToString());
-        yPos.SetTextWithoutNotify(position.y.ToString());
-        zPos.SetTextWithoutNotify(position.z.ToString());
+        handleXRotInputField.SetTextWithoutNotify(position.x.ToString());
+        handleYRotInputField.SetTextWithoutNotify(position.y.ToString());
+        handleZRotInputField.SetTextWithoutNotify(position.z.ToString());
 
-        xRot.SetTextWithoutNotify(rotation.x.ToString());
-        yRot.SetTextWithoutNotify(rotation.y.ToString());
-        zRot.SetTextWithoutNotify(rotation.z.ToString());
+        drillGuideXRotInputField.SetTextWithoutNotify(rotation.x.ToString());
+        drillGuideYRotInputField.SetTextWithoutNotify(rotation.y.ToString());
+        drillGuideZRotInputField.SetTextWithoutNotify(rotation.z.ToString());
 
         // Log the handle data to log file in the current directory
         if (isLoggingHandleData)
@@ -352,28 +328,14 @@ public class MessageHandler : MonoBehaviour
         //mobileHandle.transform.rotation = new Quaternion(1, 0, 0, 0);
         // TODO: Set position with respect to the frame of reference
 
-        xPos.SetTextWithoutNotify(position.x.ToString());
-        yPos.SetTextWithoutNotify(position.y.ToString());
-        zPos.SetTextWithoutNotify(position.z.ToString());
+        handleXRotInputField.SetTextWithoutNotify(position.x.ToString());
+        handleYRotInputField.SetTextWithoutNotify(position.y.ToString());
+        handleZRotInputField.SetTextWithoutNotify(position.z.ToString());
 
-        xRot.SetTextWithoutNotify(rotation.x.ToString());
-        yRot.SetTextWithoutNotify(rotation.y.ToString());
-        zRot.SetTextWithoutNotify(rotation.z.ToString());
+        drillGuideXRotInputField.SetTextWithoutNotify(rotation.x.ToString());
+        drillGuideYRotInputField.SetTextWithoutNotify(rotation.y.ToString());
+        drillGuideZRotInputField.SetTextWithoutNotify(rotation.z.ToString());
     }
-
-    // When the movile client receives bone data from the HoloLens, it processes the data and orient the bone on
-    // mobile app to match those of the bone on the HoloLens.
-    // This way we don't need to "see" the image target of the bone
-    private void OnRecieveBoneDataMobile(string boneData)
-    {
-        string[] splitBoneData = boneData.Split(';');
-        Vector3 position = Utils.StringToVector3(splitBoneData[0]);
-        Vector3 rotation = Utils.StringToVector3(splitBoneData[0]);
-
-        mobileBone.transform.rotation = Quaternion.Euler(rotation);
-        // TODO: Set position with respect to the frame of reference
-    }
-
 
     void ToggleValueChanged(Toggle toggle)
     {
