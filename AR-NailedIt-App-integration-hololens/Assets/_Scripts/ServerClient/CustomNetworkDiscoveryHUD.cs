@@ -65,14 +65,17 @@ public class CustomNetworkDiscoveryHUD : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         if (numServers != null)
+        {
             numServers.text = $"Discovered Servers [{discoveredServers.Count}]:";
-
+        }
+        
         if (serverNamesDisplay != null)
         {
             foreach (ServerResponse info in discoveredServers.Values)
             {
                 Button b = Instantiate(serverButtonPrefab, serverNamesDisplay.transform);
                 b.GetComponentInChildren<Text>().text = info.EndPoint.Address.ToString();
+                //Debug.Log(info.EndPoint.Address.ToString());
                 b.onClick.AddListener(() => settingCanvas.SetActive(false));
                 b.onClick.AddListener(() => holoCanvas.SetActive(true));
                 b.onClick.AddListener(() => Connect(info));

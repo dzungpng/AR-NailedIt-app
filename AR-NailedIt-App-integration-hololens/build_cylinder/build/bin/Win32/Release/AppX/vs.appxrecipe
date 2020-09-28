@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>DESKTOP-D4722DS</Machine>
+    <WindowsUser>tpura</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Release|Win32</SolutionConfiguration>
+    <PackageArchitecture>x86</PackageArchitecture>
+    <PackageIdentityName>063d5106-fbd0-4e6a-ae0d-8d86a4fbc249</PackageIdentityName>
+    <PackageIdentityPublisher>CN=DefaultCompany</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\build\obj\Vet Planning App\Win32\Release\</IntermediateOutputPath>
+    <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
+    <LayoutDir>C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\build\bin\Win32\Release\AppX</LayoutDir>
+    <RegisteredManifestChecksum>88B7D4F45895609769EAC5C371E18D1193CF9C914F3C779017452B3EA138ABC2</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>Template3D_1.0.0.0_x86__pzq3xp76mxafg</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>Template3D_pzq3xp76mxafg!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>Template3D</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=DefaultCompany</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\build\bin\Win32\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2020-09-19T02:58:55.522</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\build\bin\Win32\Release\Vet Planning App.exe">
+      <PackagePath>Vet Planning App.exe</PackagePath>
+      <Modified>2020-09-19T02:58:52.966</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\2019.3.14f1\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\il2cpp\x86\Release\UnityPlayer.winmd">
+      <PackagePath>UnityPlayer.winmd</PackagePath>
+      <Modified>2020-05-14T14:20:18.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\2019.3.14f1\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\il2cpp\x86\Release\UnityPlayer.dll">
+      <PackagePath>UnityPlayer.dll</PackagePath>
+      <Modified>2020-05-14T14:19:58.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\build\bin\Win32\Release\Vet_Planning_App.winmd">
+      <PackagePath>Vet_Planning_App.winmd</PackagePath>
+      <Modified>2020-09-19T02:58:52.805</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Assets\SplashScreen.scale-200.png">
+      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2020-05-14T13:31:30.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2020-05-14T13:31:30.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2020-05-14T13:31:30.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Assets\Square44x44Logo.targetsize-24.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2020-05-14T13:31:30.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2020-05-14T13:31:30.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2020-05-14T13:31:30.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2020-05-14T13:31:30.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\NuGet.config">
+      <PackagePath>NuGet.config</PackagePath>
+      <Modified>2020-09-16T04:12:14.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\boot.config">
+      <PackagePath>Data\boot.config</PackagePath>
+      <Modified>2020-09-19T02:50:04.170</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\2.0\machine.config">
+      <PackagePath>Data\il2cpp_data\etc\mono\2.0\machine.config</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\2.0\web.config">
+      <PackagePath>Data\il2cpp_data\etc\mono\2.0\web.config</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\4.0\machine.config">
+      <PackagePath>Data\il2cpp_data\etc\mono\4.0\machine.config</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\4.0\web.config">
+      <PackagePath>Data\il2cpp_data\etc\mono\4.0\web.config</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\4.5\machine.config">
+      <PackagePath>Data\il2cpp_data\etc\mono\4.5\machine.config</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\4.5\web.config">
+      <PackagePath>Data\il2cpp_data\etc\mono\4.5\web.config</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\StoreManifest.xml">
+      <PackagePath>StoreManifest.xml</PackagePath>
+      <Modified>2020-09-19T02:50:10.114</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\mconfig\config.xml">
+      <PackagePath>Data\il2cpp_data\etc\mono\mconfig\config.xml</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\StreamingAssets\Vuforia\NailedIt.xml">
+      <PackagePath>Data\StreamingAssets\Vuforia\NailedIt.xml</PackagePath>
+      <Modified>2020-09-16T04:12:14.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\StreamingAssets\Vuforia\VetAR.xml">
+      <PackagePath>Data\StreamingAssets\Vuforia\VetAR.xml</PackagePath>
+      <Modified>2020-09-19T02:38:11.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\StreamingAssets\Vuforia\VetAR_altMarkers.xml">
+      <PackagePath>Data\StreamingAssets\Vuforia\VetAR_altMarkers.xml</PackagePath>
+      <Modified>2020-09-16T04:12:14.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\StreamingAssets\Vuforia\VuforiaMars_Images.xml">
+      <PackagePath>Data\StreamingAssets\Vuforia\VuforiaMars_Images.xml</PackagePath>
+      <Modified>2020-09-16T04:12:14.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\globalgamemanagers">
+      <PackagePath>Data\globalgamemanagers</PackagePath>
+      <Modified>2020-09-19T02:49:43.211</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\level0">
+      <PackagePath>Data\level0</PackagePath>
+      <Modified>2020-09-19T02:49:39.741</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\config">
+      <PackagePath>Data\il2cpp_data\etc\mono\config</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\Resources\unity default resources">
+      <PackagePath>Data\Resources\unity default resources</PackagePath>
+      <Modified>2020-05-14T13:31:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\Resources\unity_builtin_extra">
+      <PackagePath>Data\Resources\unity_builtin_extra</PackagePath>
+      <Modified>2020-09-19T02:50:04.160</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\globalgamemanagers.assets">
+      <PackagePath>Data\globalgamemanagers.assets</PackagePath>
+      <Modified>2020-09-19T02:49:43.351</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\resources.assets">
+      <PackagePath>Data\resources.assets</PackagePath>
+      <Modified>2020-09-19T02:49:48.577</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\sharedassets0.assets">
+      <PackagePath>Data\sharedassets0.assets</PackagePath>
+      <Modified>2020-09-19T02:49:51.301</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\nativePlugins.txt">
+      <PackagePath>Data\nativePlugins.txt</PackagePath>
+      <Modified>2020-09-19T02:51:13.913</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\resources.assets.resS">
+      <PackagePath>Data\resources.assets.resS</PackagePath>
+      <Modified>2020-09-19T02:49:48.553</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\sharedassets0.assets.resS">
+      <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
+      <Modified>2020-09-19T02:49:51.295</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\browscap.ini">
+      <PackagePath>Data\il2cpp_data\etc\mono\browscap.ini</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx">
+      <PackagePath>Data\il2cpp_data\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\4.0\DefaultWsdlHelpGenerator.aspx">
+      <PackagePath>Data\il2cpp_data\etc\mono\4.0\DefaultWsdlHelpGenerator.aspx</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\4.5\DefaultWsdlHelpGenerator.aspx">
+      <PackagePath>Data\il2cpp_data\etc\mono\4.5\DefaultWsdlHelpGenerator.aspx</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\2.0\settings.map">
+      <PackagePath>Data\il2cpp_data\etc\mono\2.0\settings.map</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\4.0\settings.map">
+      <PackagePath>Data\il2cpp_data\etc\mono\4.0\settings.map</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\4.5\settings.map">
+      <PackagePath>Data\il2cpp_data\etc\mono\4.5\settings.map</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\2.0\Browsers\Compat.browser">
+      <PackagePath>Data\il2cpp_data\etc\mono\2.0\Browsers\Compat.browser</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\4.0\Browsers\Compat.browser">
+      <PackagePath>Data\il2cpp_data\etc\mono\4.0\Browsers\Compat.browser</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\etc\mono\4.5\Browsers\Compat.browser">
+      <PackagePath>Data\il2cpp_data\etc\mono\4.5\Browsers\Compat.browser</PackagePath>
+      <Modified>2020-05-14T13:26:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\Metadata\global-metadata.dat">
+      <PackagePath>Data\il2cpp_data\Metadata\global-metadata.dat</PackagePath>
+      <Modified>2020-09-19T02:51:02.103</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\Resources\I18N.CJK.dll-resources.dat">
+      <PackagePath>Data\il2cpp_data\Resources\I18N.CJK.dll-resources.dat</PackagePath>
+      <Modified>2020-09-19T02:50:28.128</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\il2cpp_data\Resources\mscorlib.dll-resources.dat">
+      <PackagePath>Data\il2cpp_data\Resources\mscorlib.dll-resources.dat</PackagePath>
+      <Modified>2020-09-19T02:50:28.122</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\StreamingAssets\Vuforia\NailedIt.dat">
+      <PackagePath>Data\StreamingAssets\Vuforia\NailedIt.dat</PackagePath>
+      <Modified>2020-09-16T04:12:14.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\StreamingAssets\Vuforia\VetAR.dat">
+      <PackagePath>Data\StreamingAssets\Vuforia\VetAR.dat</PackagePath>
+      <Modified>2020-09-19T02:38:11.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\StreamingAssets\Vuforia\VetAR_altMarkers.dat">
+      <PackagePath>Data\StreamingAssets\Vuforia\VetAR_altMarkers.dat</PackagePath>
+      <Modified>2020-09-16T04:12:14.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Data\StreamingAssets\Vuforia\VuforiaMars_Images.dat">
+      <PackagePath>Data\StreamingAssets\Vuforia\VuforiaMars_Images.dat</PackagePath>
+      <Modified>2020-09-16T04:12:14.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\VuforiaWrapper.dll">
+      <PackagePath>VuforiaWrapper.dll</PackagePath>
+      <Modified>2020-06-15T09:22:53.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\AudioPluginMsHRTF.dll">
+      <PackagePath>AudioPluginMsHRTF.dll</PackagePath>
+      <Modified>2020-06-02T13:37:15.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\Vuforia.dll">
+      <PackagePath>Vuforia.dll</PackagePath>
+      <Modified>2020-06-15T09:22:53.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\build\bin\Win32\Release\GameAssembly.dll">
+      <PackagePath>GameAssembly.dll</PackagePath>
+      <Modified>2020-09-19T02:58:47.988</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\build\bin\Win32\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2020-09-19T02:58:54.195</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\ARM\Microsoft.VCLibs.ARM.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>ARM64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\ARM64\Microsoft.VCLibs.ARM64.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\x64\Microsoft.VCLibs.x64.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\x86\Microsoft.VCLibs.x86.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

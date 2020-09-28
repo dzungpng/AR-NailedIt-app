@@ -5,11 +5,16 @@ using UnityEngine;
 public class DrillOrientationCompass : MonoBehaviour
 {
 
-    float radius;
+    public float radius;
+    public float multiplier = 2;
+
+    public float thresh = 0.01f; //min dist for green 
 
     public GameObject incissionPoint;
     public GameObject sleeveTop;
     public GameObject drillAlignmentCylinder;
+
+
 
     bool isRed = true;
     // Start is called before the first frame update
@@ -30,10 +35,14 @@ public class DrillOrientationCompass : MonoBehaviour
         Vector3 yVec = gameObject.transform.up;
         transform.rotation = Quaternion.LookRotation(zVec - Vector3.Dot(yVec, zVec)*yVec, yVec);
 
-        radius = Vector3.Distance(gameObject.transform.position, sleeveTop.transform.position);
-        gameObject.transform.localScale = new Vector3(radius, 1, radius);
+        Vector3 gameObjectPos = gameObject.transform.position;
+        gameObjectPos.y = 0;
+        Vector3 sleeveTopPos = sleeveTop.transform.position;
+        sleeveTopPos.y = 0;
+        radius = Vector3.Distance(gameObjectPos, sleeveTopPos) ;
+        gameObject.transform.localScale = new Vector3(radius* multiplier, 1, radius * multiplier);
 
-        if(radius < 0.5f)
+        if(radius < thresh)
         {
             if(isRed)
             {

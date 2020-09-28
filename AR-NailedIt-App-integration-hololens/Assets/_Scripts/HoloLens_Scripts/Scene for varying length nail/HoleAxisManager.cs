@@ -30,8 +30,7 @@ public class HoleAxisManager : MonoBehaviour
 
             incissionCircle.transform.rotation = col.transform.rotation;
 
-            //topGuideMarker.transform.position = incissionCircle.transform.position +
-             //                           gameObject.transform.up.normalized * (sleeveTop.transform.localPosition.y + 4.76f);
+            //topGuideMarker.transform.position = incissionCircle.transform.position + gameObject.transform.up.normalized * (sleeveTop.transform.localPosition.y + 4.76f);
         }
 
         if(col.gameObject.CompareTag("DrillBase"))

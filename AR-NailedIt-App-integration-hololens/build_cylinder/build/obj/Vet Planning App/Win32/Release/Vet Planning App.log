@@ -1,0 +1,11 @@
+﻿  pch.cpp
+  App.cpp
+  Main.cpp
+  UnityGenerated.cpp
+C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\App.cpp(26,1): warning C4973: 'Windows::UI::ViewManagement::IApplicationView2::SuppressSystemOverlays::set': marked as deprecated
+C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\Vet Planning App\App.cpp(26,1): message : Message: 'Use the TryEnterFullScreen method and IsFullScreenMode property instead of SuppressSystemOverlays. For more info, see MSDN.'
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 160 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Vet Planning App.vcxproj -> C:\Users\tpura\Desktop\Unity Projects\AR-NailedIt-App\AR-NailedIt-App-integration-hololens\build_cylinder\build\bin\Win32\Release\Vet Planning App.exe

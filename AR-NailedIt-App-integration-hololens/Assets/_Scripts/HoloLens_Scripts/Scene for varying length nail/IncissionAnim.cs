@@ -25,7 +25,7 @@ public class IncissionAnim : MonoBehaviour
 
         rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, Mathf.Lerp(0, 1, (dist / fixedDist))); 
 
-        if(fixedDist < 2.5f)
+        if(fixedDist < 0.01f)
         {
             transform.position = targetPos.transform.position;
             transform.rotation = targetPos.transform.rotation;
@@ -34,7 +34,7 @@ public class IncissionAnim : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPos.transform.position, Time.deltaTime  * speed );
         gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, targetPos.transform.rotation, Time.deltaTime * speed);
-        if(dist < 0.5f)
+        if(dist < 0.001f)
         {
             gameObject.transform.position = startPos.transform.position;
             gameObject.transform.rotation = startPos.transform.rotation;

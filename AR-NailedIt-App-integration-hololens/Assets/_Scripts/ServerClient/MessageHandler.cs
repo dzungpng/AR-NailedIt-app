@@ -8,6 +8,8 @@ using System.IO;
 
 public class MessageHandler : MonoBehaviour
 {
+
+    public StepManager sManager;
     static readonly ILogger logger = LogFactory.GetLogger(typeof(MessageHandler));
     
     private InputField chatMessage = null;
@@ -39,6 +41,12 @@ public class MessageHandler : MonoBehaviour
     public InputField drillGuideYRotInputField;
     public InputField drillGuideZRotInputField;
 
+
+    //Buttons for initiating steps
+    public Button bStep1;
+    public Button bStep2;
+    public Button bStep3;
+
     public void Awake()
     {
         Player.OnMessage += OnPlayerMessage;
@@ -55,6 +63,16 @@ public class MessageHandler : MonoBehaviour
         logDataPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\loggedData.txt";
         StreamWriter sw = File.CreateText(logDataPath);
         sw.Close();
+
+        if( bStep1!= null)
+            bStep1.onClick.AddListener(mStep1);
+
+        if (bStep2 != null)
+            bStep2.onClick.AddListener(mStep2);
+
+        if (bStep3 != null)
+            bStep3.onClick.AddListener(mStep3);
+
     }
 
     public void Update()
@@ -106,7 +124,6 @@ public class MessageHandler : MonoBehaviour
         player.CmdSend("JOIN|" + player.playerName);
     }
 
-
     public void NotifyServerOnExit()
     {
         StartCoroutine(NotifyServerOnExitRoutine());   
@@ -119,6 +136,60 @@ public class MessageHandler : MonoBehaviour
         player.CmdSend("EXIT|" + player.playerName);
     }
 
+    /// <summary>
+    /// functions for initiating various steps in hololens
+    /// </summary>
+    public void mStep1()
+    {
+        StartCoroutine(start_Step1());
+    }
+
+    public void mStep2()
+    {
+        StartCoroutine(start_Step2());
+    }
+
+    public void mStep3()
+    {
+        StartCoroutine(start_Step3());
+    }
+
+    IEnumerator start_Step1()
+    {
+        yield return new WaitForSeconds(0.55f);
+        Player player = NetworkClient.connection.identity.GetComponent<Player>();
+        player.CmdSend("STEP|1");
+    }
+
+    IEnumerator start_Step2()
+    {
+        yield return new WaitForSeconds(0.55f);
+        Player player = NetworkClient.connection.identity.GetComponent<Player>();
+        player.CmdSend("STEP|2");
+    }
+    IEnumerator start_Step3()
+    {
+        yield return new WaitForSeconds(0.55f);
+        Player player = NetworkClient.connection.identity.GetComponent<Player>();
+        player.CmdSend("STEP|3");
+    }
+
+    void steps(string msg)
+    {
+        Debug.Log("received message: STEP " + msg);
+        if(msg.CompareTo("1") == 0)
+        {
+            sManager.start_step1();
+        }
+        else if(msg.CompareTo("2") == 0)
+        {
+            sManager.start_step2();
+        }
+        else if(msg.CompareTo("3") == 0)
+        {
+            sManager.start_step3();
+        }
+    }
 
     void OnPlayerMessage(Player player, string message)
     {
@@ -178,6 +249,8 @@ public class MessageHandler : MonoBehaviour
                         if (isFrameOfReferenceFound)
                             OnReceiveHandleDataMobile(messageParts[1]);
                         return;
+                    case "STEP": steps(messageParts[1]);
+                        break;
                     default:
                         break;
                 }

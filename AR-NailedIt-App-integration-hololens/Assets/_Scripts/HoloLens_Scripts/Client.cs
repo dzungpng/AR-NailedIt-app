@@ -17,8 +17,8 @@ public class Client : MonoBehaviour
     private const int MAX_CONNECTION = 100;
 
     //"127.0.0.1" is the local Ip, change this to the ip address of the computer running the server scene when hololens is used.
-    //private string IP_Address = "127.0.0.1";
-    private string IP_Address = "192.168.111.19";
+    private string IP_Address = "127.0.0.1";
+   // private string IP_Address = "192.168.111.19";
     int Reliable_Channel_ID;
     int Unreliable_Channel_ID;
 
