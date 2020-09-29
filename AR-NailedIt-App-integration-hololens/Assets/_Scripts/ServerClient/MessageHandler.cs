@@ -278,7 +278,12 @@ public class MessageHandler : MonoBehaviour
                 $"<color=red>{player.playerName}: </color> {message}" :
                 $"<color=blue>{player.playerName}: </color> {message}";
         }
-        AppendMessage(prettyMessage);
+        if (!player.isClient)
+        {
+            AppendMessage(prettyMessage);
+
+        }
+        //AppendMessage(prettyMessage);
         logger.Log(message);
     }
 

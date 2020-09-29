@@ -80,6 +80,10 @@ public class CustomNetworkDiscoveryHUD : MonoBehaviour
                 b.onClick.AddListener(() => holoCanvas.SetActive(true));
                 b.onClick.AddListener(() => Connect(info));
                 b.onClick.AddListener(() => messageHandler.NotifyServerOnJoin());
+
+                //clicking the first button
+                b.onClick.Invoke();
+                break;
             }
         }
     }

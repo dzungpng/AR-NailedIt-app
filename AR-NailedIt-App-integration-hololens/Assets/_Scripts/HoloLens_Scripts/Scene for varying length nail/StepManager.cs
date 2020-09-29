@@ -18,6 +18,8 @@ public class StepManager : MonoBehaviour
 
     public InputField clientName;
 
+    public Button findServer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +36,7 @@ public class StepManager : MonoBehaviour
     {
         clientName.text = "Hololens";
         cnm.PlayerName = "hololens";
-        mHandler.isHoloLensApp = true;
-        cndHUD.OnFindServers();
+        findServer.onClick.Invoke();
     }
 
     // Update is called once per frame
@@ -47,6 +48,21 @@ public class StepManager : MonoBehaviour
             IncissionAnimObject.SetActive(true);
             IncissionAnimObject.GetComponent<IncissionAnim>().gameObject.transform.position = 
                 IncissionAnimObject.GetComponent<IncissionAnim>().startPos.transform.position;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            start_step1();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            start_step2();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            start_step3();
         }
     }
 
