@@ -20,6 +20,10 @@ public class StepManager : MonoBehaviour
 
     public Button findServer;
 
+    public GameObject[] nails;
+    public GameObject[] target_pos_per_nail;    //targetPos of each nail
+
+    public int currIndex = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +34,14 @@ public class StepManager : MonoBehaviour
         step3_Obj.SetActive(false);
 
         Invoke("initiateUI", 5);
+
+        for(int i = 0; i < nails.Length; i++)
+        {
+            if(i != currIndex)
+            {
+                nails[i].SetActive(false);
+            }
+        }
     }
 
     void initiateUI()
@@ -63,6 +75,11 @@ public class StepManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad3))
         {
             start_step3();
+        }
+
+        if(Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            changeNail();
         }
     }
 
@@ -104,5 +121,14 @@ public class StepManager : MonoBehaviour
         IncissionAnimObject.SetActive(true);
         IncissionAnimObject.GetComponent<IncissionAnim>().gameObject.transform.position =
             IncissionAnimObject.GetComponent<IncissionAnim>().startPos.transform.position;
+    }
+
+
+    public void changeNail()
+    {
+        nails[currIndex].SetActive(false);
+        currIndex = (currIndex + 1) % nails.Length;
+        IncissionAnimObject.GetComponent<IncissionAnim>().targetPos = target_pos_per_nail[currIndex];
+        nails[currIndex].SetActive(true);
     }
 }

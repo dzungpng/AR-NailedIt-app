@@ -191,6 +191,11 @@ public class MessageHandler : MonoBehaviour
         }
     }
 
+    void changeNail()
+    {
+        sManager.changeNail();
+    }
+
     void OnPlayerMessage(Player player, string message)
     {
         if (chatMessage == null)
@@ -250,6 +255,8 @@ public class MessageHandler : MonoBehaviour
                             OnReceiveHandleDataMobile(messageParts[1]);
                         return;
                     case "STEP": steps(messageParts[1]);
+                        break;
+                    case "NAIL": changeNail();
                         break;
                     default:
                         break;
