@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -17,8 +18,10 @@ public class Client : MonoBehaviour
     private const int MAX_CONNECTION = 100;
 
     //"127.0.0.1" is the local Ip, change this to the ip address of the computer running the server scene when hololens is used.
-    private string IP_Address = "127.0.0.1";
-   // private string IP_Address = "192.168.111.19";
+    //private string IP_Address = "127.0.0.1";
+
+    //private string IP_Address = "192.168.0.163";   //for home wifi
+    private string IP_Address = "192.168.43.181";   //for phohne hotspot
     int Reliable_Channel_ID;
     int Unreliable_Channel_ID;
 
@@ -43,6 +46,11 @@ public class Client : MonoBehaviour
     public Button sendInputChatText;
     public Text chatBox;
 
+    public StepManager sManager;
+
+    public GameObject nail, drillGuide;
+    public float moveMagnitude = 0.01f;
+
     void Start()
     {
         IncissionAnimObject.SetActive(false);
@@ -53,9 +61,37 @@ public class Client : MonoBehaviour
         connection_ID = -1;
         playername = "Hololens User";
         Client_ID = -1;
-        isReadyToSendHandleData = false;
+        isReadyToSendHandleData = true;
 
         Connect();
+    }
+
+    void steps(string msg)
+    {
+        Debug.Log("received message: STEP " + Convert.ToInt32(msg[0]));
+
+        if (Convert.ToInt32(msg[0]) == 49)
+        {
+            Debug.Log("Pressed Step 1!");
+            sManager.start_step1();
+        }
+        else if (Convert.ToInt32(msg[0]) == 50)
+        {
+            Debug.Log("Pressed Step 2!");
+            sManager.start_step2();
+        }
+        else if (Convert.ToInt32(msg[0]) == 51)
+        {
+            Debug.Log("Pressed Step 3!");
+            sManager.start_step3();
+        }
+    }
+
+    void changeNail()
+    {
+        Debug.Log("received message: NAIL ");
+
+        sManager.changeNail();
     }
 
     // Update is called once per frame
@@ -107,9 +143,26 @@ public class Client : MonoBehaviour
 
                     case "MSG":
                         On_ReceiveServerChatMessage(splitData[1]);
-                        Debug.Log("GOT MESSAGE!");
+                        //Debug.Log("GOT MESSAGE!");
                         break;
 
+                    case "STP":
+                        steps(splitData[1]);
+                        //Debug.Log("GOT MESSAGE!");
+                        break;
+
+                    case "NAL":
+                        changeNail();
+                        //Debug.Log("GOT MESSAGE!");
+                        break;
+                    case "DRL":
+                        moveDrillGuide(splitData[1]);
+                        //Debug.Log("GOT MESSAGE!");
+                        break;
+                    case "NIL":
+                        moveNail(splitData[1]);
+                        //Debug.Log("GOT MESSAGE!");
+                        break;
                     default:
                         Debug.Log("Invalid Message : " + msg);
                         break;
@@ -205,7 +258,7 @@ public class Client : MonoBehaviour
     {
         if (isReadyToSendHandleData)
         {
-            //Debug.Log("Sending handle data to server...");
+            Debug.Log("Sending handle data to server...");
             Vector3 position = handle.transform.position;
             Vector3 rotation = handle.transform.eulerAngles;
             string handleData = "HANDLEDAT|" + position.x + "," + position.y + "," + position.z + ";" + rotation.x + "," + rotation.y + "," + rotation.z;
@@ -215,7 +268,7 @@ public class Client : MonoBehaviour
 
     public void On_ReceiveServerChatMessage(string msg)
     {
-        Debug.Log("Received_______________________");
+       // Debug.Log("Received_______________________");
         //chatBox.text += "Server: " + msg + "\n";
         if (msg.CompareTo("next") == 0)
         {
@@ -223,6 +276,59 @@ public class Client : MonoBehaviour
             IncissionAnimObject.SetActive(true);
             IncissionAnimObject.GetComponent<IncissionAnim>().gameObject.transform.position =
                 IncissionAnimObject.GetComponent<IncissionAnim>().startPos.transform.position;
+        }
+    }
+
+
+    public void moveNail(string direction)
+    {
+        Debug.Log("Received direction data for nail:             ... " + direction);
+        switch(direction[0])
+        {
+            case 'f': nail.transform.position += nail.transform.forward * moveMagnitude;
+                break;
+            case 'b':
+                nail.transform.position -= nail.transform.forward * moveMagnitude;
+                break;
+            case 'l':
+                nail.transform.position -= nail.transform.right * moveMagnitude;
+                break;
+            case 'r':
+                nail.transform.position += nail.transform.right * moveMagnitude;
+                break;
+            case 'u':
+                nail.transform.position += nail.transform.up * moveMagnitude;
+                break;
+            case 'd':
+                nail.transform.position -= nail.transform.up * moveMagnitude;
+                break;
+        }
+    }
+
+    public void moveDrillGuide(string direction)
+    {
+        Debug.Log("Received direction data for drill:             ... " + direction);
+
+        switch (direction[0])
+        {
+            case 'f':
+                drillGuide.transform.position += drillGuide.transform.forward * moveMagnitude;
+                break;
+            case 'b':
+                drillGuide.transform.position -= drillGuide.transform.forward * moveMagnitude;
+                break;
+            case 'l':
+                drillGuide.transform.position -= drillGuide.transform.right * moveMagnitude;
+                break;
+            case 'r':
+                drillGuide.transform.position += drillGuide.transform.right * moveMagnitude;
+                break;
+            case 'u':
+                drillGuide.transform.position += drillGuide.transform.up * moveMagnitude;
+                break;
+            case 'd':
+                drillGuide.transform.position -= drillGuide.transform.up * moveMagnitude;
+                break;
         }
     }
 }

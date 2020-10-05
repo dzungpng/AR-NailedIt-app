@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
 using UnityEngine;
 using UnityEngine.UI;
 public class StepManager : MonoBehaviour
@@ -25,6 +26,8 @@ public class StepManager : MonoBehaviour
 
     public int currIndex = 0;
     // Start is called before the first frame update
+
+    public Client client;
     void Start()
     {
         IncissionPoint.SetActive(false);
@@ -33,7 +36,7 @@ public class StepManager : MonoBehaviour
         step2_Obj.SetActive(false);
         step3_Obj.SetActive(false);
 
-        Invoke("initiateUI", 5);
+        //Invoke("initiateUI", 5);
 
         for(int i = 0; i < nails.Length; i++)
         {
@@ -126,9 +129,12 @@ public class StepManager : MonoBehaviour
 
     public void changeNail()
     {
+        start_step1();
+
         nails[currIndex].SetActive(false);
         currIndex = (currIndex + 1) % nails.Length;
         IncissionAnimObject.GetComponent<IncissionAnim>().targetPos = target_pos_per_nail[currIndex];
         nails[currIndex].SetActive(true);
+        client.nail = nails[currIndex];
     }
 }
