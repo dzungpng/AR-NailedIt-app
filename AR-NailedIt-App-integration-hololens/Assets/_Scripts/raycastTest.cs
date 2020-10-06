@@ -22,14 +22,15 @@ public class raycastTest : MonoBehaviour
         {
             if(hit.collider)
             {
+                laserMarker.SetActive(true);
                 lr.SetPosition(1, hit.point);
                 laserMarker.transform.position = hit.point + hit.normal * 0.001f;
                 laserMarker.transform.rotation = Quaternion.LookRotation(hit.normal);
             }
         }else
         {
-            lr.SetPosition(1, transform.position + transform.forward * 10);
-            
+            lr.SetPosition(1, transform.position + transform.forward * 1);
+            laserMarker.SetActive(false);
         }
     }
 }

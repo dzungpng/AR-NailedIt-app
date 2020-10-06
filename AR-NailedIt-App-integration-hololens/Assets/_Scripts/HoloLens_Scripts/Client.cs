@@ -51,6 +51,10 @@ public class Client : MonoBehaviour
     public GameObject nail, drillGuide;
     public float moveMagnitude = 0.01f;
 
+    public Text curr_Nail_Pos;
+    public Text curr_Drill_Pos;
+
+
     void Start()
     {
         IncissionAnimObject.SetActive(false);
@@ -64,6 +68,10 @@ public class Client : MonoBehaviour
         isReadyToSendHandleData = true;
 
         Connect();
+
+        curr_Nail_Pos.text =  nail.name + "--> " + nail.transform.localPosition.x + ", " + nail.transform.localPosition.y + ", " + nail.transform.localPosition.z;
+        curr_Drill_Pos.text = drillGuide.name + "--> " + drillGuide.transform.localPosition.x + ", " + drillGuide.transform.localPosition.y + ", " + drillGuide.transform.localPosition.z;
+
     }
 
     void steps(string msg)
@@ -282,7 +290,7 @@ public class Client : MonoBehaviour
 
     public void moveNail(string direction)
     {
-        Debug.Log("Received direction data for nail:             ... " + direction);
+        //Debug.Log("Received direction data for nail:             ... " + direction);
         switch(direction[0])
         {
             case 'f': nail.transform.position += nail.transform.forward * moveMagnitude;
@@ -303,11 +311,16 @@ public class Client : MonoBehaviour
                 nail.transform.position -= nail.transform.up * moveMagnitude;
                 break;
         }
+
+        curr_Nail_Pos.text = nail.name + "--> " + nail.transform.localPosition.x + ", " + nail.transform.localPosition.y + ", " + nail.transform.localPosition.z;
+
     }
 
     public void moveDrillGuide(string direction)
     {
-        Debug.Log("Received direction data for drill:             ... " + direction);
+        //Debug.Log("Received direction data for drill:             ... " + direction);
+
+
 
         switch (direction[0])
         {
@@ -330,5 +343,7 @@ public class Client : MonoBehaviour
                 drillGuide.transform.position -= drillGuide.transform.up * moveMagnitude;
                 break;
         }
+        curr_Drill_Pos.text = drillGuide.name + "--> " + drillGuide.transform.localPosition.x + ", " + drillGuide.transform.localPosition.y + ", " + drillGuide.transform.localPosition.z;
+
     }
 }

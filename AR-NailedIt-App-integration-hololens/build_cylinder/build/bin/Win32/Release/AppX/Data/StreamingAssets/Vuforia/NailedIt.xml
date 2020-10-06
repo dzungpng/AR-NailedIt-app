@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
-  <Tracking>
-    <ImageTarget name="frame_of_reference" size="3.000000 3.000000" />
-    <ImageTarget name="handle_small" size="2.000000 2.309255" />
-    <ImageTarget name="vumark" size="5.000000 4.755859" />
-  </Tracking>
-</QCARConfig>

@@ -27,7 +27,10 @@ public class StepManager : MonoBehaviour
     public int currIndex = 0;
     // Start is called before the first frame update
 
+
+
     public Client client;
+
     void Start()
     {
         IncissionPoint.SetActive(false);
