@@ -54,7 +54,8 @@ public class Client : MonoBehaviour
     public Text curr_Nail_Pos;
     public Text curr_Drill_Pos;
 
-
+    public GameObject xray;
+    bool xStatus = false;
     void Start()
     {
         IncissionAnimObject.SetActive(false);
@@ -72,6 +73,7 @@ public class Client : MonoBehaviour
         curr_Nail_Pos.text =  nail.name + "--> " + nail.transform.localPosition.x + ", " + nail.transform.localPosition.y + ", " + nail.transform.localPosition.z;
         curr_Drill_Pos.text = drillGuide.name + "--> " + drillGuide.transform.localPosition.x + ", " + drillGuide.transform.localPosition.y + ", " + drillGuide.transform.localPosition.z;
 
+        xray.SetActive(xStatus);
     }
 
     void steps(string msg)
@@ -169,6 +171,11 @@ public class Client : MonoBehaviour
                         break;
                     case "NIL":
                         moveNail(splitData[1]);
+                        //Debug.Log("GOT MESSAGE!");
+                        break;
+                    case "XRY":
+                        xStatus = !xStatus;
+                        xray.SetActive(xStatus);
                         //Debug.Log("GOT MESSAGE!");
                         break;
                     default:
