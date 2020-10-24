@@ -74,9 +74,9 @@ Install and add Microsoft Mixed Reality Plugin to the project.
 
 **Build Settings for Visual Studio** 
 ```
-Build Type: Debug <br />
-Architecture: x86 <br />
-Machine Type: Remote Machine <br />
+Build Type: Debug
+Architecture: x86
+Machine Type: Remote Machine
 Machine Name: Right click on the file under Solution Explorer that has Universal Windows at the end. Click on Properties --> Configuration Properties --> Debugging --> Machine Name --> Enter in the HoloLen's IP address which can be found in Network Settings --> Hardware Properties on the HoloLens.
 ```
 
