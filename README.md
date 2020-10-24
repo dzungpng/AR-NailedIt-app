@@ -54,12 +54,12 @@ In order for this to work in runtime, you must go to the "Edit > Project Setting
 
 **Build Settings for Unity** 
 ```
-Platform: Universal Windows Platform <br />
-Target Device: HoloLens <br />
-Architecture: x86 <br />
-Target SDK Version: Latest installed <br />
-Minimum Platform Version: 10.0.10240.0 (or later) <br />
-Visual Studio Version: Visual studio 2017 or later <br />
+Platform: Universal Windows Platform
+Target Device: HoloLens
+Architecture: x86
+Target SDK Version: Latest installed
+Minimum Platform Version: 10.0.10240.0 (or later)
+Visual Studio Version: Visual studio 2017 or later
 ```
 
 **Player Settings for Unity** 
